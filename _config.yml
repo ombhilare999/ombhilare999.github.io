@@ -1,11 +1,14 @@
 title: Omkar bhilare # your name (or website title) here
 logo: "/images/logo.jpeg?raw=true" # your photo (or logo) here
 description: > # your text below (remove <br> elements if you don't need line breaks)
-  First description 
+  Electronics Enthusiasts. I'm proficient in circuit and PCB designing. I have a great interest in fields like FPGA, Digital VLSI, Computer Architecture.  
   <br><br>
-  Second description 
-  <br><br>
+  
   <a href="https://www.linkedin.com/in/omkar-bhilare-985aa2180/">View My LinkedIn Profile</a> 
   
+  <a href="https://twitter.com/home?lang=en">View Twitter Profile</a>
+
+  <a href="https://drive.google.com/file/d/1jKrDNfu1B02DiM1Yz-zjoyhHLkp83iDh/view?usp=sharing">View CV</a>
+
 theme: jekyll-theme-minimal
 google_analytics: UA-000000-0 # your Google Analytics tracking ID here
