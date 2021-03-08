@@ -28,6 +28,6 @@
 
 [8 Bit ALU implementation on Altera Cyclone II](/alu)
 
-<img src="images/Fibonacci_Output.gif?raw=true"/>
+<img src="images/gtkwave.png?raw=true"/>
 
 
