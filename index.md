@@ -14,7 +14,7 @@
 
 ---
 
-[ESP32 based Dev board for Embedded and Robotics Application](/sra)
+[ESP32 based Dev board for Embedded and Robotics Application](https://github.com/SRA-VJTI/sra-board-hardware-design)
 
 <img src="images/3d_sideview.png?raw=true"/>
 
