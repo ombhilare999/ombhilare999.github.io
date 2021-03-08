@@ -1,6 +1,9 @@
 # riscv-core
 A customized RISC-V core made using Verilog
 
+
+- [Github Link](https://github.com/ombhilare999/riscv-core)
+
 <!-- Progress -->
 ## Progress
 - [x] R-Type Instructions

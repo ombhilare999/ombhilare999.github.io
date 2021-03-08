@@ -1,6 +1,8 @@
 # vga_interface_with_FPGA
 Interfacing Tang primer with VGA display.
 
+- [Github Link](https://github.com/ombhilare999/vga-interface-with-TANG-PRIMER-FPGA)
+
 ## Table of Content:
  - [Getting Started With Tang Primer](#getting-started-With-tang-primer)
  - [File Structure](#file-structure)

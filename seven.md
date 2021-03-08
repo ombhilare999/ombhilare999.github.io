@@ -1,6 +1,8 @@
 # Seven-Segment-with-Tang-Primer
 Seven Segment Interface with Tang Primer
 
+- [Github Link](https://github.com/ombhilare999/Seven-Segment-with-Tang-Primer-FPGA)
+
 ## Getting Started With Tang Primer:
 - [Install The TD IDE](https://tang.sipeed.com/en/getting-started/)
 - [Tang FPGA Examples](https://github.com/Lichee-Pi/Tang_FPGA_Examples)

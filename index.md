@@ -2,7 +2,7 @@
 
 ---
 
-### Category Name 1 
+### Projects
 
 [RISC-V core in Verilog](/rv)
 <img src="images/rv.jpeg?raw=true"/>
@@ -21,6 +21,12 @@
 ----
 
 [Seven Segment Interfaced With FPGA](/seven)
+
+<img src="images/Fibonacci_Output.gif?raw=true"/>
+
+----
+
+[8 Bit ALU implementation on Altera Cyclone II](/alu)
 
 <img src="images/Fibonacci_Output.gif?raw=true"/>
 

@@ -32,6 +32,8 @@
 
 # SRA Board 2020
 
+- [Github Link](https://github.com/SRA-VJTI/sra-board-hardware-design)
+
 The SRA board is a development board based on ESP32 with on-board peripherals like programmable LEDs and switches, sensor ports for Line Sensor Array and MPU-6050, protection circuit for over-current and reverse voltage and motor drivers.
 
 ![](images/3d_sideview.png)
