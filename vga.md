@@ -78,7 +78,7 @@ set_pin_assignment	{ sel1 }	{ LOCATION = R7; }
 ## Circuit Diagram:
 
 <p align="center">
-    <img width="790" height="577" src="assets/circuit_diagram.png">
+    <img width="790" height="577" src="images/circuit_diagram.png">
 </p>
 
 ## TO DO:

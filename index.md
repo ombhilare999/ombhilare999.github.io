@@ -14,10 +14,14 @@
 
 ---
 
-[Project 3 Title](http://example.com/)
+[ESP32 based Dev board for Embedded and Robotics Application](/sra)
 
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 
--
+----
+
+[Seven Segment Interfaced With FPGA](/seven)
+
+<img src="images/Fibonacci_Output.gif?raw=true"/>
 
 
