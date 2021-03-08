@@ -16,7 +16,7 @@
 
 [ESP32 based Dev board for Embedded and Robotics Application](/sra)
 
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+<img src="images/3d_sideview.png?raw=true"/>
 
 ----
 
