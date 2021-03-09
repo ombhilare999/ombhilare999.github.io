@@ -1,8 +1,6 @@
-## Portfolio
+## Projects
 
 ---
-
-### Projects
 
 [RISC-V core in Verilog](/rv)
 <img src="images/rv.jpeg?raw=true"/>
