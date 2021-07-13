@@ -2,6 +2,11 @@
 
 ---
 
+[BeagleWire Software, Google Summer of Code 2021](https://omkarbhilare.tech/GSoC-2021/)
+<img src="images/Beagle_Gsoc.jpeg?raw=true"/>
+
+---
+
 [RISC-V core in Verilog](/rv)
 <img src="images/rv.jpeg?raw=true"/>
 
