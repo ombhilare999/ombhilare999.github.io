@@ -2,46 +2,91 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
+      value: Omkar Bhilare
     - name: Date of Birth
-      value: 14th March 1879
+      value: 30th March 2001
     - name: Languages
-      value: English, German
+      value: English, Hindi, Marathi
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+    - title: Masters in Applied Science (MASc) in Electrical Computer Engineering
+      institution: University of Toronto, Canada
+      year: 2025
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
+        - Working on novel CAD Mapping algorithms for Coarsed Grained Reconfigurable Arrays (CGRAs).
+        - title: Relevant Coursework
           contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
-      description:
-        - Description 1.
-        - Description 2.
+            - ECE552 (Computer architecture) 
+            - ECE1718 (Advanced computer architecture) 
+            - ECE1756 (Reconfigurable computing & FPGA architecture) 
+            - ECE1755 (Parallel computer architecture & programming) 
+            - ECE1387 (CAD for digital circuit synthesis and layout)
+    - title: B.Tech in Electronics Engineering
+      institution: Veermata Jijabai Technological Institute, Mumbai, India
+      year: 2022
 
-- title: Experience
+- title: Teaching Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+
+    - title: TA for ECE 532 Digital Systems Design course by Prof. Jason Anderson
+      institution: University of Toronto, Canada
+      year: Fall@2023
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
+        - Tutorial Management => Managed lab tutorial sessions focused on various FPGA circuits.
+        - Project Mentoring => Guided two student groups through a semester-long project focused on digital hardware system design. Evaluated progress based on weekly milestones and provided feedback during project demos.
+
+    - title: TA for ECE 241 Digital Systems by Prof. Bruno Korst
+      institution: University of Toronto, Canada
+      year: Winter@2024
+      description:
+        - Lab Management and Grading => Facilitating laboratory sessions for basic digital and FPGA circuits, offering student guidance, and conducting detailed lab evaluations.
+        - Exams Assessment => Conducting comprehensive exam evaluations to gauge student progress.
+
+- title: Honors and Awards
+  type: time_table
+  contents:
+    - year: 2022
+      items:
+        - Summer@EPFL scholar - Three-month summer fellowship to conduct cutting-edge research at EPFL
+        - Adaptive Computing Challenge 2021 by AMD-Xilinx (Third Place with a prize worth $3000) - an award winner from 165 qualified entries from developers spanning 35 countries
+        - Received VCK5000—a Versal architecture-based FPGA board as a hardware grant(worth $2700) - only 20 such boards were distributed globally among 547 applications
+    - year: 2021
+      items:
+        - Selected participant in the prestigious Google Summer of Code program—a Google-run program that focuses on bringing new contributors into open-source development
+
+- title: Publications
+  type: time_table
+  contents:
+
+    - title: DEEPFAKE CLI Accelerated Deepfake Detection using FPGAs
+      institution: Veermata Jijabai Technological Institute, Mumbai, India
+      year: August 2022
+      description:
+        - <b> Omkar Bhilare </b>, Rahul Singh, Vedant Paranjape, Sravan Chittupalli, Shraddha Suratkar, and Faruk Kazi in Parallel and Distributed Computing, Applications and Technologies (PDCAT’22) <a href="https://link.springer.com/chapter/10.1007/978-3-031-29927-8_4">[Access the paper here]</a>
+
+    - title: CAD Techniques for NoC-Connected Multi-CGRA Systems 
+      institution: University of Toronto, Canada
+      year: June 2024
+      description:
+        - Haoran Wei, <b> Omkar Bhilare </b>, Hamas Waqar, and Jason Anderson in  HEART '24 14th International Symposium on Highly Efficient Accelerators and Reconfigurable Technologies, Porto, Portugal, June 2024 <a href="https://camps.aptaracorp.com/ACM_PMS/PMS/ACM/HEART24/14/ed351247-1874-11ef-8182-16bb50361d1f/OUT/heart24-14.html">[Access the paper here]</a>
+
+
+- title: RESEARCH EXPERIENCE
+  type: time_table
+  contents:
+    - title: Processor Architecture Laboratory (LAP), EPFL
+      institution: Summer@EPFL 
+      year: June 2022 - August 2022
+      description:
+        - Designed a framework for Dynamatic (a dynamic HLS compiler) to access external memory using  AXI interconnect <a href="https://www.ombhilare999.github.io/Interconnect-from-scratch-in-chisel/axi?subid1=20240617-1238-1012-8f6a-0c89f1bc0f90">BLOG</a>
+        - Developed a custom-built AXI master with burst support and successfully tested it with load-store queues (LSQs) of Dynamatic
+        - Added Burst support in a highly dynamic environment of Dynamaitc using special-built BOM (Burst \& Outstanding Manager) modules
+        - Dynamatic's memory handling capabilities were substantially expanded by the unit, at a mere 2\% LUT and 4\% FF count increase
+   
+    - title: Centre of Excellence in Complex and Non-Linear Dynamical Systems, VJTI
       institution: California Institute of Technology, Pasadena, California, US
       year: 1933
       description:
@@ -67,17 +112,6 @@
     - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
       year: 2015-now
       description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
-
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 1921
-      items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
-      items:
-        - Max Planck Medal
 
 - title: Academic Interests
   type: nested_list

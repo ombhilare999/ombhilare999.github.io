@@ -1,12 +1,10 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - ombhilare999
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - ombhilare999/BeagleWire
+  - SRA-VJTI/sra-board-hardware-design
+  - ombhilare999/8-bit-computer
+  - ombhilare999/vga-interface-with-TANG-PRIMER-FPGA
+  - ombhilare999/8-Bit-ALU-implementation-on-CYCLONE-2
+  - ombhilare999/riscv-core

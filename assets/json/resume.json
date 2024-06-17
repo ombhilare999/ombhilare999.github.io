@@ -1,24 +1,30 @@
 {
   "basics": {
-    "name": "Albert Einstein",
-    "label": "Scientist",
+    "name": "Omkar Bhilare",
+    "label": "Graduate Student",
     "image": "",
-    "email": "albert@einstein.de",
-    "phone": "(912) 123-4567",
-    "url": "https://alshedivat.github.io/al-folio/",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "email": "omkar.bhilare@mail.utoronto.ca",
+    "phone": "(437) 669-2977",
+    "url": "https://ombhilare999.github.io",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
+      "city": "Toronto",
+      "countryCode": "Canada",
     },
     "profiles": [
       {
         "network": "Twitter",
-        "username": "AlbertEinstein",
-        "url": "https://twitter.com/AlbertEinstein"
+        "username": "ombhilare999",
+        "url": "https://twitter.com/ombhilare999"
+      },
+      {
+        "network": "Github",
+        "username": "ombhilare999",
+        "url": "https://github.com/ombhilare999"
+      },
+      {
+        "network": "Linkedin",
+        "username": "omkar-bhilare",
+        "url": "https://linkedin.com/omkar-bhilare-985aa2180"
       }
     ]
   },
