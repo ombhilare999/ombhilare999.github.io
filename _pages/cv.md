@@ -1,6 +1,6 @@
 ---
 layout: cv
-permalink: /CV
+permalink: /Omkar_Bhilare_CV
 title: cv
 nav: true
 nav_order: 5

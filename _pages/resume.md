@@ -1,6 +1,6 @@
 ---
-layout: resume
-permalink: /resume
+layout: cv
+permalink: /Omkar_Bhilare_RESUME
 title: resume
 nav: true
 nav_order: 6
