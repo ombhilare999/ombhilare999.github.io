@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://ombhilare999.github.io/sitemap.xml
+Sitemap: https://omkarbhilare.com/sitemap.xml
