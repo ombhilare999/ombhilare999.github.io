@@ -3,6 +3,8 @@ layout: post
 title: Got free FPGAs(KV260 and VCK5000) worth 13,000 dollars
 date: 2022-01-01 16:11:00-0400
 inline: false
+redirect_from:
+  - /news/annoucement_9/
 ---
 
 ## Adaptive Computing Challenge 2021 with Xilinx

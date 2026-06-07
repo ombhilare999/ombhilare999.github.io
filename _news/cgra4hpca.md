@@ -3,6 +3,8 @@ layout: post
 title: Paper accepted at CGRA4HPCA @ IPDPS 2026
 date: 2026-04-01 00:00:00-0400
 inline: false
+redirect_from:
+  - /news/annoucement_13/
 ---
 
 Our paper **"Predication in Elastic CGRAs"** has been accepted at the Workshop on CGRAs for High Performance Computing (CGRA4HPCA), held in conjunction with IPDPS 2026.

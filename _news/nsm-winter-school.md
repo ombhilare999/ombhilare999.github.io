@@ -3,6 +3,8 @@ layout: post
 title: Got Accepted in nsm-computer architecture winter school 2021
 date: 2021-12-25 16:11:00-0400
 inline: false
+redirect_from:
+  - /news/annoucement_8/
 ---
 
 ## NSM-Computer Architecture Winter School 2021

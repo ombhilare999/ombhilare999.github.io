@@ -3,6 +3,8 @@ layout: post
 title: Got Accepted in the Summer EPFL Program @ LAP Lab
 date: 2022-01-21 16:11:00-0400
 inline: false
+redirect_from:
+  - /news/annoucement_10/
 ---
 
 <p align="center">

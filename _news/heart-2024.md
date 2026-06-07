@@ -3,6 +3,8 @@ layout: post
 title: Paper accepted at HEART 2024
 date: 2024-06-01 00:00:00-0400
 inline: false
+redirect_from:
+  - /news/annoucement_12/
 ---
 
 Our paper **"CAD Techniques for NoC-Connected Multi-CGRA Systems"** has been accepted at the International Symposium on Highly Efficient Accelerators and Reconfigurable Technologies (HEART 2024).

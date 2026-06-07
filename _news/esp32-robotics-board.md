@@ -3,6 +3,8 @@ layout: post
 title: Designed and Tested a ESP32 based dev board for robotics workshop
 date: 2021-04-20 16:11:00-0400
 inline: false
+redirect_from:
+  - /news/board1/
 ---
 
 <a href="https://github.com/SRA-VJTI/sra-board-hardware-design"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/SRA-VJTI/sra-board-hardware-design.png" width="460px"></a>

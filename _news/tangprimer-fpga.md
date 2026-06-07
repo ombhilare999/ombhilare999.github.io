@@ -3,6 +3,8 @@ layout: post
 title: Thank you sipeed for the free tangprimer FPGA board
 date: 2021-01-04 16:11:00-0400
 inline: false
+redirect_from:
+  - /news/fpga2/
 ---
 
 - More projects on this board can be found [here](/projects/)

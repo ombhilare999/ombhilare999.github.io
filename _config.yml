@@ -130,7 +130,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 
 blog_name: Omkar Bhilare # blog_name will be displayed in your blog page
 blog_description: FPGAs - RTL Design - Verification
-permalink: /blog/:year/:title/
+permalink: /blog/:title/
 lsi: false # produce an index for related posts
 
 # Pagination

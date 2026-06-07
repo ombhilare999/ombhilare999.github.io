@@ -3,6 +3,8 @@ layout: post
 title: Received Upduino3.0 Board Sample
 date: 2021-03-06 16:11:00-0400
 inline: false
+redirect_from:
+  - /news/fpga1/
 ---
 
 - Upduino3.0 Software and Hardware can be found [Here](https://github.com/tinyvision-ai-inc/UPduino-v3.0)
