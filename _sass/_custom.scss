@@ -1,0 +1,618 @@
+/*******************************************************************************
+ * Custom styles — minimalist academic portfolio
+ ******************************************************************************/
+
+// ─── Typography ────────────────────────────────────────────────────────────
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+// ─── Navbar ────────────────────────────────────────────────────────────────
+
+.navbar {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background-color: rgba(250, 250, 250, 0.92) !important;
+  box-shadow: none;
+  border-bottom: 1px solid var(--global-divider-color);
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+html[data-theme="dark"] .navbar {
+  background-color: rgba(24, 24, 27, 0.92) !important;
+}
+
+// Brand name — always visible
+.navbar-brand.title {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--global-text-color) !important;
+  transition: color 0.2s ease;
+
+  span.font-weight-bold {
+    font-weight: 700;
+  }
+
+  &:hover {
+    color: var(--global-theme-color) !important;
+    text-decoration: none;
+  }
+}
+
+// Nav links
+.navbar-nav .nav-item .nav-link {
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.75rem !important;
+  color: var(--global-text-color) !important;
+  position: relative;
+  transition: color 0.2s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0.75rem;
+    right: 0.75rem;
+    height: 2px;
+    background: var(--global-theme-color);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
+    color: var(--global-theme-color) !important;
+    text-decoration: none;
+
+    &::after { transform: scaleX(1); }
+  }
+}
+
+// Active nav link
+.navbar-nav .nav-item.active > .nav-link {
+  font-weight: 600;
+  color: var(--global-theme-color) !important;
+
+  &::after { transform: scaleX(1); }
+}
+
+// Search + theme toggle icon buttons
+#search-toggle,
+#light-toggle {
+  font-size: 1rem;
+  padding: 0.3rem 0.5rem;
+  color: var(--global-text-color);
+  opacity: 0.7;
+  transition: opacity 0.2s, color 0.2s;
+
+  &:hover {
+    opacity: 1;
+    color: var(--global-theme-color);
+  }
+
+  .nav-link {
+    padding: 0 !important;
+
+    &::after { display: none; }
+  }
+}
+
+// Dark mode toggle alignment fix
+.toggle-container {
+  display: flex;
+  align-items: center;
+  padding-left: 0.25rem;
+}
+
+// Override theme.scss's 12px top padding on toggle icons — it misaligns with nav links
+#light-toggle-system,
+#light-toggle-dark,
+#light-toggle-light {
+  padding-top: 0 !important;
+  padding-left: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ─── 2-Column layout ───────────────────────────────────────────────────────
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 3.5rem;
+  align-items: start;
+  padding-top: 2rem;
+}
+
+// ─── Left sidebar ──────────────────────────────────────────────────────────
+
+.about-sidebar {
+  position: sticky;
+  top: 72px;
+  text-align: center;
+}
+
+.about-sidebar figure {
+  margin: 0 0 1rem;
+}
+
+img.sidebar-photo {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  display: block;
+  margin: 0 auto;
+
+  &:hover {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+    transform: translateY(-2px);
+  }
+}
+
+.sidebar-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0.9rem 0 0.25rem;
+}
+
+.sidebar-subtitle {
+  font-size: 0.75rem;
+  color: var(--global-text-color-light);
+  letter-spacing: 0.02em;
+  line-height: 1.55;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar-info {
+  font-family: 'IBM Plex Sans', sans-serif !important;
+  font-size: 0.77rem;
+  color: var(--global-text-color-light);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+
+  p {
+    font-family: 'IBM Plex Sans', sans-serif !important;
+    display: block !important;
+    margin: 0.05rem 0;
+    word-break: break-all;
+  }
+}
+
+.sidebar-social {
+  font-size: 1.4rem;
+  margin-bottom: 0.2rem;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 50%;
+    margin: 0 0.1rem;
+    transition: background-color 0.2s ease;
+
+    i::before { transition: color 0.2s ease; }
+
+    &:hover {
+      background-color: rgba(26, 86, 219, 0.08);
+      i::before { color: var(--global-theme-color); }
+    }
+  }
+}
+
+.contact-note {
+  font-size: 0.7rem;
+  color: var(--global-text-color-light);
+  text-align: center;
+  margin-top: 0.2rem;
+}
+
+// CV + Resume buttons
+.sidebar-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin: 0.9rem 0 1.1rem;
+  width: 100%;
+}
+
+.sidebar-btn {
+  display: block;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.38rem 0;
+  border-radius: 6px;
+  border: 1.5px solid var(--global-theme-color);
+  color: var(--global-theme-color) !important;
+  background: transparent;
+  text-decoration: none !important;
+  transition: background 0.18s ease, color 0.18s ease;
+
+  &:hover {
+    background: var(--global-theme-color);
+    color: #fff !important;
+    text-decoration: none;
+  }
+}
+
+// Sidebar section headings — left-aligned, compact
+.sidebar-section-heading {
+  text-align: left !important;
+  margin-top: 1.5rem !important;
+  font-size: 0.68rem !important;
+}
+
+// Sidebar news timeline — compact
+.about-sidebar .news-timeline {
+  text-align: left;
+
+  .news-item {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0.4rem 0;
+
+    .news-date-badge {
+      font-size: 0.6rem;
+      min-width: 52px;
+      padding: 0.1rem 0.4rem;
+    }
+
+    .news-content {
+      font-size: 0.8rem;
+      flex: 1;
+      min-width: 0;
+    }
+  }
+}
+
+// ─── Main content ──────────────────────────────────────────────────────────
+
+.about-main {
+  min-width: 0;
+  padding-top: 0.25rem;
+}
+
+.about-body {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  text-align: justify;
+
+  a {
+    text-decoration: none;
+    border-bottom: 1px solid rgba(26, 86, 219, 0.3);
+    transition: border-color 0.2s;
+
+    &:hover {
+      border-color: var(--global-theme-color);
+      text-decoration: none;
+    }
+  }
+}
+
+// ─── See-more link (below news / posts) ───────────────────────────────────
+
+a.see-more-link {
+  display: block;
+  text-align: center;
+  margin-top: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--global-theme-color);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  opacity: 0.8;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 1;
+    text-decoration: none;
+  }
+}
+
+// Separator above social icons in sidebar
+.sidebar-social-divider {
+  height: 1px;
+  background: var(--global-divider-color);
+  margin: 1.1rem auto 0.9rem;
+  width: 70%;
+}
+
+// ─── Research interest chips ───────────────────────────────────────────────
+
+.research-interests {
+  margin: 1.25rem 0 0.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.interest-chip {
+  display: inline-block;
+  background: rgba(26, 86, 219, 0.06);
+  color: var(--global-theme-color);
+  border: 1px solid rgba(26, 86, 219, 0.18);
+  border-radius: 20px;
+  padding: 0.18rem 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--global-theme-color);
+    color: #fff;
+    border-color: var(--global-theme-color);
+  }
+}
+
+html[data-theme="dark"] .interest-chip {
+  background: rgba(13, 148, 136, 0.09) !important;
+  border-color: rgba(13, 148, 136, 0.25) !important;
+  color: var(--global-theme-color) !important;
+}
+
+// ─── Section headings ──────────────────────────────────────────────────────
+
+h2.section-heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--global-text-color-light);
+  border-bottom: 1.5px solid var(--global-theme-color);
+  padding-bottom: 0.3rem;
+  margin-top: 2.25rem;
+  margin-bottom: 1rem;
+
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+
+    &:hover { color: var(--global-theme-color) !important; }
+  }
+}
+
+// ─── Timeline (news + latest posts) ───────────────────────────────────────
+
+.news-timeline {
+  .news-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--global-divider-color);
+
+    &:last-child { border-bottom: none; }
+
+    .news-date-badge {
+      flex-shrink: 0;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--global-theme-color);
+      background: rgba(26, 86, 219, 0.07);
+      border: 1px solid rgba(26, 86, 219, 0.18);
+      border-radius: 4px;
+      padding: 0.12rem 0.45rem;
+      min-width: 60px;
+      text-align: center;
+    }
+
+    .news-content {
+      font-size: 0.84rem;
+      line-height: 1.45;
+
+      a.news-title {
+        color: var(--global-text-color);
+        text-decoration: none;
+        font-weight: 500;
+
+        &:hover { color: var(--global-theme-color); }
+      }
+    }
+  }
+}
+
+html[data-theme="dark"] .news-date-badge {
+  background: rgba(13, 148, 136, 0.1) !important;
+  border-color: rgba(13, 148, 136, 0.22) !important;
+  color: var(--global-theme-color) !important;
+}
+
+// ─── Publication grid cards ────────────────────────────────────────────────
+
+// Hide the abbr venue tag — keep preview image column
+.publications ol.bibliography li .abbr abbr,
+.publications ol.bibliography li .abbr .award {
+  display: none !important;
+}
+
+// Card grid for selected publications on home page
+.post .about-main .publications ol.bibliography {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+
+  li {
+    background: var(--global-card-bg-color);
+    border: 1px solid var(--global-divider-color);
+    border-radius: 10px;
+    padding: 1rem;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+
+    // Hide the thumbnail column — we'll show preview inline in card
+    .col-sm-2.abbr {
+      display: none;
+    }
+
+    // Make content fill card
+    .col-sm-8,
+    .col-sm-10 {
+      width: 100% !important;
+      max-width: 100% !important;
+      flex: 1;
+      padding: 0;
+    }
+
+    .row {
+      margin: 0;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .preview {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 0.65rem;
+      display: block;
+    }
+
+    .title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 0.2rem;
+      color: var(--global-text-color);
+    }
+
+    .author {
+      font-size: 0.75rem;
+      color: var(--global-text-color-light);
+      margin-bottom: 0.15rem;
+      line-height: 1.4;
+    }
+
+    .periodical {
+      font-size: 0.73rem;
+      color: var(--global-text-color-light);
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+
+    .links {
+      margin-top: auto;
+      padding-top: 0.4rem;
+
+      a.btn {
+        border-radius: 4px;
+        font-size: 0.68rem;
+        font-weight: 500;
+        padding: 0.12rem 0.6rem;
+        border-width: 1px;
+        transition: all 0.18s ease;
+
+        &:hover {
+          background-color: var(--global-theme-color);
+          color: #fff !important;
+          border-color: var(--global-theme-color);
+          text-decoration: none;
+        }
+      }
+    }
+
+    // Hide badges (altmetric, dimensions) on home page cards
+    .badges { display: none; }
+
+    // Hide abstract/bibtex hidden blocks on cards
+    .abstract.hidden,
+    .bibtex.hidden { display: none !important; }
+  }
+}
+
+// Publications page — keep original single-column style
+.publications h2.bibliography {
+  color: var(--global-divider-color);
+  border-top: 1px solid var(--global-divider-color);
+  padding-top: 1rem;
+  margin-top: 2rem;
+  text-align: right;
+}
+
+// ─── Responsive ────────────────────────────────────────────────────────────
+
+@media (max-width: 900px) {
+  .about-layout {
+    grid-template-columns: 200px 1fr;
+    gap: 2.5rem;
+  }
+
+  img.sidebar-photo {
+    width: 170px;
+    height: 170px;
+  }
+
+  .post .about-main .publications ol.bibliography {
+    grid-template-columns: 1fr; // single column on tablet
+  }
+}
+
+@media (max-width: 700px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-top: 1.25rem;
+  }
+
+  .about-sidebar {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--global-divider-color);
+
+    // Left-align sidebar news on mobile
+    .news-timeline { text-align: left; width: 100%; }
+    .sidebar-section-heading { width: 100%; }
+  }
+
+  img.sidebar-photo {
+    width: 140px;
+    height: 140px;
+  }
+
+  .sidebar-name { font-size: 1.6rem; }
+
+  .about-body { text-align: left; }
+
+  .post .about-main .publications ol.bibliography {
+    grid-template-columns: 1fr;
+  }
+
+  h2.section-heading { margin-top: 1.75rem; }
+}

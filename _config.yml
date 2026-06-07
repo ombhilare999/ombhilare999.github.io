@@ -52,7 +52,7 @@ search_enabled: true
 socials_in_search: true
 
 # Dimensions
-max_width: 930px
+max_width: 1060px
 
 # TODO: add layout settings (single page vs. multi-page)
 
@@ -61,8 +61,8 @@ max_width: 930px
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
 # see https://schema.org/docs/faq.html for more information
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
-serve_schema_org: false # Include Schema.org in the HTML head
+serve_og_meta: true # Include Open Graph meta tags in the HTML head
+serve_schema_org: true # Include Schema.org in the HTML head
 og_image: # The site-wide (default for all links) Open Graph preview image
 
 # -----------------------------------------------------------------------------
@@ -93,7 +93,7 @@ pinterest_id: # your pinterest id
 publons_id: # your ID on Publons
 quora_username: # your Quora username
 research_gate_profile: # your profile on ResearchGate
-scholar_userid: #qc6CJjYAAAAJ # your Google Scholar ID
+scholar_userid: qc6CJjYAAAAJ # your Google Scholar ID
 scopus_id: # your profile on Scopus
 semanticscholar_id: # your Semantic Scholar ID
 spotify_id: # your spotify id
@@ -110,7 +110,6 @@ youtube_id: # your youtube channel id (youtube.com/@<youtube_id>)
 zotero_username: # your zotero username
 
 contact_note: >
-  Please contanct me on omkar.bhilare@mail.utoronto.ca
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
@@ -188,13 +187,13 @@ collections:
 
 announcements:
   enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 3 # leave blank to include all the news in the `_news` folder
+  scrollable: false
+  limit: 1
 
 latest_posts:
   enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+  scrollable: false
+  limit: 1
 
 # -----------------------------------------------------------------------------
 # Jekyll settings
@@ -470,7 +469,7 @@ third_party_libraries:
     version: "5.5.0"
   google_fonts:
     url:
-      fonts: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&display=swap"
+      fonts: "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Serif:wght@100;300;400;500;700&display=swap"
   highlightjs:
     integrity:
       css:
