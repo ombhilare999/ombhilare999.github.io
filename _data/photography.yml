@@ -6,11 +6,40 @@ types:
     label: Coast & Waterfront
   - id: cities
     label: Cities & Architecture
+  - id: food
+    label: Food
 
 # Newest first. Images live in /assets/img/photography/ (full size) and
 # /assets/img/photography/thumbs/ (900px wide). Strip EXIF before adding:
 #   magick in.jpg -auto-orient -strip -resize '2000x2000>' -quality 82 out.jpg
 photos:
+  - file: kinkakuji.jpg
+    title: Kinkaku-ji, the Golden Pavilion
+    place: Kyoto
+    country: Japan
+    type: cities
+    year: ""
+    width: 871
+    height: 1550
+
+  - file: rokko-udon.jpg
+    title: Udon at the top of Mount Rokkō
+    place: Kobe
+    country: Japan
+    type: food
+    year: ""
+    width: 2000
+    height: 1125
+
+  - file: ichiran-ramen.jpg
+    title: Tonkotsu ramen at Ichiran
+    place: ""
+    country: Japan
+    type: food
+    year: ""
+    width: 871
+    height: 1550
+
   - file: ine-funaya.jpg
     title: Funaya boathouses
     place: Ine, Kyoto

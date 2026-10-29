@@ -10,9 +10,10 @@
           {% if e.logo %}<img class="exp-logo" src="{{ '/assets/img/logos/' | append: e.logo | relative_url }}" alt="{{ e.name }}">
           {% else %}<span class="exp-logo exp-mono" style="--mono-color: {{ e.color }}">{{ e.short }}</span>{% endif %}
         </a>
-        <span class="exp-name">{{ e.short }}</span>
-        <span class="exp-role">{{ e.role }}</span>
-        {% if e.years != "" %}<span class="exp-years">{{ e.years }}</span>{% endif %}
+        <span class="exp-text">
+          <span class="exp-name">{{ e.short }}</span>
+          <span class="exp-role">{{ e.role }}{% if e.years != "" %} &middot; <span class="nowrap">{{ e.years }}</span>{% endif %}</span>
+        </span>
       </li>
       {% endfor %}
     </ul>

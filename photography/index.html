@@ -27,12 +27,12 @@ description: Photos from places I have travelled, grouped by type of location.
   <div class="gallery">
     {% for p in group %}
     <figure class="photo-item" style="--ar: {{ p.width | times: 1.0 | divided_by: p.height | round: 3 }}">
-      <a href="{{ '/assets/img/photography/' | append: p.file | relative_url }}" data-title="{{ p.title }}" data-place="{{ p.place }}, {{ p.country }}{% if p.year != '' %} &middot; {{ p.year }}{% endif %}">
-        <img src="{{ '/assets/img/photography/thumbs/' | append: p.file | relative_url }}" alt="{{ p.title }}, {{ p.place }}, {{ p.country }}" width="{{ p.width }}" height="{{ p.height }}" loading="lazy">
+      <a href="{{ '/assets/img/photography/' | append: p.file | relative_url }}" data-title="{{ p.title }}" data-place="{% if p.place != '' %}{{ p.place }}, {% endif %}{{ p.country }}{% if p.year != '' %} &middot; {{ p.year }}{% endif %}">
+        <img src="{{ '/assets/img/photography/thumbs/' | append: p.file | relative_url }}" alt="{{ p.title }}, {% if p.place != '' %}{{ p.place }}, {% endif %}{{ p.country }}" width="{{ p.width }}" height="{{ p.height }}" loading="lazy">
       </a>
       <figcaption>
         <span class="photo-title">{{ p.title }}</span>
-        <span class="photo-place">{{ p.place }}, {{ p.country }}{% if p.year != "" %} &middot; {{ p.year }}{% endif %}</span>
+        <span class="photo-place">{% if p.place != "" %}{{ p.place }}, {% endif %}{{ p.country }}{% if p.year != "" %} &middot; {{ p.year }}{% endif %}</span>
       </figcaption>
     </figure>
     {% endfor %}

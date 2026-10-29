@@ -125,14 +125,14 @@ footer {
 .intro p { margin: 0 0 0.9rem; text-align: justify; hyphens: auto; }
 .intro .tagline { color: var(--muted); font-style: italic; text-align: left; }
 .intro-side {
-  width: 220px;
+  width: 230px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .photo {
-  width: 210px;
+  width: 190px;
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: 50%;
@@ -142,23 +142,22 @@ footer {
 .profile-links a { white-space: nowrap; }
 .profile-links .sep { margin: 0 0.15rem; color: var(--muted); }
 
-/* experience logos (sidebar under the photo) */
+/* experience logos (sidebar under the photo): compact rows so the
+   sidebar ends roughly where the bio does */
 
 .experience {
   width: 100%;
-  margin-top: 1.75rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem 0.75rem;
-  text-align: center;
-  line-height: 1.3;
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  line-height: 1.25;
 }
-.exp-internships { grid-column: 1 / -1; }
 .exp-group h3 {
-  margin: 0 0 0.75rem;
-  padding-bottom: 0.3rem;
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.25rem;
   border-bottom: 1px solid var(--rule);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -168,18 +167,18 @@ footer {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-  gap: 1.1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
-.exp-group li { display: flex; flex-direction: column; align-items: center; }
+.exp-group li { display: flex; align-items: center; gap: 0.65rem; }
+.exp-group li > a { flex-shrink: 0; }
 .exp-logo {
   display: block;
-  width: 60px;
-  height: 60px;
-  border-radius: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
   object-fit: contain;
-  margin-bottom: 0.4rem;
   transition: transform 0.15s ease;
 }
 img.exp-logo {
@@ -198,13 +197,13 @@ a:hover .exp-logo { transform: translateY(-2px); }
   background: var(--mono-color);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
   color: #fff;
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
 }
-.exp-name { font-weight: 600; font-size: 0.88rem; }
-.exp-role { font-size: 0.76rem; color: var(--muted); }
-.exp-years { font-size: 0.76rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.exp-text { display: flex; flex-direction: column; min-width: 0; }
+.nowrap { white-space: nowrap; }
+.exp-name { font-weight: 600; font-size: 0.86rem; }
+.exp-role { font-size: 0.74rem; color: var(--muted); font-variant-numeric: tabular-nums; }
 
 /* news & post lists */
 
@@ -414,8 +413,8 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   .intro h1, .intro .tagline, .intro .profile-links { text-align: center; }
   .intro h1::after { margin-left: auto; margin-right: auto; }
   .experience { margin-top: 0.75rem; }
-  .exp-internships ul { grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
-  .exp-internships .exp-logo { width: 54px; height: 54px; }
+  .experience { margin-top: 0.5rem; }
+  .photo-item { flex-basis: 100%; }
   .site-nav { flex-direction: column; align-items: flex-start; gap: 0.35rem; }
   .nav-links { width: 100%; justify-content: space-between; }
   .nav-links a { margin-left: 0; }
