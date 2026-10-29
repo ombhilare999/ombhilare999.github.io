@@ -97,10 +97,30 @@ body {
   color: var(--muted);
 }
 @media screen and (max-width: 899px) {
-  /* phones: no desk, so mark the page break with a dashed rule */
-  .sheet + .sheet { border-top: 1px dashed var(--rule); margin-top: 0.5rem; }
+  /* phones and tablets: each page is still a sheet of paper on the desk,
+     just narrower, with its own running head and page number */
+  html { background: var(--desk); }
+  .sheet {
+    margin: 10px 8px;
+    padding: 0 14px;
+    border-radius: 2px;
+    box-shadow: var(--sheet-shadow);
+  }
+  .sheet + .sheet { margin-top: 14px; }
+  .page-num { padding: 1.25rem 0 0.75rem; }
+  .running-head { font-size: 0.75rem; padding-top: 0.8rem; }
   .running-head span:last-child { display: none; }
   .masthead { flex-direction: column; align-items: center; gap: 0; text-align: center; }
+
+  /* short, wide figure crops so a paper entry is mostly its reference */
+  /* .sheet prefix: these must beat the base rules defined further down */
+  .sheet .row-image { width: 100%; max-width: none; }
+  .sheet .row-image img { aspect-ratio: 2.4 / 1; object-fit: cover; }
+  .sheet .no-image { aspect-ratio: 2.4 / 1; }
+  .sheet .talk-slide { aspect-ratio: auto; padding: 0.8rem 1rem; }
+  .sheet #publications .row + .row, .sheet #talks .row + .row { border-top: 1px dashed var(--rule); }
+  .sheet .row { padding: 1rem 0; }
+  .sheet .acknowledgment p { text-align: left; }
 }
 @media screen and (min-width: 900px) {
   html { background: var(--desk); }
@@ -822,7 +842,8 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
 /* mobile */
 
 @media screen and (max-width: 640px) {
-  .title-block h1 { font-size: 2.1rem; }
+  .title-block h1 { font-size: 1.9rem; }
+  .dateline { font-size: 0.78rem; }
   /* justified text opens gaps in a narrow column */
   .intro p { text-align: left; }
   .title-block { margin-top: 1.5rem; }
@@ -833,15 +854,13 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   .photo { width: 150px; order: -1; }
   .intro-text { width: 100%; }
   .row { flex-direction: column; gap: 0.75rem; }
-  .row-image { width: 100%; max-width: 320px; }
   .nav-links a { margin-left: 0.8rem; }
   ul.news li { grid-template-columns: 4.75rem 1fr; }
   .intro h1, .intro .tagline, .intro .profile-links { text-align: center; }
   .intro h1::after { margin-left: auto; margin-right: auto; }
-  .experience { margin-top: 0.75rem; }
   .experience { margin-top: 0.5rem; }
   .photo-item { flex-basis: 100%; }
-  .site-nav { flex-direction: column; align-items: flex-start; gap: 0.35rem; }
+  .site-nav { flex-direction: column; align-items: flex-start; gap: 0.35rem; font-size: 0.9rem; }
   .nav-links { width: 100%; justify-content: space-between; }
   .nav-links a { margin-left: 0; }
   .theme-toggle { margin-left: 0; }
