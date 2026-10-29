@@ -42,16 +42,6 @@ redirect_from:
   </aside>
 </section>
 
-<section id="news">
-  <h2>News</h2>
-  {% assign news = site.news | sort: "date" | reverse %}
-  <ul class="news">
-    {% for item in news limit: site.news_limit %}{% include news-item.html item=item %}{% endfor %}
-  </ul>
-  {% if news.size > site.news_limit %}
-  <p class="more"><a href="{{ '/news/' | relative_url }}">All news &rarr;</a></p>
-  {% endif %}
-</section>
 
 <section id="publications">
   <h2>Publications</h2>
@@ -71,6 +61,17 @@ redirect_from:
     </li>
     {% endfor %}
   </ul>
+</section>
+
+<section id="news">
+  <h2>News</h2>
+  {% assign news = site.news | sort: "date" | reverse %}
+  <ul class="news">
+    {% for item in news limit: site.news_limit %}{% include news-item.html item=item %}{% endfor %}
+  </ul>
+  {% if news.size > site.news_limit %}
+  <p class="more"><a href="{{ '/news/' | relative_url }}">All news &rarr;</a></p>
+  {% endif %}
 </section>
 
 <section id="projects">

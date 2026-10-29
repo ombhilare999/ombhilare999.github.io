@@ -2,11 +2,13 @@
 <div class="row" id="{{ pub.key }}">
   {% assign preview = '/assets/img/publication_preview/' %}
   <div class="row-image{% if pub.image_hover %} has-hover{% endif %}">
-    {% if pub.image %}<img src="{{ preview | append: pub.image | relative_url }}" alt="" loading="lazy">{% endif %}
+    {% if pub.image %}<img src="{{ preview | append: pub.image | relative_url }}" alt="" loading="lazy">
+    {% else %}<div class="no-image" aria-hidden="true">{{ pub.title }}</div>{% endif %}
     {% if pub.image_hover %}<img class="hover" src="{{ preview | append: pub.image_hover | relative_url }}" alt="" loading="lazy">{% endif %}
     {% if pub.badge %}<span class="badge">{{ pub.badge }}</span>{% endif %}
   </div>
   <div class="row-text">
+    {% if pub.award %}<div class="award">&#9733; {{ pub.award }}</div>{% endif %}
     <a class="row-title" href="{{ pub.links[0].url }}">{{ pub.title }}</a>
     <div class="authors">{{ pub.authors | replace: site.author.name, '<strong>Omkar Bhilare</strong>' }}</div>
     <div class="venue"><em>{{ pub.venue }}</em>, {{ pub.year }}</div>

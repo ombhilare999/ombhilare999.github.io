@@ -2,6 +2,27 @@
 # Image paths are relative to /assets/img/publication_preview/.
 # `image_hover` (optional) is swapped in on hover, e.g. an animated GIF.
 # `badge` is the short venue tag drawn on the thumbnail.
+# `award` (optional) is shown as a highlighted label, e.g. Best Paper Award.
+
+- key: ide2026hwsharing
+  title: Hardware Sharing for Area Optimization of Floating-Point ALUs
+  authors: R. Ide, T. Ahmed, B. Adhi, S. Kawai, Omkar Bhilare, Jason Anderson
+  venue: International Symposium on Highly Efficient Accelerators and Reconfigurable Technologies (HEART)
+  year: 2026
+  badge: HEART '26
+  award: Best Paper Award
+  selected: true
+  links:
+    - name: paper
+      url: https://dl.acm.org/doi/full/10.1145/3814576.3814584
+  bibtex: |
+    @inproceedings{ide2026hwsharing,
+      author    = {Ide, R. and Ahmed, T. and Adhi, B. and Kawai, S. and Bhilare, Omkar and Anderson, Jason H.},
+      title     = {Hardware Sharing for Area Optimization of Floating-Point {ALUs}},
+      booktitle = {Highly Efficient Accelerators and Reconfigurable Technologies (HEART)},
+      year      = {2026},
+      doi       = {10.1145/3814576.3814584}
+    }
 
 - key: bhilare2026predication
   title: Predication in Elastic CGRAs

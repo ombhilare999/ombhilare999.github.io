@@ -7,6 +7,8 @@
   --accent-hover: #b0412e;
   --code-bg: #f3f2ee;
   --on-accent: #ffffff;
+  --award: #7a4d00;
+  --award-bg: #fbecc7;
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
 }
@@ -21,6 +23,10 @@
     --accent-hover: #f0a08e;
     --code-bg: #1e1f22;
     --on-accent: #10213a;
+  --award: #f3c969;
+  --award-bg: #3a2f14;
+    --award: #f3c969;
+    --award-bg: #3a2f14;
   }
 }
 :root[data-theme="dark"] {
@@ -254,6 +260,34 @@ ul.talks li {
   transition: opacity 0.2s ease;
 }
 .row:hover .row-image img.hover { opacity: 1; }
+/* stand-in thumbnail for papers without a figure */
+.no-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  padding: 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--code-bg);
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  text-align: center;
+}
+.award {
+  display: block;
+  width: fit-content;
+  margin-bottom: 0.25rem;
+  padding: 0.05rem 0.5rem;
+  border-radius: 3px;
+  background: var(--award-bg);
+  color: var(--award);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
 .badge {
   position: absolute;
   top: -0.5rem;
