@@ -67,16 +67,28 @@ running_head: Research Portfolio
 </section>
 
 <!--pagebreak-->
+<div class="section-pair">
 <section id="news">
   <h2 class="numbered">News</h2>
   {% assign news = site.news | sort: "date" | reverse %}
-  <ul class="news two-col">
+  <ul class="news">
     {% for item in news limit: site.news_limit %}{% include news-item.html item=item %}{% endfor %}
   </ul>
   {% if news.size > site.news_limit %}
   <p class="more"><a href="{{ '/news/' | relative_url }}">All news &rarr;</a></p>
   {% endif %}
 </section>
+
+<section id="writing">
+  <h2 class="numbered">Writing</h2>
+  <ul class="posts">
+    {% for post in site.posts limit: 3 %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="date">{{ post.date | date: "%b %Y" }}</span></li>
+    {% endfor %}
+  </ul>
+  <p class="more"><a href="{{ '/blog/' | relative_url }}">All posts &rarr;</a></p>
+</section>
+</div>
 
 <section id="projects">
   <h2 class="numbered">Projects</h2>
@@ -95,12 +107,3 @@ running_head: Research Portfolio
   </div>
 </section>
 
-<section id="writing">
-  <h2 class="numbered">Writing</h2>
-  <ul class="posts two-col">
-    {% for post in site.posts limit: 3 %}
-    <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="date">{{ post.date | date: "%b %Y" }}</span></li>
-    {% endfor %}
-  </ul>
-  <p class="more"><a href="{{ '/blog/' | relative_url }}">All posts &rarr;</a></p>
-</section>

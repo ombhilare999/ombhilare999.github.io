@@ -397,11 +397,31 @@ ul.posts li { padding: 0.3rem 0; }
   }
   .pub-columns .row + .row { border-top: 0; }
   .pub-columns .row-image { width: 100%; }
-  .pub-columns .row-image img:not(.hover) {
-    aspect-ratio: 16 / 9;
-    object-fit: contain;
+  /* a short, wide crop keeps the reference text the focus */
+  .pub-columns .row-image img {
+    aspect-ratio: 2.4 / 1;
+    object-fit: cover;
   }
-  .pub-columns .no-image { aspect-ratio: 16 / 9; }
+  .pub-columns .no-image { aspect-ratio: 2.4 / 1; }
+
+  /* two whole sections side by side, as consecutive sections in a paper */
+  .section-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2.75rem;
+  }
+  .section-pair > section + section {
+    position: relative;
+  }
+  .section-pair > section + section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -1.375rem;
+    border-left: 1px solid var(--rule);
+  }
+  .section-pair h2 { margin-top: 1.5rem; }
   .pub-columns .summary { font-size: 0.9rem; }
 
   .project-grid.two-col { display: block; }
