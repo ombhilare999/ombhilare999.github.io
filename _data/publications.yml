@@ -33,9 +33,6 @@
   badge: CGRA4HPCA '26
   image: cgra4hpca.png
   selected: true
-  summary: >
-    Extends an elastic CGRA and the CGRA-ME 2.0 CAD flow with partial and full predication,
-    comparing a local-predicate design against a dedicated 1-bit global predicate network.
   links:
     - name: paper
       url: https://ieeexplore.ieee.org/document/11652038
@@ -59,9 +56,6 @@
   image: noc-cad.png
   image_hover: noc-cad.gif
   selected: true
-  summary: >
-    Partitions and places applications across sixteen 4x4 CGRAs connected by a 2D mesh
-    network-on-chip, and studies the quality and runtime of the CAD flow.
   links:
     - name: paper
       url: https://dl.acm.org/doi/10.1145/3665283.3665297
@@ -82,9 +76,6 @@
   badge: PDCAT '23
   image: deepfake.jpg
   selected: true
-  summary: >
-    Accelerates a quantized MesoNet / EFF-YNet deepfake detector on the Versal VCK5000,
-    reaching 316.8 FPS at 93% accuracy.
   links:
     - name: paper
       url: https://link.springer.com/chapter/10.1007/978-3-031-29927-8_4

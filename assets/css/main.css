@@ -383,12 +383,22 @@ ul.posts li { padding: 0.3rem 0; }
    column, then the right, with a rule between (publications, news,
    projects, writing) */
 @media (min-width: 900px) {
+  /* a grid rather than CSS columns, so entries side by side share a row and
+     start at the same height; the rule runs down the gutter */
   .two-col {
-    columns: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     column-gap: 2.75rem;
-    column-rule: 1px solid var(--rule);
   }
-  .two-col > * { break-inside: avoid; }
+  .two-col > :nth-child(even) { position: relative; }
+  .two-col > :nth-child(even)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -1.375rem;
+    border-left: 1px solid var(--rule);
+  }
   .pub-columns .row {
     flex-direction: column;
     gap: 0.75rem;
@@ -422,14 +432,13 @@ ul.posts li { padding: 0.3rem 0; }
     border-left: 1px solid var(--rule);
   }
   .section-pair h2 { margin-top: 1.5rem; }
-  .pub-columns .summary { font-size: 0.9rem; }
 
-  .project-grid.two-col { display: block; }
+  .project-grid.two-col { grid-template-columns: 1fr 1fr; gap: 0 2.75rem; }
   .project-grid.two-col .project {
     flex-direction: row;
     align-items: flex-start;
     gap: 0.85rem;
-    margin-bottom: 1.1rem;
+    padding-bottom: 1.1rem;
   }
   .project-grid.two-col .project img { width: 120px; flex-shrink: 0; }
   .project-grid.two-col .project-title { margin-top: 0; }
