@@ -20,7 +20,7 @@ photos:
     type: cities
     year: ""
     width: 871
-    height: 1550
+    height: 1280
 
   - file: rokko-udon.jpg
     title: Udon at the top of Mount Rokkō
@@ -38,7 +38,7 @@ photos:
     type: food
     year: ""
     width: 871
-    height: 1550
+    height: 1300
 
   - file: ine-funaya.jpg
     title: Funaya boathouses
