@@ -4,7 +4,7 @@
 - key: bhilare2026predication
   title: Predication in Elastic CGRAs
   authors: Omkar Bhilare, Omar Ragheb, Boma Adhi, Kentaro Sano, Jason Anderson, Tomohiro Ueno
-  venue: Workshop on CGRAs for High Performance Computing (CGRA4HPC)
+  venue: Workshop on CGRAs for High Performance Computing (CGRA4HPCA) at IPDPS
   year: 2026
   image: cgra4hpca.png
   selected: true
@@ -22,7 +22,7 @@
     @inproceedings{bhilare2026predication,
       author    = {Bhilare, Omkar and Ragheb, Omar and Adhi, Boma and Sano, Kentaro and Anderson, Jason and Ueno, Tomohiro},
       title     = {Predication in Elastic {CGRAs}},
-      booktitle = {Workshop on CGRAs for High Performance Computing (CGRA4HPC)},
+      booktitle = {Workshop on CGRAs for High Performance Computing (CGRA4HPCA) at IPDPS},
       year      = {2026}
     }
 

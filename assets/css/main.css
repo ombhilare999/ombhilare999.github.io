@@ -90,8 +90,8 @@ footer {
   margin-top: 1.5rem;
 }
 .intro-text { flex: 1; min-width: 0; }
-.intro p { margin: 0 0 0.9rem; }
-.tagline { color: var(--muted); font-style: italic; }
+.intro p { margin: 0 0 0.9rem; text-align: justify; hyphens: auto; }
+.intro .tagline { color: var(--muted); font-style: italic; text-align: left; }
 .photo {
   width: 210px;
   aspect-ratio: 1;
@@ -100,7 +100,7 @@ footer {
   flex-shrink: 0;
   margin-top: 0.5rem;
 }
-.profile-links { margin-top: 1.25rem !important; }
+.intro .profile-links { margin-top: 1.25rem; text-align: left; }
 
 /* news & post lists */
 
@@ -209,6 +209,6 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   .row-image { width: 100%; max-width: 320px; }
   .nav-links a { margin-left: 0.8rem; }
   ul.news li { grid-template-columns: 4.75rem 1fr; }
-  .profile-links, .intro h1, .tagline { text-align: center; }
+  .intro h1, .intro .tagline, .intro .profile-links { text-align: center; }
   .project-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 }
