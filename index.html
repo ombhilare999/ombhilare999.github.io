@@ -36,10 +36,11 @@ redirect_from:
       {% for link in site.links %}<a href="{{ link.url | relative_url }}">{{ link.name }}</a>{% unless forloop.last %} <span class="sep">/</span> {% endunless %}{% endfor %}
     </p>
   </div>
-  <img class="photo" src="{{ site.author.photo | relative_url }}" alt="Photo of {{ site.author.name }}">
+  <aside class="intro-side">
+    <img class="photo" src="{{ site.author.photo | relative_url }}" alt="Photo of {{ site.author.name }}">
+    {% include experience.html %}
+  </aside>
 </section>
-
-{% include experience.html %}
 
 <section id="news">
   <h2>News</h2>
