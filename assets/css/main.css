@@ -306,15 +306,6 @@ footer {
 .email { margin-top: 0.3rem !important; font-family: var(--mono) !important; font-size: 0.85rem; }
 .title-block .profile-links { margin-top: 0.9rem; font-family: var(--serif); }
 .profile-links a { white-space: nowrap; }
-.print-link {
-  font: inherit;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--accent);
-  cursor: pointer;
-}
-.print-link:hover { color: var(--accent-hover); text-decoration: underline; }
 .profile-links .sep { margin: 0 0.3rem; color: var(--muted); }
 
 /* abstract + introduction beside the photo */
@@ -816,7 +807,7 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   .section-pair h2 { margin-top: 0.4rem; }
   footer { margin-top: 0.6rem; padding-top: 0.4rem; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .site-nav, .arxiv-stamp, .print-link, .print-sep,
+  .site-nav, .arxiv-stamp,
   .lightbox, .filters, .bibtex, .more, .peek { display: none !important; }
   .sheet {
     max-width: none;
