@@ -5,13 +5,26 @@ redirect_from:
   - /projects/
   - /repositories/
 ---
+<header class="title-block">
+  <h1>{{ site.author.name }}</h1>
+  <p class="affil">Department of Electrical and Computer Engineering<br>University of Toronto, Toronto, Canada</p>
+  <p class="email"><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
+  <p class="profile-links">
+    {% for link in site.links %}{% unless link.name == "Email" %}<a href="{{ link.url | relative_url }}">{{ link.name }}</a>{% unless forloop.last %} <span class="sep">&middot;</span> {% endunless %}{% endunless %}{% endfor %}
+  </p>
+</header>
+
 <section class="intro">
   <div class="intro-text">
-    <h1>{{ site.author.name }}</h1>
-    <p class="tagline">PhD student &middot; Computer Architecture &middot; Reconfigurable Computing</p>
+    <p class="abstract"><span class="runin">Abstract</span>&mdash;I design Coarse-Grained Reconfigurable Array (CGRA)
+      architectures and build the CAD algorithms that map applications onto them, aiming for near-ASIC
+      efficiency without giving up programmability.</p>
+    <p class="index-terms"><span class="runin">Index Terms</span>&mdash;CGRA architecture, reconfigurable computing,
+      CAD algorithms, computer architecture, RTL design and verification, HLS.</p>
 
-    <p>
-      I am a PhD student at the University of Toronto, working with
+    <h2 class="numbered">Introduction</h2>
+    <p class="dropcap">
+      I am a PhD candidate at the University of Toronto, working with
       <a href="https://janders.eecg.utoronto.ca/">Prof. Jason Anderson</a>. My research centers on
       Coarse-Grained Reconfigurable Arrays (CGRAs), a class of reconfigurable architectures that
       approach ASIC performance and energy efficiency while staying programmable at runtime.
@@ -31,10 +44,6 @@ redirect_from:
       I am open to collaborations in computer architecture, reconfigurable computing, and RTL
       design &amp; verification. Feel free to reach out.
     </p>
-
-    <p class="profile-links">
-      {% for link in site.links %}<a href="{{ link.url | relative_url }}">{{ link.name }}</a>{% unless forloop.last %} <span class="sep">/</span> {% endunless %}{% endfor %}
-    </p>
   </div>
   <aside class="intro-side">
     <img class="photo" src="{{ site.author.photo | relative_url }}" alt="Photo of {{ site.author.name }}">
@@ -44,12 +53,12 @@ redirect_from:
 
 
 <section id="publications">
-  <h2>Publications</h2>
+  <h2 class="numbered">Publications</h2>
   {% for pub in site.data.publications %}{% include publication.html pub=pub %}{% endfor %}
 </section>
 
 <section id="talks">
-  <h2>Invited Talks</h2>
+  <h2 class="numbered">Invited Talks</h2>
   <ul class="talks">
     {% for t in site.data.talks %}
     <li>
@@ -64,7 +73,7 @@ redirect_from:
 </section>
 
 <section id="news">
-  <h2>News</h2>
+  <h2 class="numbered">News</h2>
   {% assign news = site.news | sort: "date" | reverse %}
   <ul class="news">
     {% for item in news limit: site.news_limit %}{% include news-item.html item=item %}{% endfor %}
@@ -75,7 +84,7 @@ redirect_from:
 </section>
 
 <section id="projects">
-  <h2>Projects</h2>
+  <h2 class="numbered">Projects</h2>
   <p class="section-note">Hardware and FPGA projects, mostly from my undergraduate years.</p>
   <div class="project-grid">
     {% assign projects = site.projects | sort: "importance" %}
@@ -90,7 +99,7 @@ redirect_from:
 </section>
 
 <section id="writing">
-  <h2>Writing</h2>
+  <h2 class="numbered">Writing</h2>
   <ul class="posts">
     {% for post in site.posts limit: 3 %}
     <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="date">{{ post.date | date: "%b %Y" }}</span></li>

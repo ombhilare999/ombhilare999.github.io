@@ -1,5 +1,7 @@
 title: Omkar Bhilare
-description: PhD student at the University of Toronto working on CGRA architecture and reconfigurable computing.
+description: PhD candidate at the University of Toronto working on CGRA architecture and reconfigurable computing.
+# shown after the name in the browser tab on the home page
+tagline: PhD Candidate, University of Toronto
 url: https://omkarbhilare.com
 baseurl: ""
 lang: en

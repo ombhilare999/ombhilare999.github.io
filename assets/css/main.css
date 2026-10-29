@@ -1,5 +1,12 @@
+/* Latin Modern (GUST Font License), subset from TeX Live */
+@font-face { font-family: "Latin Modern"; src: url("../fonts/lmroman10-regular.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Latin Modern"; src: url("../fonts/lmroman10-bold.woff") format("woff"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Latin Modern"; src: url("../fonts/lmroman10-italic.woff") format("woff"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Latin Modern Caps"; src: url("../fonts/lmromancaps10-regular.woff") format("woff"); font-display: swap; }
+
 :root {
-  --bg: #fdfdfb;
+  --desk: #e8e6e0;
+  --bg: #fffffd;
   --text: #1d1d1f;
   --muted: #6b6b70;
   --rule: #e4e2dc;
@@ -9,13 +16,17 @@
   --on-accent: #ffffff;
   --award: #7a4d00;
   --award-bg: #fbecc7;
+  --sheet-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 8px 30px rgba(0, 0, 0, 0.08);
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --tex: "Latin Modern", "Computer Modern Serif", Georgia, serif;
+  --caps: "Latin Modern Caps", "Latin Modern", Georgia, serif;
   --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #141517;
+    --desk: #0b0c0d;
+    --bg: #17181a;
     --text: #e6e4df;
     --muted: #9a9890;
     --rule: #2c2d30;
@@ -23,14 +34,14 @@
     --accent-hover: #f0a08e;
     --code-bg: #1e1f22;
     --on-accent: #10213a;
-  --award: #f3c969;
-  --award-bg: #3a2f14;
     --award: #f3c969;
     --award-bg: #3a2f14;
+    --sheet-shadow: 0 0 0 1px #222326;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #141517;
+  --desk: #0b0c0d;
+  --bg: #17181a;
   --text: #e6e4df;
   --muted: #9a9890;
   --rule: #2c2d30;
@@ -38,21 +49,55 @@
   --accent-hover: #f0a08e;
   --code-bg: #1e1f22;
   --on-accent: #10213a;
+  --award: #f3c969;
+  --award-bg: #3a2f14;
+  --sheet-shadow: 0 0 0 1px #222326;
 }
 
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; background: var(--bg); }
 
 body {
-  margin: 0 auto;
-  max-width: 820px;
-  padding: 0 16px;
-  background: var(--bg);
+  margin: 0;
   color: var(--text);
   font-family: var(--serif);
   font-size: 17px;
   line-height: 1.6;
+}
+
+/* the page is a sheet of paper on a desk, on screens wide enough for it */
+.sheet {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 16px;
+  background: var(--bg);
+}
+@media (min-width: 900px) {
+  html { background: var(--desk); }
+  .sheet {
+    max-width: 900px;
+    margin: 2rem auto 3rem;
+    padding: 0.5rem 3.5rem 1rem;
+    box-shadow: var(--sheet-shadow);
+  }
+}
+
+/* arXiv-style stamp in the left margin */
+.arxiv-stamp { display: none; }
+@media (min-width: 1080px) {
+  .arxiv-stamp {
+    display: block;
+    position: fixed;
+    left: calc(50% - 450px - 2.75rem);
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    font-family: var(--tex);
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    color: #9b9b9b;
+  }
 }
 
 a { color: var(--accent); text-decoration: none; }
@@ -61,27 +106,37 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 img { max-width: 100%; height: auto; }
 
 h1, h2, h3 { font-weight: 600; line-height: 1.25; }
-h1 { font-size: 2rem; margin: 0 0 0.25rem; }
+h1 { font-family: var(--tex); font-weight: 400; font-size: 2.1rem; margin: 0 0 0.25rem; }
+
+/* IEEE-style section headings: centered small caps with roman numerals */
 h2 {
-  font-size: 1.4rem;
-  font-variant: small-caps;
-  letter-spacing: 0.04em;
-  margin: 2.75rem 0 1rem;
-  padding-bottom: 0.35rem;
-  border-bottom: 1px solid var(--rule);
+  font-family: var(--caps);
+  font-weight: 400;
+  font-size: 1.3rem;
+  letter-spacing: 0.03em;
+  text-align: center;
+  margin: 2.75rem 0 1.1rem;
+}
+main { counter-reset: section fig; }
+h2.numbered::before {
+  counter-increment: section;
+  content: counter(section, upper-roman) ".\2002";
 }
 
-/* nav & footer */
+/* running head */
 
 .site-nav {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 1rem;
-  padding: 1.25rem 0;
+  padding: 1rem 0 0.6rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--caps);
   font-size: 0.95rem;
 }
-.site-name { color: var(--text); font-weight: 600; }
+.site-name { color: var(--text); }
 .nav-links { display: flex; align-items: center; }
 .nav-links a { margin-left: 1.1rem; }
 
@@ -104,32 +159,48 @@ h2 {
 }
 
 footer {
-  margin: 4rem 0 2rem;
-  padding-top: 1rem;
+  margin: 4rem 0 1rem;
+  padding-top: 0.75rem;
   border-top: 1px solid var(--rule);
   color: var(--muted);
-  font-size: 0.85rem;
+  font-family: var(--tex);
+  font-style: italic;
+  font-size: 0.9rem;
+  text-align: center;
 }
 
-/* intro */
+/* title block */
+
+.title-block { text-align: center; margin: 2.25rem 0 1.5rem; }
+.title-block h1 { font-size: 2.5rem; margin-bottom: 0.6rem; }
+.title-block p { margin: 0; font-family: var(--tex); }
+.affil { font-style: italic; line-height: 1.4; }
+.email { margin-top: 0.3rem !important; font-family: var(--mono) !important; font-size: 0.85rem; }
+.title-block .profile-links { margin-top: 0.9rem; font-family: var(--serif); }
+.profile-links a { white-space: nowrap; }
+.profile-links .sep { margin: 0 0.3rem; color: var(--muted); }
+
+/* abstract + introduction beside the photo */
 
 .intro {
   display: flex;
   gap: 2.5rem;
   align-items: flex-start;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 .intro-text { flex: 1; min-width: 0; }
-.intro h1::after {
-  content: "";
-  display: block;
-  width: 3rem;
-  height: 3px;
-  margin-top: 0.45rem;
-  background: var(--accent);
-}
 .intro p { margin: 0 0 0.9rem; text-align: justify; hyphens: auto; }
-.intro .tagline { color: var(--muted); font-style: italic; text-align: left; }
+.intro h2 { margin-top: 1.75rem; }
+.abstract, .index-terms { font-size: 0.95rem; }
+.abstract .runin, .index-terms .runin { font-weight: 700; font-style: italic; }
+.index-terms { color: var(--text); }
+.dropcap::first-letter {
+  float: left;
+  font-family: var(--tex);
+  font-size: 3.55em;
+  line-height: 0.8;
+  padding: 0.06em 0.08em 0 0;
+}
 .intro-side {
   width: 230px;
   flex-shrink: 0;
@@ -144,9 +215,6 @@ footer {
   border-radius: 50%;
   margin-top: 0.5rem;
 }
-.intro .profile-links { margin-top: 1.25rem; text-align: left; }
-.profile-links a { white-space: nowrap; }
-.profile-links .sep { margin: 0 0.15rem; color: var(--muted); }
 
 /* experience logos (sidebar under the photo): compact rows so the
    sidebar ends roughly where the bio does */
@@ -302,9 +370,14 @@ ul.talks li {
   white-space: nowrap;
 }
 .row-text { flex: 1; min-width: 0; }
-.row-title { font-weight: 600; font-size: 1.05rem; }
-.authors, .venue, .links { font-size: 0.95rem; }
-.authors strong { font-weight: 600; }
+/* publications read as an IEEE reference list: [1] A. Author, "Title," in Venue, year. */
+#publications { counter-reset: ref; }
+#publications .row { counter-increment: ref; }
+.ref { margin: 0; line-height: 1.5; }
+.ref-num::before { content: "[" counter(ref) "]"; font-weight: 600; margin-right: 0.15rem; }
+.ref strong { font-weight: 600; }
+.row-title { font-weight: 600; }
+.links { font-size: 0.95rem; margin-top: 0.2rem; }
 .links { margin-top: 0.15rem; }
 .summary { margin: 0.4rem 0 0; font-size: 0.95rem; color: var(--muted); }
 .bibtex summary {
@@ -333,6 +406,16 @@ ul.talks li {
   background: #fff;
 }
 .project-title { margin-top: 0.4rem; font-weight: 600; color: var(--accent); }
+/* figure-style captions: "Fig. 3. Title" */
+.project { counter-increment: fig; }
+.project-title::before,
+.photo-item .photo-title::before {
+  content: "Fig.\00a0" counter(fig) ".\2002";
+  font-family: var(--caps);
+  font-weight: 400;
+  color: var(--text);
+}
+.photo-item { counter-increment: fig; }
 .project:hover .project-title { color: var(--accent-hover); }
 .project-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.4; }
 
@@ -340,7 +423,8 @@ ul.talks li {
 
 .post header { margin: 1.5rem 0 2rem; }
 .post .meta { color: var(--muted); margin: 0.4rem 0 0; }
-.post h2 { border-bottom: none; margin-top: 2.25rem; }
+.post h2 { text-align: left; margin-top: 2.25rem; }
+.post header h1 { font-size: 2.2rem; }
 .post img { border-radius: 4px; }
 .post iframe { max-width: 100%; }
 .post blockquote {
@@ -443,6 +527,8 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
 /* mobile */
 
 @media (max-width: 640px) {
+  .title-block h1 { font-size: 2.1rem; }
+  .title-block { margin-top: 1.5rem; }
   body { font-size: 16px; }
   /* photo, then bio, then logos */
   .intro { flex-direction: column; align-items: center; gap: 1rem; }
