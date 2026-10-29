@@ -286,35 +286,6 @@ footer {
 .peek figcaption { margin-top: 0.45rem; font-size: 0.88rem; color: var(--muted); }
 .peek-label { font-family: var(--caps); color: var(--text); }
 
-/* "cite this page" box */
-.cite-box {
-  margin: 3rem 0 0;
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  background: var(--code-bg);
-}
-.cite-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 0.9rem;
-  border-bottom: 1px solid var(--rule);
-  font-family: var(--caps);
-}
-.cite-copy {
-  font: inherit;
-  font-family: var(--serif);
-  font-size: 0.82rem;
-  padding: 0.15rem 0.6rem;
-  border: 1px solid var(--rule);
-  border-radius: 3px;
-  background: var(--bg);
-  color: var(--accent);
-  cursor: pointer;
-}
-.cite-copy:hover { border-color: var(--accent); }
-.cite-bib { margin: 0; background: none; font-size: 0.78rem; }
-
 /* typewriter name: the hidden ghost reserves the full width so the heading
    never reflows; the typed text sits on top of it from the left edge */
 .typewriter { position: relative; display: inline-block; }
@@ -841,11 +812,10 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   .pub-columns .row { padding: 0.5rem 0 0.8rem; gap: 0.4rem; }
   .project-grid.two-col .project { padding-bottom: 0.5rem; }
   .project-grid.two-col .project img { width: 90px; }
-  .cite-box { margin-top: 1rem; }
   footer { margin-top: 0.6rem; padding-top: 0.4rem; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .site-nav, .arxiv-stamp, .cite-copy, .print-link, .print-sep,
-  .lightbox, .filters, .bibtex, .more, .cite-box, .peek-strip { display: none !important; }
+  .site-nav, .arxiv-stamp, .print-link, .print-sep,
+  .lightbox, .filters, .bibtex, .more, .peek-strip { display: none !important; }
   .sheet {
     max-width: none;
     min-height: 0;
@@ -857,7 +827,7 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   .sheet:last-child { break-after: auto; }
   .tw-ghost { visibility: visible; }
   .tw-text { display: none; }
-  .row, .project, .photo-item, .cite-box, .exp-group li { break-inside: avoid; }
+  .row, .project, .photo-item, .exp-group li { break-inside: avoid; }
   h2 { break-after: avoid; }
   .cite::after { display: none; }
 }

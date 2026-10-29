@@ -160,20 +160,6 @@ footnote: >-
   </figure>
 </section>
 
-<aside class="cite-box" aria-labelledby="cite-title">
-  <div class="cite-head">
-    <span id="cite-title">Cite this page</span>
-    <button type="button" class="cite-copy">Copy BibTeX</button>
-  </div>
-<pre class="cite-bib">@misc{bhilare{{ site.time | date: "%Y" }}portfolio,
-  author       = {Omkar Bhilare},
-  title        = {Omkar Bhilare: Research Portfolio},
-  year         = &#123;{{ site.time | date: "%Y" }}&#125;,
-  howpublished = &#123;\url&#123;{{ site.url }}&#125;&#125;,
-  note         = {Accessed {{ site.time | date: "%B %-d, %Y" }}}
-}</pre>
-</aside>
-
 <script>
   // Type the name out, hold, delete it, and repeat. Without JS, or with
   // reduced motion, the name simply stays on the page.
@@ -196,12 +182,4 @@ footnote: >-
 
   document.querySelector(".print-link").addEventListener("click", function () { window.print(); });
 
-  document.querySelector(".cite-copy").addEventListener("click", function () {
-    var btn = this;
-    var text = document.querySelector(".cite-bib").textContent;
-    function done(label) { btn.textContent = label; setTimeout(function () { btn.textContent = "Copy BibTeX"; }, 1800); }
-    try {
-      navigator.clipboard.writeText(text).then(function () { done("Copied"); }, function () { done("Copy failed"); });
-    } catch (e) { done("Copy failed"); }
-  });
 </script>
