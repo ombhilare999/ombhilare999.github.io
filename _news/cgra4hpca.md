@@ -5,6 +5,8 @@ date: 2026-02-01 09:00:00-0500
 description: Extending an elastic CGRA and its CAD flow with partial and full predication, via a local-predicate design and a dedicated global predicate network.
 tags: CGRA architecture predication dataflow CAD EDA
 categories: research
+# also list this in the blog and the home page's Writing section
+blog: true
 giscus_comments: false
 related_posts: false
 inline: false

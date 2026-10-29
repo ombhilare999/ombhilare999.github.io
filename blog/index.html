@@ -3,8 +3,10 @@ layout: default
 title: Blog
 ---
 <h1>Blog</h1>
+{% assign news_posts = site.news | where: "blog", true %}
+{% assign entries = site.posts | concat: news_posts | sort: "date" | reverse %}
 <ul class="posts">
-  {% for post in site.posts %}
+  {% for post in entries %}
   <li>
     <a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="date">{{ post.date | date: "%b %Y" }}</span>
     {% if post.description %}<div class="post-desc">{{ post.description }}</div>{% endif %}

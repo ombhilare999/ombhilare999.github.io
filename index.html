@@ -108,8 +108,10 @@ footnote: >-
 
 <section id="writing">
   <h2 class="numbered">Writing</h2>
+  {% assign news_posts = site.news | where: "blog", true %}
+  {% assign entries = site.posts | concat: news_posts | sort: "date" | reverse %}
   <ul class="posts">
-    {% for post in site.posts limit: 3 %}
+    {% for post in entries limit: 3 %}
     <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="date">{{ post.date | date: "%b %Y" }}</span></li>
     {% endfor %}
   </ul>
