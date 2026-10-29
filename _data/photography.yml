@@ -12,8 +12,10 @@ types:
 # Newest first. Images live in /assets/img/photography/ (full size) and
 # /assets/img/photography/thumbs/ (900px wide). Strip EXIF before adding:
 #   magick in.jpg -auto-orient -strip -resize '2000x2000>' -quality 82 out.jpg
+# `focus` (optional) keeps that point in view where a photo is cropped, as CSS object-position.
 photos:
   - file: kinkakuji.jpg
+    focus: 50% 25%
     title: Kinkaku-ji, the Golden Pavilion
     place: Kyoto
     country: Japan

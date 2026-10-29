@@ -154,7 +154,7 @@ footnote: >-
   <figure class="peek">
     <a class="peek-strip" href="{{ '/photography/' | relative_url }}">
       {% comment %} one photo per location type, for variety {% endcomment %}
-      {% for t in site.data.photography.types %}{% assign p = site.data.photography.photos | where: "type", t.id | first %}{% if p %}<img src="{{ '/assets/img/photography/thumbs/' | append: p.file | relative_url }}" alt="{{ p.title }}" loading="lazy">{% endif %}{% endfor %}
+      {% for t in site.data.photography.types %}{% assign p = site.data.photography.photos | where: "type", t.id | first %}{% if p %}<img src="{{ '/assets/img/photography/thumbs/' | append: p.file | relative_url }}" alt="{{ p.title }}" loading="lazy"{% if p.focus %} style="object-position: {{ p.focus }}"{% endif %}>{% endif %}{% endfor %}
     </a>
     <figcaption><span class="peek-label">Fig.&nbsp;9.</span> A few frames from my travels. <a href="{{ '/photography/' | relative_url }}">See all photographs&nbsp;&rarr;</a></figcaption>
   </figure>
