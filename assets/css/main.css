@@ -810,12 +810,14 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   .acknowledgment p { font-size: 8.2pt; margin: 0; }
   .section-note { margin: 0 0 0.4rem; }
   .pub-columns .row { padding: 0.5rem 0 0.8rem; gap: 0.4rem; }
-  .project-grid.two-col .project { padding-bottom: 0.5rem; }
-  .project-grid.two-col .project img { width: 90px; }
+  .project-grid.two-col .project { padding-bottom: 0.35rem; }
+  .project-grid.two-col .project img { width: 72px; }
+  .acknowledgment p { margin-bottom: 0.3rem; }
+  .section-pair h2 { margin-top: 0.4rem; }
   footer { margin-top: 0.6rem; padding-top: 0.4rem; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .site-nav, .arxiv-stamp, .print-link, .print-sep,
-  .lightbox, .filters, .bibtex, .more, .peek-strip { display: none !important; }
+  .lightbox, .filters, .bibtex, .more, .peek { display: none !important; }
   .sheet {
     max-width: none;
     min-height: 0;
