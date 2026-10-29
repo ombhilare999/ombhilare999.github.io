@@ -11,6 +11,10 @@ author:
   email: omkar.bhilare@mail.utoronto.ca
   affiliation: University of Toronto
   photo: /assets/img/omkar.jpg
+  orcid: 0009-0009-9957-3338
+  # month and year the PhD started; sets the masthead volume and issue
+  phd_start_year: 2023
+  phd_start_month: 9
 
 links:
   - name: Email

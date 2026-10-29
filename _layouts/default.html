@@ -56,6 +56,9 @@
     <div class="page-body">
       {{ sheet }}
     </div>
+    {% if forloop.first and page.footnote %}
+    <div class="footnotes">{{ page.footnote }}</div>
+    {% endif %}
     {% if forloop.last %}
     <footer>Manuscript last compiled {{ site.time | date: "%B %-d, %Y" }}.</footer>
     {% endif %}

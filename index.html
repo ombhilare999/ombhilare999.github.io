@@ -5,16 +5,35 @@ redirect_from:
   - /projects/
   - /repositories/
 running_head: Research Portfolio
+footnote: >-
+  <sup>1</sup> Ph.D. candidate, Department of Electrical and Computer Engineering,
+  University of Toronto, Toronto, Canada. Research intern, Processor Research Team,
+  RIKEN Center for Computational Science, Kobe, Japan (January&ndash;March 2026).
 ---
+{% comment %} Volume = year of the PhD, issue = month within that year. {% endcomment %}
+{% assign y = site.time | date: "%Y" | plus: 0 %}
+{% assign m = site.time | date: "%-m" | plus: 0 %}
+{% assign vol = y | minus: site.author.phd_start_year %}
+{% assign issue = m | minus: site.author.phd_start_month | plus: 1 %}
+{% if m >= site.author.phd_start_month %}{% assign vol = vol | plus: 1 %}{% else %}{% assign issue = issue | plus: 12 %}{% endif %}
+<div class="masthead">
+  <span>Proceedings of {{ site.author.name }}</span>
+  <span>Vol. {{ vol }}, No. {{ issue }} &middot; {{ site.time | date: "%B %Y" }}</span>
+</div>
+
 <header class="title-block">
   <h1 aria-label="{{ site.author.name }}">
     <span class="typewriter" aria-hidden="true">
       <span class="tw-ghost">{{ site.author.name }}</span>
       <span class="tw-text" data-text="{{ site.author.name }}">{{ site.author.name }}</span>
-    </span>
+    </span><sup class="fn-mark" aria-hidden="true">1</sup>
+    <a class="orcid" href="https://orcid.org/{{ site.author.orcid }}" title="ORCID iD {{ site.author.orcid }}" aria-label="ORCID profile">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#a6ce39"/><text x="12" y="16.2" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#fff">iD</text></svg>
+    </a>
   </h1>
   <p class="affil">Department of Electrical and Computer Engineering<br>University of Toronto, Toronto, Canada</p>
   <p class="email"><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
+  <p class="dateline">{% capture phd_start %}{{ site.author.phd_start_year }}-{{ site.author.phd_start_month }}-01{% endcapture %}Received {{ phd_start | date: "%B %Y" }}; Ph.D. in progress; last revised {{ site.time | date: "%B %-d, %Y" }}.</p>
   <p class="profile-links">
     {% for link in site.links %}{% unless link.name == "Email" %}<a href="{{ link.url | relative_url }}">{{ link.name }}</a>{% unless forloop.last %} <span class="sep">&middot;</span> {% endunless %}{% endunless %}{% endfor %}
   </p>
@@ -112,6 +131,20 @@ running_head: Research Portfolio
   </div>
 </section>
 
+<aside class="cite-box" aria-labelledby="cite-title">
+  <div class="cite-head">
+    <span id="cite-title">Cite this page</span>
+    <button type="button" class="cite-copy">Copy BibTeX</button>
+  </div>
+<pre class="cite-bib">@misc{bhilare{{ site.time | date: "%Y" }}portfolio,
+  author       = {Omkar Bhilare},
+  title        = {Omkar Bhilare: Research Portfolio},
+  year         = &#123;{{ site.time | date: "%Y" }}&#125;,
+  howpublished = &#123;\url&#123;{{ site.url }}&#125;&#125;,
+  note         = {Accessed {{ site.time | date: "%B %-d, %Y" }}}
+}</pre>
+</aside>
+
 <script>
   // Type the name out, hold, delete it, and repeat. Without JS, or with
   // reduced motion, the name simply stays on the page.
@@ -131,4 +164,13 @@ running_head: Research Portfolio
     }
     setTimeout(tick, 400);
   })();
+
+  document.querySelector(".cite-copy").addEventListener("click", function () {
+    var btn = this;
+    var text = document.querySelector(".cite-bib").textContent;
+    function done(label) { btn.textContent = label; setTimeout(function () { btn.textContent = "Copy BibTeX"; }, 1800); }
+    try {
+      navigator.clipboard.writeText(text).then(function () { done("Copied"); }, function () { done("Copy failed"); });
+    } catch (e) { done("Copy failed"); }
+  });
 </script>
