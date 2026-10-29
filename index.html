@@ -59,17 +59,7 @@ redirect_from:
 
 <section id="talks">
   <h2 class="numbered">Invited Talks</h2>
-  <ul class="talks">
-    {% for t in site.data.talks %}
-    <li>
-      <span class="date">{{ t.date }}</span>
-      <span>
-        <span class="talk-title">&ldquo;{% if t.url %}<a href="{{ t.url }}">{{ t.title }}</a>{% else %}{{ t.title }}{% endif %}&rdquo;</span>
-        <span class="talk-venue"><em>{{ t.event }}</em>, {{ t.place }}{% if t.remote %} (remote){% endif %}</span>
-      </span>
-    </li>
-    {% endfor %}
-  </ul>
+  {% for t in site.data.talks %}{% include talk.html talk=t %}{% endfor %}
 </section>
 
 <section id="news">
