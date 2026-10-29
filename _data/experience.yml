@@ -1,50 +1,66 @@
-# Newest first. `logo` (optional) is a path under /assets/img/logos/;
-# without it a monogram tile in `color` is shown instead.
+# Logo sidebar under the photo on the home page.
+# `logo` is a path under /assets/img/logos/ (white 160x160 tile); without it a
+# monogram tile in `color` is shown instead. Entries are newest first.
 
-- name: University of Toronto
-  short: UofT
-  logo: uoft.png
-  role: Graduate Researcher
-  years: 2023 – now
-  url: https://www.utoronto.ca/
-  color: "#1e3765"
+groups:
+  - id: education
+    label: Education
+  - id: industry
+    label: Industry
+  - id: internships
+    label: Research Internships
 
-- name: RIKEN Center for Computational Science
-  short: RIKEN
-  logo: riken.png
-  role: Research Intern
-  years: ""
-  url: https://www.r-ccs.riken.jp/en/
-  color: "#00418c"
+entries:
+  - name: University of Toronto
+    short: UofT
+    logo: uoft.png
+    group: education
+    role: PhD Candidate
+    years: 2023 – now
+    url: https://www.utoronto.ca/
+    color: "#1e3765"
 
-- name: AMD
-  short: AMD
-  logo: amd.png
-  role: Silicon Design Engineer
-  years: 2021 – 2023
-  url: https://www.amd.com/
-  color: "#1a1a1a"
+  - name: AMD
+    short: AMD
+    logo: amd.png
+    group: industry
+    role: Silicon Design Engineer
+    years: 2021 – 2023
+    url: https://www.amd.com/
+    color: "#1a1a1a"
 
-- name: EPFL
-  short: EPFL
-  logo: epfl.png
-  role: Summer@EPFL Intern
-  years: 2022
-  url: https://www.epfl.ch/labs/lap/
-  color: "#e2001a"
+  - name: RIKEN Center for Computational Science
+    short: RIKEN
+    logo: riken.png
+    group: internships
+    role: R-CCS, Kobe
+    years: 2026
+    url: https://www.r-ccs.riken.jp/en/
+    color: "#00418c"
 
-- name: IIT Madras
-  short: IITM
-  logo: iitm.png
-  role: Research Intern
-  years: 2021
-  url: https://shakti.org.in/
-  color: "#7a2531"
+  - name: EPFL
+    short: EPFL
+    logo: epfl.png
+    group: internships
+    role: Summer@EPFL
+    years: 2022
+    url: https://www.epfl.ch/labs/lap/
+    color: "#e2001a"
 
-- name: Google Summer of Code
-  short: GSoC
-  logo: gsoc.png
-  role: BeagleBoard.org
-  years: 2021
-  url: https://beaglewire.github.io/
-  color: "#e8710a"
+  - name: IIT Madras
+    short: IITM
+    logo: iitm.png
+    group: internships
+    role: Shakti Lab
+    years: 2021
+    url: https://shakti.org.in/
+    color: "#7a2531"
+
+  - name: Google Summer of Code
+    short: GSoC
+    logo: gsoc.png
+    group: internships
+    role: BeagleBoard.org
+    years: 2021
+    url: https://beaglewire.github.io/
+    color: "#e8710a"

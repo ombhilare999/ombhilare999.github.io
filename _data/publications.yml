@@ -16,9 +16,7 @@
     comparing a local-predicate design against a dedicated 1-bit global predicate network.
   links:
     - name: paper
-      url: https://drive.google.com/file/d/1pgjqz9EvrQgBwBdMbz7SaWBP2fGKBGOg/view
-    - name: slides
-      url: https://utoronto-my.sharepoint.com/:p:/g/personal/omkar_bhilare_mail_utoronto_ca/IQAVdPrt5naiTo9TvRpkLHtAAQI_Q8aa2v--VLx_PpOdTiI?e=Fmbtyn
+      url: https://ieeexplore.ieee.org/document/11652038
     - name: summary
       url: /news/cgra4hpca/
   bibtex: |
@@ -26,7 +24,8 @@
       author    = {Bhilare, Omkar and Ragheb, Omar and Adhi, Boma and Sano, Kentaro and Anderson, Jason and Ueno, Tomohiro},
       title     = {Predication in Elastic {CGRAs}},
       booktitle = {Workshop on CGRAs for High Performance Computing (CGRA4HPCA) at IPDPS},
-      year      = {2026}
+      year      = {2026},
+      url       = {https://ieeexplore.ieee.org/document/11652038}
     }
 
 - key: wei2024noc

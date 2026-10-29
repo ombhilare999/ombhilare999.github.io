@@ -1,13 +1,21 @@
-<ul class="experience">
-  {% for e in site.data.experience %}
-  <li>
-    <a href="{{ e.url }}" title="{{ e.name }}">
-      {% if e.logo %}<img class="exp-logo" src="{{ '/assets/img/logos/' | append: e.logo | relative_url }}" alt="{{ e.name }}">
-      {% else %}<span class="exp-logo exp-mono" style="--mono-color: {{ e.color }}">{{ e.short }}</span>{% endif %}
-    </a>
-    <span class="exp-name">{{ e.short }}</span>
-    <span class="exp-role">{{ e.role }}</span>
-    {% if e.years != "" %}<span class="exp-years">{{ e.years }}</span>{% endif %}
-  </li>
+<div class="experience">
+  {% for g in site.data.experience.groups %}
+  {% assign items = site.data.experience.entries | where: "group", g.id %}
+  <div class="exp-group exp-{{ g.id }}">
+    <h3>{{ g.label }}</h3>
+    <ul>
+      {% for e in items %}
+      <li>
+        <a href="{{ e.url }}" title="{{ e.name }}">
+          {% if e.logo %}<img class="exp-logo" src="{{ '/assets/img/logos/' | append: e.logo | relative_url }}" alt="{{ e.name }}">
+          {% else %}<span class="exp-logo exp-mono" style="--mono-color: {{ e.color }}">{{ e.short }}</span>{% endif %}
+        </a>
+        <span class="exp-name">{{ e.short }}</span>
+        <span class="exp-role">{{ e.role }}</span>
+        {% if e.years != "" %}<span class="exp-years">{{ e.years }}</span>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
   {% endfor %}
-</ul>
+</div>

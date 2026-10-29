@@ -12,19 +12,12 @@ toc:
   sidebar: left
 ---
 
-Published at **CGRA4HPC @ HPCA 2026**, New Orleans, USA, 2026.
+Published at **CGRA4HPCA @ IPDPS 2026**, New Orleans, USA, 2026.
 
 **Omkar Bhilare**, Omar Ragheb, Boma Adhi, Kentaro Sano, Jason Anderson, Tomohiro Ueno
 *(University of Toronto · Fujitsu Consulting Canada · RIKEN-CCS)*
 
-<div class="row mt-3 mb-4">
-  <div class="col-6">
-    <a class="btn btn-outline-primary w-100" href="https://drive.google.com/file/d/1pgjqz9EvrQgBwBdMbz7SaWBP2fGKBGOg/view" role="button" target="_blank">Paper</a>
-  </div>
-  <div class="col-6">
-    <a class="btn btn-outline-primary w-100" href="https://utoronto-my.sharepoint.com/:p:/g/personal/omkar_bhilare_mail_utoronto_ca/IQAVdPrt5naiTo9TvRpkLHtAAQI_Q8aa2v--VLx_PpOdTiI?e=Fmbtyn" role="button" target="_blank">Slides</a>
-  </div>
-</div>
+[Read the paper on IEEE Xplore](https://ieeexplore.ieee.org/document/11652038)
 
 ## Background
 
