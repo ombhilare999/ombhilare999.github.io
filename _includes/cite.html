@@ -1,0 +1,5 @@
+{% comment %}
+  IEEE-style in-text citation: {% include cite.html keys="key1,key2" %} renders
+  "[1], [2]", numbered by position in _data/publications.yml, each linking to
+  its reference and showing the title on hover.
+{% endcomment %}{% assign keys = include.keys | split: "," %}{% for k in keys %}{% for p in site.data.publications %}{% if p.key == k %}<a class="cite" href="#{{ k }}" data-tip="{{ p.title }} ({{ p.badge }})">[{{ forloop.index }}]</a>{% endif %}{% endfor %}{% unless forloop.last %}, {% endunless %}{% endfor %}

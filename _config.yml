@@ -51,6 +51,9 @@ collections:
     output: false
 
 defaults:
+  # link-preview card image for social sites (jekyll-seo-tag)
+  - scope: { path: "" }
+    values: { image: /assets/img/og-preview.jpg }
   - scope: { path: "", type: posts }
     values: { layout: post }
   - scope: { path: "", type: news }
@@ -61,6 +64,9 @@ plugins:
   - jekyll-sitemap
   - jekyll-redirect-from
   - jekyll-seo-tag
+
+twitter:
+  card: summary_large_image
 
 exclude:
   - README.md

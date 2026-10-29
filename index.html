@@ -36,6 +36,7 @@ footnote: >-
   <p class="dateline">{% capture phd_start %}{{ site.author.phd_start_year }}-{{ site.author.phd_start_month }}-01{% endcapture %}Received {{ phd_start | date: "%B %Y" }}; Ph.D. in progress; last revised {{ site.time | date: "%B %-d, %Y" }}.</p>
   <p class="profile-links">
     {% for link in site.links %}{% unless link.name == "Email" %}<a href="{{ link.url | relative_url }}">{{ link.name }}</a>{% unless forloop.last %} <span class="sep">&middot;</span> {% endunless %}{% endunless %}{% endfor %}
+    <span class="sep print-sep">&middot;</span> <button type="button" class="print-link">PDF</button>
   </p>
 </header>
 
@@ -53,17 +54,19 @@ footnote: >-
       <a href="https://janders.eecg.utoronto.ca/">Prof. Jason Anderson</a>. My research centers on
       Coarse-Grained Reconfigurable Arrays (CGRAs), a class of reconfigurable architectures that
       approach ASIC performance and energy efficiency while staying programmable at runtime.
-      I design and explore CGRA architectures, and build the CAD mapping algorithms that run
-      applications on them. I also completed a research internship at
+      I design and explore CGRA architectures {% include cite.html keys="ide2026hwsharing,bhilare2026predication" %},
+      and build the CAD mapping algorithms that run applications on them {% include cite.html keys="wei2024noc" %}.
+      I also completed a research internship at
       <a href="https://www.r-ccs.riken.jp/en/">RIKEN Center for Computational Science</a>
-      with Dr. Kentaro Sano.
+      with Dr. Kentaro Sano {% include cite.html keys="bhilare2026predication" %}.
     </p>
     <p>
       Before my PhD, I was a Silicon Design Engineer at AMD in India. As an undergraduate in
       Electronics, I interned with Prof. Paolo Ienne at EPFL on
       <a href="https://dynamatic.epfl.ch/">Dynamatic</a>, with Prof. Kamakoti at IIT Madras on the
       <a href="https://shakti.org.in/">Shakti</a> processor, and took part in Google Summer of Code with
-      BeagleBoard.org on <a href="https://beaglewire.github.io/">BeagleWire</a>.
+      BeagleBoard.org on <a href="https://beaglewire.github.io/">BeagleWire</a>. My undergraduate
+      thesis accelerated deepfake detection on FPGAs {% include cite.html keys="bhilare2023deepfake" %}.
     </p>
     <p>
       I am open to collaborations in computer architecture, reconfigurable computing, and RTL
@@ -132,6 +135,31 @@ footnote: >-
   </div>
 </section>
 
+<section id="acknowledgment" class="acknowledgment">
+  <h2>Acknowledgment</h2>
+  <p>
+    I am grateful to my advisor, Prof. Jason Anderson, for guidance and support throughout my Ph.D.
+    I thank Dr. Kentaro Sano and Dr. Tomohiro Ueno for hosting my research internship at the RIKEN
+    Center for Computational Science in Kobe; Prof. Paolo Ienne and Mr. Andrea Guerrieri at the
+    Processor Architecture Laboratory (LAP), EPFL, for mentoring my Summer@EPFL work on Dynamatic;
+    Mrs. Lavanya J at the SHAKTI Lab, IIT Madras, for mentoring my verification internship; and
+    Dhrubajyoti Sarma and K. Prabhu at AMD for their mentorship during my time as a silicon
+    design engineer.
+  </p>
+  <p>
+    Finally, thanks to the cricket pitch, the table-tennis table, the chessboard, a long reading
+    list, and an unreasonable amount of coffee for keeping me sane along the way&mdash;and to the
+    places I have been lucky enough to photograph.
+  </p>
+  <figure class="peek">
+    <a class="peek-strip" href="{{ '/photography/' | relative_url }}">
+      {% comment %} one photo per location type, for variety {% endcomment %}
+      {% for t in site.data.photography.types %}{% assign p = site.data.photography.photos | where: "type", t.id | first %}{% if p %}<img src="{{ '/assets/img/photography/thumbs/' | append: p.file | relative_url }}" alt="{{ p.title }}" loading="lazy">{% endif %}{% endfor %}
+    </a>
+    <figcaption><span class="peek-label">Fig.&nbsp;9.</span> A few frames from my travels. <a href="{{ '/photography/' | relative_url }}">See all photographs&nbsp;&rarr;</a></figcaption>
+  </figure>
+</section>
+
 <aside class="cite-box" aria-labelledby="cite-title">
   <div class="cite-head">
     <span id="cite-title">Cite this page</span>
@@ -165,6 +193,8 @@ footnote: >-
     }
     setTimeout(tick, 400);
   })();
+
+  document.querySelector(".print-link").addEventListener("click", function () { window.print(); });
 
   document.querySelector(".cite-copy").addEventListener("click", function () {
     var btn = this;

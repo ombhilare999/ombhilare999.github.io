@@ -2,7 +2,7 @@
 <div class="row" id="{{ pub.key }}">
   {% assign preview = '/assets/img/publication_preview/' %}
   <div class="row-image{% if pub.image_hover %} has-hover{% endif %}">
-    {% if pub.image %}<img src="{{ preview | append: pub.image | relative_url }}" alt="" loading="lazy">
+    {% if pub.image %}<img src="{{ preview | append: pub.image | relative_url }}" alt="" loading="lazy"{% if pub.image_position %} style="object-position: {{ pub.image_position }}"{% endif %}>
     {% else %}<div class="no-image" aria-hidden="true">{{ pub.title }}</div>{% endif %}
     {% if pub.image_hover %}<img class="hover" src="{{ preview | append: pub.image_hover | relative_url }}" alt="" loading="lazy">{% endif %}
     {% if pub.badge %}<span class="badge">{{ pub.badge }}</span>{% endif %}

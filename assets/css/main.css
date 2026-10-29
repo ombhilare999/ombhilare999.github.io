@@ -96,13 +96,13 @@ body {
   font-size: 0.85rem;
   color: var(--muted);
 }
-@media (max-width: 899px) {
+@media screen and (max-width: 899px) {
   /* phones: no desk, so mark the page break with a dashed rule */
   .sheet + .sheet { border-top: 1px dashed var(--rule); margin-top: 0.5rem; }
   .running-head span:last-child { display: none; }
   .masthead { flex-direction: column; align-items: center; gap: 0; text-align: center; }
 }
-@media (min-width: 900px) {
+@media screen and (min-width: 900px) {
   html { background: var(--desk); }
   .sheet {
     max-width: 900px;
@@ -116,7 +116,7 @@ body {
 
 /* arXiv-style stamp in the left margin */
 .arxiv-stamp { display: none; }
-@media (min-width: 1080px) {
+@media screen and (min-width: 1080px) {
   .arxiv-stamp {
     display: block;
     position: fixed;
@@ -243,6 +243,49 @@ footer {
 }
 .footnotes sup { font-size: 0.7em; }
 
+/* in-text citations: hover or focus shows the cited title */
+.cite { position: relative; white-space: nowrap; }
+.cite:hover, .cite:focus { text-decoration: none; }
+.cite:hover::after, .cite:focus-visible::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 260px;
+  padding: 0.35rem 0.55rem;
+  border-radius: 4px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.78rem;
+  line-height: 1.35;
+  text-align: left;
+  white-space: normal;
+  z-index: 5;
+  pointer-events: none;
+}
+/* briefly highlight a reference reached from a citation */
+#publications .row:target { animation: ref-flash 2.2s ease-out; }
+@keyframes ref-flash { 0%, 40% { background: var(--award-bg); } 100% { background: transparent; } }
+
+/* unnumbered acknowledgment section, set slightly smaller as in IEEE papers */
+.acknowledgment p { font-size: 0.95rem; text-align: justify; hyphens: auto; }
+
+.peek { margin: 1rem 0 0; }
+.peek-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+.peek-strip img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 3px;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+.peek-strip:hover img { filter: brightness(1.05); }
+.peek-strip img:hover { transform: translateY(-2px); }
+.peek figcaption { margin-top: 0.45rem; font-size: 0.88rem; color: var(--muted); }
+.peek-label { font-family: var(--caps); color: var(--text); }
+
 /* "cite this page" box */
 .cite-box {
   margin: 3rem 0 0;
@@ -292,6 +335,15 @@ footer {
 .email { margin-top: 0.3rem !important; font-family: var(--mono) !important; font-size: 0.85rem; }
 .title-block .profile-links { margin-top: 0.9rem; font-family: var(--serif); }
 .profile-links a { white-space: nowrap; }
+.print-link {
+  font: inherit;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  cursor: pointer;
+}
+.print-link:hover { color: var(--accent-hover); text-decoration: underline; }
 .profile-links .sep { margin: 0 0.3rem; color: var(--muted); }
 
 /* abstract + introduction beside the photo */
@@ -466,7 +518,7 @@ ul.posts li { padding: 0.3rem 0; }
 /* two-column journal layout on wide screens: content flows down the left
    column, then the right, with a rule between (publications, news,
    projects, writing) */
-@media (min-width: 900px) {
+@media print, (min-width: 900px) {
   /* a grid rather than CSS columns, so entries side by side share a row and
      start at the same height; the rule runs down the gutter */
   .two-col {
@@ -727,7 +779,7 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
 
 /* mobile */
 
-@media (max-width: 640px) {
+@media screen and (max-width: 640px) {
   .title-block h1 { font-size: 2.1rem; }
   /* justified text opens gaps in a narrow column */
   .intro p { text-align: left; }
@@ -754,4 +806,58 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   .project-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
   .lightbox figure { max-width: 100vw; }
   .lb-prev, .lb-next { top: auto; bottom: 0.5rem; transform: none; }
+}
+
+/* print: one sheet per printed page, light colours, no screen chrome */
+@page { size: letter; margin: 0.55in 0.6in; }
+@media print {
+  :root:not(#print), :root[data-theme="dark"]:not(#print) {
+    --desk: #fff;
+    --bg: #fff;
+    --text: #111;
+    --muted: #555;
+    --rule: #ccc;
+    --accent: #1f4e8c;
+    --code-bg: #f4f4f4;
+    --on-accent: #fff;
+    --award: #7a4d00;
+    --award-bg: #fbecc7;
+  }
+  html, body { background: #fff !important; }
+  body { font-size: 8.6pt; line-height: 1.45; }
+  h2 { margin: 1.1rem 0 0.6rem; }
+  .title-block { margin: 0.8rem 0 0.8rem; }
+  .title-block h1 { font-size: 2rem; }
+  .intro p { margin-bottom: 0.55rem; }
+  .intro-side { width: 190px; }
+  .photo { width: 140px; }
+  .experience { margin-top: 0.8rem; gap: 0.5rem; }
+  .exp-group ul { gap: 0.3rem; }
+  .exp-logo { width: 30px; height: 30px; }
+  .footnotes { margin-top: 1rem; }
+  .page-num { padding: 0.4rem 0 0; }
+  .acknowledgment p { font-size: 8.2pt; margin: 0; }
+  .section-note { margin: 0 0 0.4rem; }
+  .pub-columns .row { padding: 0.5rem 0 0.8rem; gap: 0.4rem; }
+  .project-grid.two-col .project { padding-bottom: 0.5rem; }
+  .project-grid.two-col .project img { width: 90px; }
+  .cite-box { margin-top: 1rem; }
+  footer { margin-top: 0.6rem; padding-top: 0.4rem; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .site-nav, .arxiv-stamp, .cite-copy, .print-link, .print-sep,
+  .lightbox, .filters, .bibtex, .more, .cite-box, .peek-strip { display: none !important; }
+  .sheet {
+    max-width: none;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    break-after: page;
+  }
+  .sheet:last-child { break-after: auto; }
+  .tw-ghost { visibility: visible; }
+  .tw-text { display: none; }
+  .row, .project, .photo-item, .cite-box, .exp-group li { break-inside: avoid; }
+  h2 { break-after: avoid; }
+  .cite::after { display: none; }
 }

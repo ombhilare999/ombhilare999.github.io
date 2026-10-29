@@ -2,6 +2,7 @@
 # Image paths are relative to /assets/img/publication_preview/.
 # `image_hover` (optional) is swapped in on hover, e.g. an animated GIF.
 # `badge` is the short venue tag drawn on the thumbnail.
+# `image_position` (optional) shifts the crop, as CSS object-position.
 # `award` (optional) is shown as a highlighted label, e.g. Best Paper Award.
 
 - key: ide2026hwsharing
@@ -31,7 +32,7 @@
   venue: Workshop on CGRAs for High Performance Computing (CGRA4HPCA) at IPDPS
   year: 2026
   badge: CGRA4HPCA '26
-  image: cgra4hpca.png
+  image: cgra4hpca-sm.png
   selected: true
   links:
     - name: paper
@@ -75,6 +76,7 @@
   year: 2023
   badge: PDCAT '23
   image: deepfake.jpg
+  image_position: 50% 12%
   selected: true
   links:
     - name: paper
