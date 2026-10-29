@@ -528,6 +528,8 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
 
 @media (max-width: 640px) {
   .title-block h1 { font-size: 2.1rem; }
+  /* justified text opens gaps in a narrow column */
+  .intro p { text-align: left; }
   .title-block { margin-top: 1.5rem; }
   body { font-size: 16px; }
   /* photo, then bio, then logos */
