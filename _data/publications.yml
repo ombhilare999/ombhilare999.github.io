@@ -1,11 +1,14 @@
 # Newest first. `selected: true` shows the paper on the home page.
 # Image paths are relative to /assets/img/publication_preview/.
+# `image_hover` (optional) is swapped in on hover, e.g. an animated GIF.
+# `badge` is the short venue tag drawn on the thumbnail.
 
 - key: bhilare2026predication
   title: Predication in Elastic CGRAs
   authors: Omkar Bhilare, Omar Ragheb, Boma Adhi, Kentaro Sano, Jason Anderson, Tomohiro Ueno
   venue: Workshop on CGRAs for High Performance Computing (CGRA4HPCA) at IPDPS
   year: 2026
+  badge: CGRA4HPCA '26
   image: cgra4hpca.png
   selected: true
   summary: >
@@ -31,7 +34,9 @@
   authors: Haron Wei, Omkar Bhilare, Hamas Waqar, Jason Anderson
   venue: International Symposium on Highly Efficient Accelerators and Reconfigurable Technologies (HEART)
   year: 2024
-  image: noc-cad.gif
+  badge: HEART '24
+  image: noc-cad.png
+  image_hover: noc-cad.gif
   selected: true
   summary: >
     Partitions and places applications across sixteen 4x4 CGRAs connected by a 2D mesh
@@ -53,6 +58,7 @@
   authors: Omkar Bhilare, Rahul Singh, Vedant Paranjape, Sravan Chittupalli, Shraddha Suratkar, Faruk Kazi
   venue: Parallel and Distributed Computing, Applications and Technologies (PDCAT)
   year: 2023
+  badge: PDCAT '23
   image: deepfake.jpg
   selected: true
   summary: >

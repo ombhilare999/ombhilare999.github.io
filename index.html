@@ -33,11 +33,13 @@ redirect_from:
     </p>
 
     <p class="profile-links">
-      {% for link in site.links %}<a href="{{ link.url | relative_url }}">{{ link.name }}</a>{% unless forloop.last %} &nbsp;/&nbsp; {% endunless %}{% endfor %}
+      {% for link in site.links %}<a href="{{ link.url | relative_url }}">{{ link.name }}</a>{% unless forloop.last %} <span class="sep">/</span> {% endunless %}{% endfor %}
     </p>
   </div>
   <img class="photo" src="{{ site.author.photo | relative_url }}" alt="Photo of {{ site.author.name }}">
 </section>
+
+{% include experience.html %}
 
 <section id="news">
   <h2>News</h2>

@@ -1,0 +1,44 @@
+# Newest first. `logo` (optional) is a path under /assets/img/logos/;
+# without it a monogram tile in `color` is shown instead.
+
+- name: University of Toronto
+  short: UofT
+  role: Graduate Researcher
+  years: 2023 – now
+  url: https://www.utoronto.ca/
+  color: "#1e3765"
+
+- name: RIKEN Center for Computational Science
+  short: RIKEN
+  role: Research Intern
+  years: ""
+  url: https://www.r-ccs.riken.jp/en/
+  color: "#00418c"
+
+- name: AMD
+  short: AMD
+  role: Silicon Design Engineer
+  years: 2021 – 2023
+  url: https://www.amd.com/
+  color: "#1a1a1a"
+
+- name: EPFL
+  short: EPFL
+  role: Summer@EPFL Intern
+  years: 2022
+  url: https://www.epfl.ch/labs/lap/
+  color: "#e2001a"
+
+- name: IIT Madras
+  short: IITM
+  role: Research Intern
+  years: 2021
+  url: https://shakti.org.in/
+  color: "#7a2531"
+
+- name: Google Summer of Code
+  short: GSoC
+  role: BeagleBoard.org
+  years: 2021
+  url: https://beaglewire.github.io/
+  color: "#e8710a"

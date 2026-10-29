@@ -1,7 +1,10 @@
 {% assign pub = include.pub %}
 <div class="row" id="{{ pub.key }}">
-  <div class="row-image">
-    {% if pub.image %}<img src="{{ '/assets/img/publication_preview/' | append: pub.image | relative_url }}" alt="" loading="lazy">{% endif %}
+  {% assign preview = '/assets/img/publication_preview/' %}
+  <div class="row-image{% if pub.image_hover %} has-hover{% endif %}">
+    {% if pub.image %}<img src="{{ preview | append: pub.image | relative_url }}" alt="" loading="lazy">{% endif %}
+    {% if pub.image_hover %}<img class="hover" src="{{ preview | append: pub.image_hover | relative_url }}" alt="" loading="lazy">{% endif %}
+    {% if pub.badge %}<span class="badge">{{ pub.badge }}</span>{% endif %}
   </div>
   <div class="row-text">
     <a class="row-title" href="{{ pub.links[0].url }}">{{ pub.title }}</a>

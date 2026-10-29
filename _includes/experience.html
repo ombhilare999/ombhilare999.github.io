@@ -1,0 +1,13 @@
+<ul class="experience">
+  {% for e in site.data.experience %}
+  <li>
+    <a href="{{ e.url }}" title="{{ e.name }}">
+      {% if e.logo %}<img class="exp-logo" src="{{ '/assets/img/logos/' | append: e.logo | relative_url }}" alt="{{ e.name }}">
+      {% else %}<span class="exp-logo exp-mono" style="--mono-color: {{ e.color }}">{{ e.short }}</span>{% endif %}
+    </a>
+    <span class="exp-name">{{ e.short }}</span>
+    <span class="exp-role">{{ e.role }}</span>
+    {% if e.years != "" %}<span class="exp-years">{{ e.years }}</span>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
