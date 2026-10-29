@@ -36,7 +36,6 @@ footnote: >-
   <p class="dateline">{% capture phd_start %}{{ site.author.phd_start_year }}-{{ site.author.phd_start_month }}-01{% endcapture %}Received {{ phd_start | date: "%B %Y" }}; Ph.D. in progress; last revised {{ site.time | date: "%B %-d, %Y" }}.</p>
   <p class="profile-links">
     {% for link in site.links %}{% unless link.name == "Email" %}<a href="{{ link.url | relative_url }}">{{ link.name }}</a>{% unless forloop.last %} <span class="sep">&middot;</span> {% endunless %}{% endunless %}{% endfor %}
-    <span class="sep print-sep">&middot;</span> <button type="button" class="print-link">PDF</button>
   </p>
 </header>
 
@@ -183,7 +182,5 @@ footnote: >-
     }
     setTimeout(tick, 400);
   })();
-
-  document.querySelector(".print-link").addEventListener("click", function () { window.print(); });
 
 </script>
