@@ -38,12 +38,13 @@
   <link rel="preload" href="/assets/fonts/lmroman10-italic.woff" as="font" type="font/woff" crossorigin>
   <link rel="preload" href="/assets/fonts/lmromancaps10-regular.woff" as="font" type="font/woff" crossorigin>
   
-  <link rel="stylesheet" href="/assets/css/main.css?v=1793243777">
+  <link rel="stylesheet" href="/assets/css/main.css?v=1793310410">
   <script>
     // Apply a saved light/dark choice before first paint; otherwise follow the OS.
     try {
       var saved = localStorage.getItem("theme");
       if (saved) document.documentElement.dataset.theme = saved;
+      if (localStorage.getItem("view") === "spread") document.documentElement.dataset.view = "spread";
     } catch (e) {}
   </script>
 </head>
@@ -63,6 +64,7 @@
         <a href="/photography/">Photos</a>
         <a href="/Omkar_Bhilare_CV.pdf">CV</a>
         <a href="/Omkar_Bhilare_RESUME.pdf">Resume</a>
+        
         <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
           <svg class="icon-moon" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
           <svg class="icon-sun" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.5v2.5M12 20v2.5M1.5 12H4M20 12h2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></g></svg>
@@ -107,6 +109,32 @@
       root.dataset.theme = dark ? "light" : "dark";
       try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
     });
+
+    // Two-page spread, like a PDF viewer: sheets sit side by side and the
+    // whole spread is scaled to fit the window.
+    (function () {
+      var btn = document.querySelector(".spread-toggle");
+      if (!btn) return;
+      var root = document.documentElement;
+      var main = document.querySelector("main");
+      function fit() {
+        var spreadWidth = 2 * 900 + 40; // two sheets plus the gap between them
+        main.style.setProperty("--spread-zoom", Math.min(1, (window.innerWidth - 48) / spreadWidth));
+      }
+      function apply(on) {
+        if (on) root.dataset.view = "spread"; else delete root.dataset.view;
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+        btn.title = on ? "Single-page view" : "Two-page view";
+        fit();
+      }
+      apply(root.dataset.view === "spread");
+      btn.addEventListener("click", function () {
+        var on = root.dataset.view !== "spread";
+        apply(on);
+        try { localStorage.setItem("view", on ? "spread" : "single"); } catch (e) {}
+      });
+      window.addEventListener("resize", fit);
+    })();
   </script>
 </body>
 </html>
