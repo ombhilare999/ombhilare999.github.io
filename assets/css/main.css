@@ -204,6 +204,22 @@ footer {
 .title-block { text-align: center; margin: 2.25rem 0 1.5rem; }
 .title-block h1 { font-size: 2.5rem; margin-bottom: 0.6rem; }
 .title-block p { margin: 0; font-family: var(--tex); }
+/* typewriter name: the hidden ghost reserves the full width so the heading
+   never reflows; the typed text sits on top of it from the left edge */
+.typewriter { position: relative; display: inline-block; }
+.tw-ghost { visibility: hidden; }
+.tw-text { position: absolute; left: 0; top: 0; white-space: nowrap; }
+.tw-text.is-typing::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 0.9em;
+  margin-left: 3px;
+  vertical-align: -0.08em;
+  background: currentColor;
+  animation: caret-blink 1s steps(1) infinite;
+}
+@keyframes caret-blink { 50% { opacity: 0; } }
 .affil { font-style: italic; line-height: 1.4; }
 .email { margin-top: 0.3rem !important; font-family: var(--mono) !important; font-size: 0.85rem; }
 .title-block .profile-links { margin-top: 0.9rem; font-family: var(--serif); }

@@ -7,7 +7,12 @@ redirect_from:
 running_head: Research Portfolio
 ---
 <header class="title-block">
-  <h1>{{ site.author.name }}</h1>
+  <h1 aria-label="{{ site.author.name }}">
+    <span class="typewriter" aria-hidden="true">
+      <span class="tw-ghost">{{ site.author.name }}</span>
+      <span class="tw-text" data-text="{{ site.author.name }}">{{ site.author.name }}</span>
+    </span>
+  </h1>
   <p class="affil">Department of Electrical and Computer Engineering<br>University of Toronto, Toronto, Canada</p>
   <p class="email"><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
   <p class="profile-links">
@@ -107,3 +112,23 @@ running_head: Research Portfolio
   </div>
 </section>
 
+<script>
+  // Type the name out, hold, delete it, and repeat. Without JS, or with
+  // reduced motion, the name simply stays on the page.
+  (function () {
+    var el = document.querySelector(".tw-text");
+    if (!el || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var text = el.dataset.text, i = 0, deleting = false;
+    el.classList.add("is-typing");
+    el.textContent = "";
+    function tick() {
+      i += deleting ? -1 : 1;
+      el.textContent = text.slice(0, i);
+      var delay = deleting ? 55 : 110;
+      if (!deleting && i === text.length) { deleting = true; delay = 2600; }
+      else if (deleting && i === 0) { deleting = false; delay = 700; }
+      setTimeout(tick, delay);
+    }
+    setTimeout(tick, 400);
+  })();
+</script>
