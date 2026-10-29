@@ -4,6 +4,7 @@ redirect_from:
   - /publications/
   - /projects/
   - /repositories/
+running_head: Research Portfolio
 ---
 <header class="title-block">
   <h1>{{ site.author.name }}</h1>
@@ -52,6 +53,7 @@ redirect_from:
 </section>
 
 
+<!--pagebreak-->
 <section id="publications">
   <h2 class="numbered">Publications</h2>
   {% for pub in site.data.publications %}{% include publication.html pub=pub %}{% endfor %}
@@ -62,6 +64,7 @@ redirect_from:
   {% for t in site.data.talks %}{% include talk.html talk=t %}{% endfor %}
 </section>
 
+<!--pagebreak-->
 <section id="news">
   <h2 class="numbered">News</h2>
   {% assign news = site.news | sort: "date" | reverse %}
