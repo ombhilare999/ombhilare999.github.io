@@ -1,0 +1,81 @@
+---
+layout: default
+redirect_from:
+  - /publications/
+  - /projects/
+  - /repositories/
+---
+<section class="intro">
+  <div class="intro-text">
+    <h1>{{ site.author.name }}</h1>
+    <p class="tagline">PhD student &middot; Computer Architecture &middot; Reconfigurable Computing</p>
+
+    <p>
+      I am a PhD student at the University of Toronto, working with
+      <a href="https://janders.eecg.utoronto.ca/">Prof. Jason Anderson</a>. My research centers on
+      Coarse-Grained Reconfigurable Arrays (CGRAs), a class of reconfigurable architectures that
+      approach ASIC performance and energy efficiency while staying programmable at runtime.
+      I design and explore CGRA architectures, and build the CAD mapping algorithms that run
+      applications on them. I also completed a research internship at
+      <a href="https://www.r-ccs.riken.jp/en/">RIKEN Center for Computational Science</a>
+      with Dr. Kentaro Sano.
+    </p>
+    <p>
+      Before my PhD, I was a Silicon Design Engineer at AMD in India. As an undergraduate in
+      Electronics, I interned with Prof. Paolo Ienne at EPFL on
+      <a href="https://dynamatic.epfl.ch/">Dynamatic</a>, with Prof. Kamakoti at IIT Madras on the
+      <a href="https://shakti.org.in/">Shakti</a> processor, and took part in Google Summer of Code with
+      BeagleBoard.org on <a href="https://beaglewire.github.io/">BeagleWire</a>.
+    </p>
+    <p>
+      I am open to collaborations in computer architecture, reconfigurable computing, and RTL
+      design &amp; verification. Feel free to reach out.
+    </p>
+
+    <p class="profile-links">
+      {% for link in site.links %}<a href="{{ link.url | relative_url }}">{{ link.name }}</a>{% unless forloop.last %} &nbsp;/&nbsp; {% endunless %}{% endfor %}
+    </p>
+  </div>
+  <img class="photo" src="{{ site.author.photo | relative_url }}" alt="Photo of {{ site.author.name }}">
+</section>
+
+<section id="news">
+  <h2>News</h2>
+  {% assign news = site.news | sort: "date" | reverse %}
+  <ul class="news">
+    {% for item in news limit: site.news_limit %}{% include news-item.html item=item %}{% endfor %}
+  </ul>
+  {% if news.size > site.news_limit %}
+  <p class="more"><a href="{{ '/news/' | relative_url }}">All news &rarr;</a></p>
+  {% endif %}
+</section>
+
+<section id="publications">
+  <h2>Publications</h2>
+  {% for pub in site.data.publications %}{% include publication.html pub=pub %}{% endfor %}
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <p class="section-note">Hardware and FPGA projects, mostly from my undergraduate years.</p>
+  <div class="project-grid">
+    {% assign projects = site.projects | sort: "importance" %}
+    {% for p in projects %}
+    <a class="project" href="{{ p.redirect }}">
+      <img src="{{ p.img | relative_url }}" alt="" loading="lazy">
+      <span class="project-title">{{ p.title }}</span>
+      <span class="project-desc">{{ p.description }}</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="writing">
+  <h2>Writing</h2>
+  <ul class="posts">
+    {% for post in site.posts limit: 3 %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="date">{{ post.date | date: "%b %Y" }}</span></li>
+    {% endfor %}
+  </ul>
+  <p class="more"><a href="{{ '/blog/' | relative_url }}">All posts &rarr;</a></p>
+</section>

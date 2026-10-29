@@ -1,0 +1,5 @@
+{% assign item = include.item %}
+<li>
+  <span class="date">{{ item.date | date: "%b %Y" }}</span>
+  <span>{% if item.title contains "<a" %}{{ item.title }}{% else %}<a href="{{ item.url | relative_url }}">{{ item.title }}</a>{% endif %}</span>
+</li>

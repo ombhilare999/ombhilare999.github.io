@@ -1,0 +1,21 @@
+{% assign pub = include.pub %}
+<div class="row" id="{{ pub.key }}">
+  <div class="row-image">
+    {% if pub.image %}<img src="{{ '/assets/img/publication_preview/' | append: pub.image | relative_url }}" alt="" loading="lazy">{% endif %}
+  </div>
+  <div class="row-text">
+    <a class="row-title" href="{{ pub.links[0].url }}">{{ pub.title }}</a>
+    <div class="authors">{{ pub.authors | replace: site.author.name, '<strong>Omkar Bhilare</strong>' }}</div>
+    <div class="venue"><em>{{ pub.venue }}</em>, {{ pub.year }}</div>
+    <div class="links">
+      {% for link in pub.links %}<a href="{{ link.url | relative_url }}">{{ link.name }}</a>{% unless forloop.last %} / {% endunless %}{% endfor %}
+    </div>
+    {% if pub.summary %}<p class="summary">{{ pub.summary }}</p>{% endif %}
+    {% if pub.bibtex %}
+    <details class="bibtex">
+      <summary>bibtex</summary>
+      <pre>{{ pub.bibtex | xml_escape }}</pre>
+    </details>
+    {% endif %}
+  </div>
+</div>

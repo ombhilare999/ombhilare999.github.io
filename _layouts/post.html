@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<article class="post">
+  <header>
+    <h1>{{ page.title | strip_html }}</h1>
+    <p class="meta">
+      {{ page.date | date: "%B %-d, %Y" }}
+      {% if page.description %}&middot; {{ page.description }}{% endif %}
+    </p>
+  </header>
+  {{ content }}
+  <p class="back"><a href="{% if page.collection == 'news' %}{{ '/news/' | relative_url }}{% else %}{{ '/blog/' | relative_url }}{% endif %}">&larr; All {% if page.collection == 'news' %}news{% else %}posts{% endif %}</a></p>
+</article>

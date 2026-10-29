@@ -1,0 +1,9 @@
+---
+layout: default
+title: News
+---
+<h1>News</h1>
+<ul class="news">
+  {% assign news = site.news | sort: "date" | reverse %}
+  {% for item in news %}{% include news-item.html item=item %}{% endfor %}
+</ul>

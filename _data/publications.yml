@@ -1,0 +1,77 @@
+# Newest first. `selected: true` shows the paper on the home page.
+# Image paths are relative to /assets/img/publication_preview/.
+
+- key: bhilare2026predication
+  title: Predication in Elastic CGRAs
+  authors: Omkar Bhilare, Omar Ragheb, Boma Adhi, Kentaro Sano, Jason Anderson, Tomohiro Ueno
+  venue: Workshop on CGRAs for High Performance Computing (CGRA4HPC)
+  year: 2026
+  image: cgra4hpca.png
+  selected: true
+  summary: >
+    Extends an elastic CGRA and the CGRA-ME 2.0 CAD flow with partial and full predication,
+    comparing a local-predicate design against a dedicated 1-bit global predicate network.
+  links:
+    - name: paper
+      url: https://drive.google.com/file/d/1pgjqz9EvrQgBwBdMbz7SaWBP2fGKBGOg/view
+    - name: slides
+      url: https://utoronto-my.sharepoint.com/:p:/g/personal/omkar_bhilare_mail_utoronto_ca/IQAVdPrt5naiTo9TvRpkLHtAAQI_Q8aa2v--VLx_PpOdTiI?e=Fmbtyn
+    - name: summary
+      url: /news/cgra4hpca/
+  bibtex: |
+    @inproceedings{bhilare2026predication,
+      author    = {Bhilare, Omkar and Ragheb, Omar and Adhi, Boma and Sano, Kentaro and Anderson, Jason and Ueno, Tomohiro},
+      title     = {Predication in Elastic {CGRAs}},
+      booktitle = {Workshop on CGRAs for High Performance Computing (CGRA4HPC)},
+      year      = {2026}
+    }
+
+- key: wei2024noc
+  title: CAD Techniques for NoC-Connected Multi-CGRA Systems
+  authors: Haron Wei, Omkar Bhilare, Hamas Waqar, Jason Anderson
+  venue: International Symposium on Highly Efficient Accelerators and Reconfigurable Technologies (HEART)
+  year: 2024
+  image: noc-cad.gif
+  selected: true
+  summary: >
+    Partitions and places applications across sixteen 4x4 CGRAs connected by a 2D mesh
+    network-on-chip, and studies the quality and runtime of the CAD flow.
+  links:
+    - name: paper
+      url: https://dl.acm.org/doi/10.1145/3665283.3665297
+  bibtex: |
+    @inproceedings{wei2024noc,
+      author    = {Wei, Haron and Bhilare, Omkar and Waqar, Hamas and Anderson, Jason},
+      title     = {{CAD} Techniques for {NoC}-Connected Multi-{CGRA} Systems},
+      booktitle = {Highly Efficient Accelerators and Reconfigurable Technologies (HEART)},
+      year      = {2024},
+      doi       = {10.1145/3665283.3665297}
+    }
+
+- key: bhilare2023deepfake
+  title: "DEEPFAKE CLI: Accelerated Deepfake Detection Using FPGAs"
+  authors: Omkar Bhilare, Rahul Singh, Vedant Paranjape, Sravan Chittupalli, Shraddha Suratkar, Faruk Kazi
+  venue: Parallel and Distributed Computing, Applications and Technologies (PDCAT)
+  year: 2023
+  image: deepfake.jpg
+  selected: true
+  summary: >
+    Accelerates a quantized MesoNet / EFF-YNet deepfake detector on the Versal VCK5000,
+    reaching 316.8 FPS at 93% accuracy.
+  links:
+    - name: paper
+      url: https://link.springer.com/chapter/10.1007/978-3-031-29927-8_4
+    - name: arXiv
+      url: https://arxiv.org/abs/2210.14743
+    - name: project
+      url: https://www.hackster.io/thematrix/deepfakes-c-l-i-on-vck5000-f04ca2
+  bibtex: |
+    @inproceedings{bhilare2023deepfake,
+      author    = {Bhilare, Omkar and Singh, Rahul and Paranjape, Vedant and Chittupalli, Sravan and Suratkar, Shraddha and Kazi, Faruk},
+      title     = {{DEEPFAKE CLI}: Accelerated Deepfake Detection Using {FPGAs}},
+      booktitle = {Parallel and Distributed Computing, Applications and Technologies},
+      publisher = {Springer Nature Switzerland},
+      pages     = {45--56},
+      year      = {2023},
+      doi       = {10.1007/978-3-031-29927-8_4}
+    }

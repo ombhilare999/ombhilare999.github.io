@@ -1,5 +1,4 @@
 ---
-layout: page
 title: 8 bit computer 
 description: Designed a 8-bit Computer using SAP logic
 img: /assets/img/8bit.png

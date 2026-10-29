@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Aqua Farm Monitor
 description: Transferred Sensors Data between Two ESP32s on LORA WAN
 img: /assets/img/lora.png

@@ -1,5 +1,4 @@
 ---
-layout: page
 title: ESP32 Dev Board 
 description: ESP32 Dev Board for Embedded and Robotics Application
 img: /assets/img/sra.png

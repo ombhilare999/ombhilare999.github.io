@@ -1,5 +1,4 @@
 ---
-layout: page
 title: VGA driver
 description: Made a VGA Driver for Tang primer FPGA
 img: assets/img/vga.gif

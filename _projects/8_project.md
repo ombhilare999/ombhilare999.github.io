@@ -1,5 +1,4 @@
 ---
-layout: page
 title: PONG on FPGA
 description: Running a Famous PONG game on BeagleWire FPGA
 img: /assets/img/pong.gif

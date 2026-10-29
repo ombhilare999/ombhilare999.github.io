@@ -1,5 +1,4 @@
 ---
-layout: page
 title: 7-segment driver
 description: Made a Seven Segment Driver for Tang primer FPGA
 img: /assets/img/Fibonacci_Output.gif

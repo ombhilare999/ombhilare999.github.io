@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Universal IC
 description: Universal IC which can emulate All ICs from 74 family.
 img: /assets/img/uic.png

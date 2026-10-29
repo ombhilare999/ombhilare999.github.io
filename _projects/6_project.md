@@ -1,5 +1,4 @@
 ---
-layout: page
 title: 8-Bit ALU
 description: 8 Bit ALU implementation on Altera Cyclone II
 img: /assets/img/gtkwave.png
