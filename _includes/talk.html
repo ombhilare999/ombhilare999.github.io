@@ -1,0 +1,16 @@
+{% assign t = include.talk %}
+<div class="row">
+  <div class="row-image">
+    <a class="talk-slide" href="{{ t.url }}" aria-hidden="true" tabindex="-1">
+      <span class="talk-slide-kicker">Invited Talk</span>
+      <span class="talk-slide-title">{{ t.title }}</span>
+      <span class="talk-slide-event">{{ t.short }}</span>
+    </a>
+  </div>
+  <div class="row-text">
+    <a class="row-title" href="{{ t.url }}">&ldquo;{{ t.title }}&rdquo;</a>
+    <div class="talk-venue"><em>{{ t.event }}</em></div>
+    <div class="talk-venue">{{ t.place }}{% if t.remote %} (remote){% endif %}, {{ t.date }}</div>
+    <div class="links"><a href="{{ t.url }}">event</a></div>
+  </div>
+</div>

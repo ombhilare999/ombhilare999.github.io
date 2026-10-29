@@ -221,15 +221,36 @@ ul.news li {
   padding: 0.2rem 0;
 }
 ul.posts li { padding: 0.3rem 0; }
-ul.talks { list-style: none; padding: 0; margin: 0; }
-ul.talks li {
-  display: grid;
-  grid-template-columns: 5.5rem 1fr;
-  gap: 0.75rem;
-  padding: 0.3rem 0;
+/* talks reuse the publication row; the thumbnail is a CSS title slide */
+.talk-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.3rem;
+  aspect-ratio: 16 / 9;
+  padding: 0.7rem 0.8rem;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #1f4e8c 0%, #163a6b 100%);
+  color: #fff;
+  line-height: 1.2;
+  text-align: left;
 }
-.talk-title { display: block; font-weight: 600; }
-.talk-venue { display: block; font-size: 0.95rem; }
+.talk-slide:hover { color: #fff; text-decoration: none; filter: brightness(1.08); }
+.talk-slide-kicker {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+.talk-slide-title { font-weight: 600; font-size: 0.86rem; }
+.talk-slide-event {
+  margin-top: 0.15rem;
+  padding-top: 0.3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  font-size: 0.7rem;
+  opacity: 0.85;
+}
+.talk-venue { font-size: 0.95rem; }
 .date { color: var(--muted); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
 .post-desc { color: var(--muted); font-size: 0.92rem; }
 .more { margin: 0.75rem 0 0; font-size: 0.95rem; }
