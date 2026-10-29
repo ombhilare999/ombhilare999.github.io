@@ -163,6 +163,17 @@ footnote: >-
   </figure>
 </section>
 
+<dialog class="bib-dialog" aria-labelledby="bib-dialog-title">
+  <div class="bib-dialog-head">
+    <span id="bib-dialog-title">BibTeX</span>
+    <span>
+      <button type="button" class="pill bib-copy">Copy</button>
+      <button type="button" class="bib-close" aria-label="Close">&times;</button>
+    </span>
+  </div>
+  <pre class="bib-dialog-body"></pre>
+</dialog>
+
 <script>
   // Type the name out, hold, delete it, and repeat. Without JS, or with
   // reduced motion, the name simply stays on the page.
@@ -181,6 +192,30 @@ footnote: >-
       setTimeout(tick, delay);
     }
     setTimeout(tick, 400);
+  })();
+
+  // BibTeX opens in a dialog so the two-column layout never reflows.
+  (function () {
+    var dlg = document.querySelector(".bib-dialog");
+    var body = dlg.querySelector(".bib-dialog-body");
+    var copy = dlg.querySelector(".bib-copy");
+    document.querySelectorAll("[data-bib]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        body.textContent = document.getElementById(btn.dataset.bib).innerHTML
+          .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, "&");
+        copy.textContent = "Copy";
+        dlg.showModal();
+      });
+    });
+    dlg.querySelector(".bib-close").addEventListener("click", function () { dlg.close(); });
+    dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+    copy.addEventListener("click", function () {
+      try {
+        navigator.clipboard.writeText(body.textContent).then(
+          function () { copy.textContent = "Copied"; },
+          function () { copy.textContent = "Copy failed"; });
+      } catch (e) { copy.textContent = "Copy failed"; }
+    });
   })();
 
 </script>

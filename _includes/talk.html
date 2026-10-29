@@ -11,6 +11,6 @@
     <a class="row-title" href="{{ t.url }}">&ldquo;{{ t.title }}&rdquo;</a>
     <div class="talk-venue"><em>{{ t.event }}</em></div>
     <div class="talk-venue">{{ t.place }}{% if t.remote %} (remote){% endif %}, {{ t.date }}</div>
-    <div class="links"><a href="{{ t.url }}">event</a></div>
+    <div class="links">{% include pill.html name="event" url=t.url %}</div>
   </div>
 </div>

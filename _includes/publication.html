@@ -16,13 +16,9 @@
       in <em>{{ pub.venue }}</em>, {{ pub.year }}.
     </p>
     <div class="links">
-      {% for link in pub.links %}<a href="{{ link.url | relative_url }}">{{ link.name }}</a>{% unless forloop.last %} / {% endunless %}{% endfor %}
+      {% for link in pub.links %}{% include pill.html name=link.name url=link.url %}{% endfor %}
+      {% if pub.bibtex %}<button type="button" class="pill pill-bibtex" data-bib="bib-{{ pub.key }}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 3C4 3 4 4 4 5.5S3.5 8 2.5 8c1 0 1.5.5 1.5 2.5S4 13 5.5 13M10.5 3C12 3 12 4 12 5.5S12.5 8 13.5 8c-1 0-1.5.5-1.5 2.5S12 13 10.5 13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>BibTeX</button>
+      <template id="bib-{{ pub.key }}">{{ pub.bibtex | strip | xml_escape }}</template>{% endif %}
     </div>
-    {% if pub.bibtex %}
-    <details class="bibtex">
-      <summary>bibtex</summary>
-      <pre>{{ pub.bibtex | xml_escape }}</pre>
-    </details>
-    {% endif %}
   </div>
 </div>
