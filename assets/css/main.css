@@ -23,13 +23,13 @@
     --accent-hover: #f0a08e;
     --code-bg: #1e1f22;
     --on-accent: #10213a;
-  --award: #f3c969;
-  --award-bg: #3a2f14;
     --award: #f3c969;
     --award-bg: #3a2f14;
   }
 }
 :root[data-theme="dark"] {
+  --award: #f3c969;
+  --award-bg: #3a2f14;
   --bg: #141517;
   --text: #e6e4df;
   --muted: #9a9890;
