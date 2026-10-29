@@ -1,0 +1,57 @@
+# Location types, in the order the filters appear.
+types:
+  - id: mountains
+    label: Mountains & Hills
+  - id: waterfront
+    label: Coast & Waterfront
+  - id: cities
+    label: Cities & Architecture
+
+# Newest first. Images live in /assets/img/photography/ (full size) and
+# /assets/img/photography/thumbs/ (900px wide). Strip EXIF before adding:
+#   magick in.jpg -auto-orient -strip -resize '2000x2000>' -quality 82 out.jpg
+photos:
+  - file: ine-funaya.jpg
+    title: Funaya boathouses
+    place: Ine, Kyoto
+    country: Japan
+    type: waterfront
+    year: 2026
+    width: 2000
+    height: 1125
+
+  - file: szechenyi-baths.jpg
+    title: Széchenyi Thermal Bath
+    place: Budapest
+    country: Hungary
+    type: cities
+    year: ""
+    width: 1600
+    height: 720
+
+  - file: rockies-highway.jpg
+    title: Into the Rockies
+    place: Alberta
+    country: Canada
+    type: mountains
+    year: ""
+    width: 2000
+    height: 1126
+
+  - file: lakefront-sunset-run.jpg
+    title: Lakefront run at sunset
+    place: New Orleans, Louisiana
+    country: USA
+    type: waterfront
+    year: ""
+    width: 1666
+    height: 1081
+
+  - file: sea-of-clouds-sunrise.jpg
+    title: Sunrise over a sea of clouds
+    place: Nandi Hills, Karnataka
+    country: India
+    type: mountains
+    year: 2023
+    width: 1500
+    height: 2000
