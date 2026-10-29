@@ -56,7 +56,9 @@ running_head: Research Portfolio
 <!--pagebreak-->
 <section id="publications">
   <h2 class="numbered">Publications</h2>
+  <div class="pub-columns two-col">
   {% for pub in site.data.publications %}{% include publication.html pub=pub %}{% endfor %}
+  </div>
 </section>
 
 <section id="talks">
@@ -68,7 +70,7 @@ running_head: Research Portfolio
 <section id="news">
   <h2 class="numbered">News</h2>
   {% assign news = site.news | sort: "date" | reverse %}
-  <ul class="news">
+  <ul class="news two-col">
     {% for item in news limit: site.news_limit %}{% include news-item.html item=item %}{% endfor %}
   </ul>
   {% if news.size > site.news_limit %}
@@ -79,13 +81,15 @@ running_head: Research Portfolio
 <section id="projects">
   <h2 class="numbered">Projects</h2>
   <p class="section-note">Hardware and FPGA projects, mostly from my undergraduate years.</p>
-  <div class="project-grid">
+  <div class="project-grid two-col">
     {% assign projects = site.projects | sort: "importance" %}
     {% for p in projects %}
     <a class="project" href="{{ p.redirect }}">
       <img src="{{ p.img | relative_url }}" alt="" loading="lazy">
-      <span class="project-title">{{ p.title }}</span>
-      <span class="project-desc">{{ p.description }}</span>
+      <span class="project-text">
+        <span class="project-title">{{ p.title }}</span>
+        <span class="project-desc">{{ p.description }}</span>
+      </span>
     </a>
     {% endfor %}
   </div>
@@ -93,7 +97,7 @@ running_head: Research Portfolio
 
 <section id="writing">
   <h2 class="numbered">Writing</h2>
-  <ul class="posts">
+  <ul class="posts two-col">
     {% for post in site.posts limit: 3 %}
     <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="date">{{ post.date | date: "%b %Y" }}</span></li>
     {% endfor %}
