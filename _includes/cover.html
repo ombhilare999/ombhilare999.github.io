@@ -1,12 +1,12 @@
 {% comment %} Front cover and summary, shown when the journal is closed. {% endcomment %}
 <section class="journal-cover" aria-label="Summary">
+  <div class="jc-book">
+  <button type="button" class="jc-bookmark">Look inside<small>for details</small></button>
   <div class="jc-page">
     <div class="jc-shape jc-pale" aria-hidden="true"></div>
     <img class="jc-shape jc-photo" src="{{ '/assets/img/photography/rockies-highway.jpg' | relative_url }}" alt="" loading="lazy">
     <div class="jc-shape jc-navy" aria-hidden="true"></div>
     <div class="jc-shape jc-accent" aria-hidden="true"></div>
-
-    <button type="button" class="jc-bookmark">Look inside for details</button>
 
     <div class="jc-mark">
       <img src="{{ '/assets/favicon.svg' | relative_url }}" alt="">
@@ -27,5 +27,6 @@
       </dl>
     </div>
     <button type="button" class="jc-open">Open Journal <span class="jc-arrow" aria-hidden="true">&rarr;</span></button>
+  </div>
   </div>
 </section>
