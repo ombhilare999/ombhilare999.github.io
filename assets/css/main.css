@@ -1282,7 +1282,7 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   line-height: 1.25;
   text-align: center;
 }
-.jc-text { position: relative; padding: 50.5cqw 7cqw 3cqw; font-family: var(--tex); }
+.jc-text { position: relative; padding: 44.8cqw 7cqw 3cqw; font-family: var(--tex); }
 .jc-text h2 {
   margin: 0;
   color: var(--jc-paper);
@@ -1369,7 +1369,7 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   .jc-bookmark small { font-size: 12px; }
 }
 /* papers: a venue tag and linked title per row */
-.jc-papers { padding-top: 1.8cqw; border-top: 1px solid rgba(232, 196, 124, 0.45); }
+.jc-papers { margin-top: 1.8cqw; padding-top: 1.8cqw; border-top: 1px solid rgba(232, 196, 124, 0.45); }
 .jc-papers h3 {
   margin: 0 0 1cqw;
   color: var(--jc-gold);
@@ -1379,7 +1379,8 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
-.jc-papers ol { list-style: none; margin: 0 0 1.8cqw; padding: 0; }
+.jc-papers ol { list-style: none; margin: 0 0 1.4cqw; padding: 0; }
+.jc-papers ol:last-child { margin-bottom: 0; }
 .jc-papers li {
   display: grid;
   grid-template-columns: max(98px, 16.5cqw) minmax(0, 1fr);

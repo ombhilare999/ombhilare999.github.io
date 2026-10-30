@@ -17,6 +17,12 @@
     <div class="jc-text">
       <h2>{{ site.author.name }}</h2>
       <p class="jc-sub">Ph.D. Candidate in Computer Engineering</p>
+      <dl>
+        <dt>Affiliation</dt><dd>{{ site.author.affiliation }}, Dept. of ECE</dd>
+        <dt>Advisor</dt><dd>Prof. Jason Anderson</dd>
+        <dt>Research</dt><dd>CGRA architecture, reconfigurable computing, CAD algorithms</dd>
+        <dt>Experience</dt><dd>RIKEN R-CCS, AMD, EPFL, IIT Madras, Google Summer of Code</dd>
+      </dl>
       <div class="jc-papers">
         <h3>Publications</h3>
         <ol>
@@ -24,14 +30,13 @@
           <li><span class="jc-venue">{{ p.badge }}</span><a href="{{ p.links[0].url }}">{{ p.title }}</a></li>
           {% endfor %}
         </ol>
+        <h3>Invited Talks</h3>
+        <ol>
+          {% for t in site.data.talks %}
+          <li><span class="jc-venue">{{ t.short }}</span><a href="{{ t.url }}">{{ t.title }}</a></li>
+          {% endfor %}
+        </ol>
       </div>
-      <dl>
-        <dt>Affiliation</dt><dd>{{ site.author.affiliation }}, Dept. of ECE</dd>
-        <dt>Advisor</dt><dd>Prof. Jason Anderson</dd>
-        <dt>Research</dt><dd>CGRA architecture, reconfigurable computing, CAD algorithms</dd>
-        <dt>Invited talks</dt><dd>{% for t in site.data.talks %}{{ t.title }} ({{ t.short }}){% unless forloop.last %}; {% endunless %}{% endfor %}</dd>
-        <dt>Experience</dt><dd>RIKEN R-CCS, AMD, EPFL, IIT Madras, Google Summer of Code</dd>
-      </dl>
     </div>
     <button type="button" class="jc-open">Open Journal <span class="jc-arrow" aria-hidden="true">&rarr;</span></button>
   </div>
