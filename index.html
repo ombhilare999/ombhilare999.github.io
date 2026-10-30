@@ -135,6 +135,19 @@ footnote: >-
   <p class="more"><a href="{{ '/blog/' | relative_url }}">All posts &rarr;</a></p>
 </section>
 </div>
+<section id="teaching">
+  <h2 class="numbered">Teaching</h2>
+  <p class="section-note">Teaching Assistant at the University of Toronto. I mentored semester-long FPGA design projects, supervised digital-circuit labs, graded advanced CAD algorithm assignments, and integrated a new Microchip FPGA discovery kit into the ECE532 curriculum.</p>
+  <ul class="teaching-list two-col">
+    {% for c in site.data.teaching %}
+    <li>
+      <span class="course"><strong>{{ c.code }}</strong> {{ c.name }}</span>
+      <span class="item-meta">{{ c.terms }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
 <section id="projects">
   <h2 class="numbered">Projects</h2>
   <p class="section-note">Hardware and FPGA projects, mostly from my undergraduate years.</p>

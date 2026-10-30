@@ -1212,6 +1212,13 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   .project-grid.three-col .project-title { margin-top: 0; }
 }
 
+/* teaching: course and terms, in two columns on wide screens */
+.teaching-list { list-style: none; padding: 0; margin: 0; }
+.teaching-list li { padding: 0 0 0.6rem; line-height: 1.35; }
+.course { display: block; font-size: 0.92rem; }
+.course strong { font-weight: 600; }
+.teaching-list .item-meta { display: block; font-size: 0.78rem; color: var(--muted); }
+
 /* print: one sheet per printed page, light colours, no screen chrome */
 @page { size: letter; margin: 0.55in 0.6in; }
 @media print {
