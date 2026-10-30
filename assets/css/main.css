@@ -323,7 +323,8 @@ footer {
 /* unnumbered acknowledgment section, set slightly smaller as in IEEE papers */
 .acknowledgment p { font-size: 0.95rem; text-align: justify; hyphens: auto; }
 
-.peek { margin: 1rem 0 0; }
+.peek { margin: 1rem 0 0; counter-increment: fig; }
+.peek-label::before { content: "Fig.\00a0" counter(fig) "."; }
 .peek-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
 .peek-strip img {
   width: 100%;
@@ -497,7 +498,8 @@ ul.posts li { padding: 0.3rem 0; }
   font-size: 0.7rem;
   opacity: 0.85;
 }
-.talk-venue { font-size: 0.95rem; }
+.talk-venue { font-size: 0.92rem; }
+#talks .row-title { font-size: 0.95rem; }
 .date { color: var(--muted); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
 .post-desc { color: var(--muted); font-size: 0.92rem; }
 .more { margin: 0.75rem 0 0; font-size: 0.95rem; }
@@ -551,9 +553,9 @@ ul.posts li { padding: 0.3rem 0; }
   }
   .pub-columns .row {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.5rem;
     /* top padding keeps each venue badge inside its own column fragment */
-    padding: 0.6rem 0 1.5rem;
+    padding: 0.6rem 0 1.1rem;
   }
   .pub-columns .row + .row { border-top: 0; }
   .pub-columns .row-image { width: 100%; }
@@ -639,7 +641,7 @@ ul.posts li { padding: 0.3rem 0; }
 /* publications read as an IEEE reference list: [1] A. Author, "Title," in Venue, year. */
 #publications { counter-reset: ref; }
 #publications .row { counter-increment: ref; }
-.ref { margin: 0; line-height: 1.5; }
+.ref { margin: 0; font-size: 0.92rem; line-height: 1.5; }
 .ref-num::before { content: "[" counter(ref) "]"; font-weight: 600; margin-right: 0.15rem; }
 .ref strong { font-weight: 600; }
 .row-title { font-weight: 600; }
