@@ -155,7 +155,7 @@ body {
     display: grid;
     grid-template-columns: 900px 900px;
     justify-content: center;
-    align-items: start;
+    align-items: stretch; /* facing pages share one height */
     gap: 40px;
     padding: 2rem 0;
     zoom: var(--spread-zoom, 1);
@@ -948,7 +948,6 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
 .sheet + .sheet h2 { margin: 1.6rem 0 0.7rem; }
 .section-trio { margin-top: 0.5rem; }
 .sheet + .sheet .page-body > section:first-child > h2 { margin-top: 1rem; }
-.sheet .peek-strip img { aspect-ratio: 2.4 / 1; }
 
 /* talks, news and writing as three narrow columns, each item a date line
    over a title, like a journal's front-matter sidebar */
