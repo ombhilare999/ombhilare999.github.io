@@ -95,12 +95,17 @@
   <link rel="preload" href="/assets/fonts/lmroman10-italic.woff" as="font" type="font/woff" crossorigin>
   <link rel="preload" href="/assets/fonts/lmromancaps10-regular.woff" as="font" type="font/woff" crossorigin>
   
-  <link rel="stylesheet" href="/assets/css/main.css?v=1793349486">
+  <link rel="stylesheet" href="/assets/css/main.css?v=1793398188">
   <script>
     // Apply a saved light/dark choice before first paint; otherwise follow the OS.
     try {
       var saved = localStorage.getItem("theme");
       if (saved) document.documentElement.dataset.theme = saved;
+      // Start on the closed cover, unless the link targets a section or the
+      // journal was already opened during this visit.
+      if (location.hash === "#cover" || (!location.hash && !sessionStorage.getItem("journal-open"))) {
+        document.documentElement.dataset.closed = "true";
+      }
       // Two-page view by default when the window is wide enough to read it
       // comfortably; a choice made with the toggle always wins.
       var view = localStorage.getItem("view");
@@ -116,6 +121,36 @@
   
 
   
+  
+<section class="journal-cover" aria-label="Summary">
+  <div class="jc-page">
+    <div class="jc-shape jc-pale" aria-hidden="true"></div>
+    <img class="jc-shape jc-photo" src="/assets/img/photography/rockies-highway.jpg" alt="" loading="lazy">
+    <div class="jc-shape jc-navy" aria-hidden="true"></div>
+    <div class="jc-shape jc-accent" aria-hidden="true"></div>
+
+    <div class="jc-mark">
+      <img src="/assets/favicon.svg" alt="">
+      <span>Proceedings of<br>Omkar Bhilare</span>
+    </div>
+    <p class="jc-date">Vol. 4, No. 2<br>October 2026<br>Toronto, Canada</p>
+
+    <div class="jc-text">
+      <h2>Omkar Bhilare</h2>
+      <p class="jc-sub">Ph.D. Candidate in Computer Engineering</p>
+      <dl>
+        <dt>Affiliation</dt><dd>University of Toronto, Dept. of ECE</dd>
+        <dt>Advisor</dt><dd>Prof. Jason Anderson</dd>
+        <dt>Research</dt><dd>CGRA architecture, reconfigurable computing, CAD algorithms</dd>
+        <dt>Publications</dt><dd><ul class="jc-pubs"><li>Hardware Sharing for Area Optimization of Floating-Point ALUs (HEART '26)</li><li>Predication in Elastic CGRAs (CGRA4HPCA '26)</li><li>CAD Techniques for NoC-Connected Multi-CGRA Systems (HEART '24)</li><li>DEEPFAKE CLI: Accelerated Deepfake Detection Using FPGAs (PDCAT '23)</li></ul></dd>
+        <dt>Invited talks</dt><dd>Adaptive Data Compression on CGRAs (ABC-HW '26)</dd>
+        <dt>Experience</dt><dd>RIKEN R-CCS, AMD, EPFL, IIT Madras, Google Summer of Code</dd>
+      </dl>
+    </div>
+    <button type="button" class="jc-open">Open Journal <span class="jc-arrow" aria-hidden="true">&rarr;</span></button>
+  </div>
+</section>
+
   <main class="paged">
   
   <div class="sheet">
@@ -133,6 +168,7 @@
         <a href="/photography/">Photos</a>
         <a href="/Omkar_Bhilare_CV.pdf">CV</a>
         <a href="/Omkar_Bhilare_RESUME.pdf">Resume</a>
+        <button class="close-toggle" type="button" title="Close the journal and show the summary cover">Close</button>
         <button class="spread-toggle" type="button" aria-pressed="false" aria-label="Toggle two-page view" title="Two-page view">
           <svg class="icon-spread" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="2.5" y="4" width="8.5" height="16" rx="1" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="4" width="8.5" height="16" rx="1" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
           <svg class="icon-single" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="6.5" y="3" width="11" height="18" rx="1" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 8h5M9.5 11.5h5M9.5 15h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -708,6 +744,35 @@
       root.dataset.theme = dark ? "light" : "dark";
       try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
     });
+
+    // Closing the journal swaps the pages for its summary cover; /#cover links to it.
+    (function () {
+      var closeBtn = document.querySelector(".close-toggle");
+      if (!closeBtn) return;
+      var root = document.documentElement;
+      var openBtn = document.querySelector(".jc-open");
+      function remember(open) {
+        try {
+          if (open) sessionStorage.setItem("journal-open", "1");
+          else sessionStorage.removeItem("journal-open");
+        } catch (e) {}
+      }
+      if (!root.dataset.closed) remember(true);
+      closeBtn.addEventListener("click", function () {
+        root.dataset.closed = "true";
+        remember(false);
+        history.replaceState(null, "", "#cover");
+        window.scrollTo(0, 0);
+        openBtn.focus({ preventScroll: true });
+      });
+      openBtn.addEventListener("click", function () {
+        delete root.dataset.closed;
+        remember(true);
+        history.replaceState(null, "", location.pathname);
+        window.scrollTo(0, 0);
+        closeBtn.focus({ preventScroll: true });
+      });
+    })();
 
     // Two-page spread, like a PDF viewer: sheets sit side by side and the
     // whole spread is scaled to fit the window.

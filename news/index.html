@@ -37,12 +37,13 @@
   <link rel="preload" href="/assets/fonts/lmroman10-italic.woff" as="font" type="font/woff" crossorigin>
   <link rel="preload" href="/assets/fonts/lmromancaps10-regular.woff" as="font" type="font/woff" crossorigin>
   
-  <link rel="stylesheet" href="/assets/css/main.css?v=1793349486">
+  <link rel="stylesheet" href="/assets/css/main.css?v=1793398188">
   <script>
     // Apply a saved light/dark choice before first paint; otherwise follow the OS.
     try {
       var saved = localStorage.getItem("theme");
       if (saved) document.documentElement.dataset.theme = saved;
+      
       // Two-page view by default when the window is wide enough to read it
       // comfortably; a choice made with the toggle always wins.
       var view = localStorage.getItem("view");
@@ -58,6 +59,7 @@
   
 
   
+  
   <main>
   
   <div class="sheet">
@@ -72,6 +74,7 @@
         <a href="/photography/">Photos</a>
         <a href="/Omkar_Bhilare_CV.pdf">CV</a>
         <a href="/Omkar_Bhilare_RESUME.pdf">Resume</a>
+        
         
         <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
           <svg class="icon-moon" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
@@ -191,6 +194,35 @@
       root.dataset.theme = dark ? "light" : "dark";
       try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
     });
+
+    // Closing the journal swaps the pages for its summary cover; /#cover links to it.
+    (function () {
+      var closeBtn = document.querySelector(".close-toggle");
+      if (!closeBtn) return;
+      var root = document.documentElement;
+      var openBtn = document.querySelector(".jc-open");
+      function remember(open) {
+        try {
+          if (open) sessionStorage.setItem("journal-open", "1");
+          else sessionStorage.removeItem("journal-open");
+        } catch (e) {}
+      }
+      if (!root.dataset.closed) remember(true);
+      closeBtn.addEventListener("click", function () {
+        root.dataset.closed = "true";
+        remember(false);
+        history.replaceState(null, "", "#cover");
+        window.scrollTo(0, 0);
+        openBtn.focus({ preventScroll: true });
+      });
+      openBtn.addEventListener("click", function () {
+        delete root.dataset.closed;
+        remember(true);
+        history.replaceState(null, "", location.pathname);
+        window.scrollTo(0, 0);
+        closeBtn.focus({ preventScroll: true });
+      });
+    })();
 
     // Two-page spread, like a PDF viewer: sheets sit side by side and the
     // whole spread is scaled to fit the window.
