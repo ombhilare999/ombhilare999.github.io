@@ -1255,8 +1255,8 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
 .jc-shape { position: absolute; top: 0; left: 0; width: 100%; height: 129.4cqw; } /* letter proportions, however tall the text makes the page */
 .jc-pale { background: var(--jc-paper); clip-path: polygon(0 0, 100% 0, 100% 58%, 36% 30%, 0 34%); }
 .jc-photo { object-fit: cover; object-position: 60% 50%; clip-path: polygon(36% 30%, 68% 5%, 100% 5%, 100% 58%); }
-.jc-navy { background: var(--jc-navy); clip-path: polygon(42% 0, 94% 0, 68% 20%); }
-.jc-accent { background: #16304f; clip-path: polygon(94% 0, 100% 0, 100% 5%, 87.6% 5%); }
+.jc-navy { background: var(--jc-navy); clip-path: polygon(42% 0, 98% 0, 70% 30%); }
+.jc-accent { background: #16304f; clip-path: polygon(98% 0, 100% 0, 100% 5%, 93.3% 5%); }
 .jc-mark {
   position: absolute;
   top: 5%;
@@ -1266,23 +1266,23 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   gap: 2.2cqw;
   color: var(--jc-ink);
   font-family: var(--caps);
-  font-size: max(11px, 2.1cqw);
+  font-size: max(12px, 2.5cqw);
   line-height: 1.25;
 }
 .jc-mark img { width: max(34px, 7.5cqw); height: auto; }
 .jc-date {
   position: absolute;
-  top: 1.6%;
-  left: 54%;
+  top: 2.4cqw;
+  left: 50%;
   margin: 0;
-  width: 30%;
+  width: 40%;
   color: #fff;
   font-family: var(--tex);
-  font-size: max(9.5px, 1.75cqw);
-  line-height: 1.35;
+  font-size: max(12px, 2.5cqw);
+  line-height: 1.25;
   text-align: center;
 }
-.jc-text { position: relative; padding: 57cqw 7cqw 3cqw; font-family: var(--tex); }
+.jc-text { position: relative; padding: 50.5cqw 7cqw 3cqw; font-family: var(--tex); }
 .jc-text h2 {
   margin: 0;
   color: var(--jc-paper);
@@ -1336,13 +1336,13 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   background: linear-gradient(to bottom, #a92d31, #8a1f24);
   color: #f5f1e6;
   font-family: var(--caps);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.2;
   cursor: pointer;
   clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 50%, 100% 100%, 0 100%);
   transition: transform 0.2s ease, filter 0.2s ease;
 }
-.jc-bookmark small { font-size: 12px; opacity: 0.85; }
+.jc-bookmark small { font-size: 13px; opacity: 0.9; }
 .jc-bookmark:hover { filter: brightness(1.12); }
 @media (prefers-reduced-motion: no-preference) {
   .jc-bookmark { animation: jc-peek 0.7s ease-out 0.3s backwards; }
@@ -1362,13 +1362,45 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
     width: 58px;
     height: 170px;
     padding: 0 0 14px 20px;
-    font-size: 13px;
+    font-size: 14px;
     writing-mode: vertical-rl;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 70% calc(100% - 12px), 40% 100%, 0 100%);
   }
-  .jc-bookmark small { font-size: 11px; }
+  .jc-bookmark small { font-size: 12px; }
 }
-.jc-pubs { list-style: none; margin: 0; padding: 0; }
+/* papers: a venue tag and linked title per row */
+.jc-papers { padding-top: 1.8cqw; border-top: 1px solid rgba(232, 196, 124, 0.45); }
+.jc-papers h3 {
+  margin: 0 0 1cqw;
+  color: var(--jc-gold);
+  font-family: var(--tex);
+  font-size: max(10px, 1.64cqw);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.jc-papers ol { list-style: none; margin: 0 0 1.8cqw; padding: 0; }
+.jc-papers li {
+  display: grid;
+  grid-template-columns: max(98px, 16.5cqw) minmax(0, 1fr);
+  gap: 1.5cqw;
+  align-items: baseline;
+  padding: 0.55cqw 0;
+  font-size: max(12.5px, 2.05cqw);
+  line-height: 1.3;
+}
+.jc-papers a { color: var(--jc-paper); }
+.jc-papers a:hover { color: var(--jc-gold); }
+.jc-venue {
+  justify-self: start;
+  padding: 0 0.45em;
+  border: 1px solid var(--jc-gold);
+  border-radius: 2px;
+  color: var(--jc-gold);
+  font-size: 0.78em;
+  line-height: 1.5;
+  white-space: nowrap;
+}
 .jc-open {
   position: absolute;
   z-index: 1;

@@ -17,11 +17,18 @@
     <div class="jc-text">
       <h2>{{ site.author.name }}</h2>
       <p class="jc-sub">Ph.D. Candidate in Computer Engineering</p>
+      <div class="jc-papers">
+        <h3>Publications</h3>
+        <ol>
+          {% for p in site.data.publications %}
+          <li><span class="jc-venue">{{ p.badge }}</span><a href="{{ p.links[0].url }}">{{ p.title }}</a></li>
+          {% endfor %}
+        </ol>
+      </div>
       <dl>
         <dt>Affiliation</dt><dd>{{ site.author.affiliation }}, Dept. of ECE</dd>
         <dt>Advisor</dt><dd>Prof. Jason Anderson</dd>
         <dt>Research</dt><dd>CGRA architecture, reconfigurable computing, CAD algorithms</dd>
-        <dt>Publications</dt><dd><ul class="jc-pubs">{% for p in site.data.publications %}<li>{{ p.title }} <span class="nowrap">({{ p.badge }})</span></li>{% endfor %}</ul></dd>
         <dt>Invited talks</dt><dd>{% for t in site.data.talks %}{{ t.title }} ({{ t.short }}){% unless forloop.last %}; {% endunless %}{% endfor %}</dd>
         <dt>Experience</dt><dd>RIKEN R-CCS, AMD, EPFL, IIT Madras, Google Summer of Code</dd>
       </dl>
