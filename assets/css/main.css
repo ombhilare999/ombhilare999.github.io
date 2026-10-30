@@ -1313,42 +1313,61 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
 }
 .jc-text dd { margin: 0; padding-left: 2cqw; border-left: 1px solid rgba(232, 196, 124, 0.45); }
 /* bookmark tucked inside the closed journal: it sits behind the cover and
-   its end sticks out past the top edge */
+   its end sticks out past the right edge, notched like a ribbon */
 .jc-book {
   position: relative;
   isolation: isolate;
   width: min(760px, calc(100vw - 32px));
-  margin: 72px auto 28px;
+  margin: 20px auto 28px;
 }
 .jc-bookmark {
   position: absolute;
   z-index: 0;
-  top: -60px;
-  right: 9%;
+  top: 90px;
+  left: calc(100% - 30px);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 136px;
-  height: 90px;
-  padding: 9px 0 0;
+  align-items: flex-start;
+  justify-content: center;
+  width: 176px;
+  height: 66px;
+  padding: 0 0 0 44px;
   border: 0;
-  border-radius: 3px 3px 0 0;
   background: linear-gradient(to bottom, #a92d31, #8a1f24);
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.18);
   color: #f5f1e6;
   font-family: var(--caps);
   font-size: 15px;
   line-height: 1.2;
   cursor: pointer;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 50%, 100% 100%, 0 100%);
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 .jc-bookmark small { font-size: 12px; opacity: 0.85; }
 .jc-bookmark:hover { filter: brightness(1.12); }
 @media (prefers-reduced-motion: no-preference) {
   .jc-bookmark { animation: jc-peek 0.7s ease-out 0.3s backwards; }
-  .jc-bookmark:hover { transform: translateY(-6px); }
+  .jc-bookmark:hover { transform: translateX(6px); }
 }
-@keyframes jc-peek { from { transform: translateY(60px); } }
+@keyframes jc-peek { from { transform: translateX(-140px); } }
+/* no spare width: a narrow vertical tab, with the book shifted left to make room */
+@media screen and (max-width: 999px) {
+  .jc-book { width: min(760px, calc(100vw - 58px)); margin-left: max(12px, calc((100vw - 760px) / 2 - 20px)); }
+  .jc-bookmark {
+    top: 70px;
+    left: calc(100% - 20px);
+    flex-direction: row;
+    gap: 0.4em;
+    justify-content: center;
+    align-items: center;
+    width: 58px;
+    height: 170px;
+    padding: 0 0 14px 20px;
+    font-size: 13px;
+    writing-mode: vertical-rl;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 70% calc(100% - 12px), 40% 100%, 0 100%);
+  }
+  .jc-bookmark small { font-size: 11px; }
+}
 .jc-pubs { list-style: none; margin: 0; padding: 0; }
 .jc-open {
   position: absolute;
@@ -1384,7 +1403,7 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
 }
 /* laptops and up: the whole cover fits in the window, flat so its text stays upright */
 @media screen and (min-width: 641px) {
-  .jc-book { width: min(760px, calc(100vw - 32px), max(520px, calc((100vh - 96px) * 0.7727))); margin: 68px auto 28px; }
+  .jc-book { width: min(760px, calc(100vw - 58px), max(520px, calc((100vh - 48px) * 0.7727))); }
 }
 @media print {
   .journal-cover { display: none !important; }
