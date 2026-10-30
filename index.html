@@ -95,7 +95,7 @@
   <link rel="preload" href="/assets/fonts/lmroman10-italic.woff" as="font" type="font/woff" crossorigin>
   <link rel="preload" href="/assets/fonts/lmromancaps10-regular.woff" as="font" type="font/woff" crossorigin>
   
-  <link rel="stylesheet" href="/assets/css/main.css?v=1793398188">
+  <link rel="stylesheet" href="/assets/css/main.css?v=1793404159">
   <script>
     // Apply a saved light/dark choice before first paint; otherwise follow the OS.
     try {
@@ -123,6 +123,8 @@
   
   
 <section class="journal-cover" aria-label="Summary">
+  <div class="jc-book">
+  <button type="button" class="jc-bookmark">Look inside<small>for details</small></button>
   <div class="jc-page">
     <div class="jc-shape jc-pale" aria-hidden="true"></div>
     <img class="jc-shape jc-photo" src="/assets/img/photography/rockies-highway.jpg" alt="" loading="lazy">
@@ -142,12 +144,31 @@
         <dt>Affiliation</dt><dd>University of Toronto, Dept. of ECE</dd>
         <dt>Advisor</dt><dd>Prof. Jason Anderson</dd>
         <dt>Research</dt><dd>CGRA architecture, reconfigurable computing, CAD algorithms</dd>
-        <dt>Publications</dt><dd><ul class="jc-pubs"><li>Hardware Sharing for Area Optimization of Floating-Point ALUs (HEART '26)</li><li>Predication in Elastic CGRAs (CGRA4HPCA '26)</li><li>CAD Techniques for NoC-Connected Multi-CGRA Systems (HEART '24)</li><li>DEEPFAKE CLI: Accelerated Deepfake Detection Using FPGAs (PDCAT '23)</li></ul></dd>
-        <dt>Invited talks</dt><dd>Adaptive Data Compression on CGRAs (ABC-HW '26)</dd>
         <dt>Experience</dt><dd>RIKEN R-CCS, AMD, EPFL, IIT Madras, Google Summer of Code</dd>
       </dl>
+      <div class="jc-papers">
+        <h3>Publications</h3>
+        <ol>
+          
+          <li><span class="jc-venue">HEART '26</span><a href="https://dl.acm.org/doi/full/10.1145/3814576.3814584">Hardware Sharing for Area Optimization of Floating-Point ALUs</a></li>
+          
+          <li><span class="jc-venue">CGRA4HPCA '26</span><a href="https://ieeexplore.ieee.org/document/11652038">Predication in Elastic CGRAs</a></li>
+          
+          <li><span class="jc-venue">HEART '24</span><a href="https://dl.acm.org/doi/10.1145/3665283.3665297">CAD Techniques for NoC-Connected Multi-CGRA Systems</a></li>
+          
+          <li><span class="jc-venue">PDCAT '23</span><a href="https://link.springer.com/chapter/10.1007/978-3-031-29927-8_4">DEEPFAKE CLI: Accelerated Deepfake Detection Using FPGAs</a></li>
+          
+        </ol>
+        <h3>Invited Talks</h3>
+        <ol>
+          
+          <li><span class="jc-venue">ABC-HW '26</span><a href="https://sites.google.com/view/abc-hw-2026/">Adaptive Data Compression on CGRAs</a></li>
+          
+        </ol>
+      </div>
     </div>
     <button type="button" class="jc-open">Open Journal <span class="jc-arrow" aria-hidden="true">&rarr;</span></button>
+  </div>
   </div>
 </section>
 
@@ -765,6 +786,7 @@
         window.scrollTo(0, 0);
         openBtn.focus({ preventScroll: true });
       });
+      document.querySelector(".jc-bookmark").addEventListener("click", function () { openBtn.click(); });
       openBtn.addEventListener("click", function () {
         delete root.dataset.closed;
         remember(true);

@@ -39,7 +39,7 @@
   <link rel="preload" href="/assets/fonts/lmroman10-italic.woff" as="font" type="font/woff" crossorigin>
   <link rel="preload" href="/assets/fonts/lmromancaps10-regular.woff" as="font" type="font/woff" crossorigin>
   
-  <link rel="stylesheet" href="/assets/css/main.css?v=1793398188">
+  <link rel="stylesheet" href="/assets/css/main.css?v=1793404159">
   <script>
     // Apply a saved light/dark choice before first paint; otherwise follow the OS.
     try {
@@ -146,6 +146,7 @@
         window.scrollTo(0, 0);
         openBtn.focus({ preventScroll: true });
       });
+      document.querySelector(".jc-bookmark").addEventListener("click", function () { openBtn.click(); });
       openBtn.addEventListener("click", function () {
         delete root.dataset.closed;
         remember(true);

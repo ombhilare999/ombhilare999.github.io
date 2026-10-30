@@ -1234,15 +1234,18 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
 .jc-page {
   --jc-ink: #142033;
   --jc-navy: #1f4e8c;
+  --jc-panel: #14233a;
+  --jc-paper: #f5f1e6;
+  --jc-gold: #e8c47c;
   position: relative;
   overflow: hidden;
   container-type: inline-size;
-  width: min(760px, calc(100vw - 32px));
+  z-index: 1;
+  width: 100%;
   aspect-ratio: 8.5 / 11;
-  margin: 1.5rem auto 3rem;
   border-radius: 1px 3px 3px 1px;
-  background: #cfdce6;
-  color: var(--jc-ink);
+  background: var(--jc-panel);
+  color: var(--jc-paper);
   box-shadow:
     inset 5px 0 7px -3px rgba(0, 0, 0, 0.3),
     1px 1px 0 #e6dcc6, 2px 2px 0 #c6b591, 3px 3px 0 #e6dcc6, 4px 4px 0 #c6b591,
@@ -1250,10 +1253,10 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
     16px 26px 44px rgba(0, 0, 0, 0.34);
 }
 .jc-shape { position: absolute; top: 0; left: 0; width: 100%; height: 129.4cqw; } /* letter proportions, however tall the text makes the page */
-.jc-pale { background: #f4f6f8; clip-path: polygon(0 0, 100% 0, 100% 58%, 36% 30%, 0 34%); }
+.jc-pale { background: var(--jc-paper); clip-path: polygon(0 0, 100% 0, 100% 58%, 36% 30%, 0 34%); }
 .jc-photo { object-fit: cover; object-position: 60% 50%; clip-path: polygon(36% 30%, 68% 5%, 100% 5%, 100% 58%); }
-.jc-navy { background: var(--jc-navy); clip-path: polygon(42% 0, 94% 0, 68% 20%); }
-.jc-accent { background: #16304f; clip-path: polygon(94% 0, 100% 0, 100% 5%, 87.6% 5%); }
+.jc-navy { background: var(--jc-navy); clip-path: polygon(42% 0, 98% 0, 70% 30%); }
+.jc-accent { background: #16304f; clip-path: polygon(98% 0, 100% 0, 100% 5%, 93.3% 5%); }
 .jc-mark {
   position: absolute;
   top: 5%;
@@ -1261,26 +1264,28 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   display: flex;
   align-items: center;
   gap: 2.2cqw;
+  color: var(--jc-ink);
   font-family: var(--caps);
-  font-size: max(11px, 2.1cqw);
+  font-size: max(12px, 2.5cqw);
   line-height: 1.25;
 }
 .jc-mark img { width: max(34px, 7.5cqw); height: auto; }
 .jc-date {
   position: absolute;
-  top: 1.6%;
-  left: 54%;
+  top: 2.4cqw;
+  left: 50%;
   margin: 0;
-  width: 30%;
+  width: 40%;
   color: #fff;
-  font-size: max(9.5px, 1.75cqw);
-  line-height: 1.35;
+  font-family: var(--tex);
+  font-size: max(12px, 2.5cqw);
+  line-height: 1.25;
   text-align: center;
 }
-.jc-text { position: relative; padding: 56cqw 7cqw 2cqw; }
+.jc-text { position: relative; padding: 44.8cqw 7cqw 3cqw; font-family: var(--tex); }
 .jc-text h2 {
   margin: 0;
-  color: var(--jc-ink);
+  color: var(--jc-paper);
   font-family: var(--tex);
   font-size: max(32px, 8.4cqw);
   letter-spacing: 0;
@@ -1288,15 +1293,121 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   line-height: 1.05;
 }
 .jc-sub { max-width: 76cqw; margin: 0.5cqw 0 2.6cqw; font-family: var(--tex); font-size: max(14px, 2.9cqw); line-height: 1.2; }
-.jc-text dl { margin: 0; font-size: max(12.5px, 1.95cqw); line-height: 1.35; }
-.jc-text dt { font-weight: 600; margin-top: 1.05cqw; }
-.jc-text dd { margin: 0; }
-.jc-pubs { list-style: none; margin: 0; padding: 0; }
+.jc-text dl {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.1cqw 2cqw;
+  margin: 0;
+  padding-top: 1.8cqw;
+  border-top: 1px solid rgba(232, 196, 124, 0.45);
+  font-size: max(12.5px, 2.05cqw);
+  line-height: 1.35;
+}
+.jc-text dt {
+  padding-top: 0.15em;
+  color: var(--jc-gold);
+  font-size: 0.8em;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.jc-text dd { margin: 0; padding-left: 2cqw; border-left: 1px solid rgba(232, 196, 124, 0.45); }
+/* bookmark tucked inside the closed journal: it sits behind the cover and
+   its end sticks out past the right edge, notched like a ribbon */
+.jc-book {
+  position: relative;
+  isolation: isolate;
+  width: min(760px, calc(100vw - 32px));
+  margin: 20px auto 28px;
+}
+.jc-bookmark {
+  position: absolute;
+  z-index: 0;
+  top: 90px;
+  left: calc(100% - 30px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 176px;
+  height: 66px;
+  padding: 0 0 0 44px;
+  border: 0;
+  background: linear-gradient(to bottom, #a92d31, #8a1f24);
+  color: #f5f1e6;
+  font-family: var(--caps);
+  font-size: 16px;
+  line-height: 1.2;
+  cursor: pointer;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 50%, 100% 100%, 0 100%);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.jc-bookmark small { font-size: 13px; opacity: 0.9; }
+.jc-bookmark:hover { filter: brightness(1.12); }
+@media (prefers-reduced-motion: no-preference) {
+  .jc-bookmark { animation: jc-peek 0.7s ease-out 0.3s backwards; }
+  .jc-bookmark:hover { transform: translateX(6px); }
+}
+@keyframes jc-peek { from { transform: translateX(-140px); } }
+/* no spare width: a narrow vertical tab, with the book shifted left to make room */
+@media screen and (max-width: 999px) {
+  .jc-book { width: min(760px, calc(100vw - 58px)); margin-left: max(12px, calc((100vw - 760px) / 2 - 20px)); }
+  .jc-bookmark {
+    top: 70px;
+    left: calc(100% - 20px);
+    flex-direction: row;
+    gap: 0.4em;
+    justify-content: center;
+    align-items: center;
+    width: 58px;
+    height: 170px;
+    padding: 0 0 14px 20px;
+    font-size: 14px;
+    writing-mode: vertical-rl;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 70% calc(100% - 12px), 40% 100%, 0 100%);
+  }
+  .jc-bookmark small { font-size: 12px; }
+}
+/* papers: a venue tag and linked title per row */
+.jc-papers { margin-top: 1.8cqw; padding-top: 1.8cqw; border-top: 1px solid rgba(232, 196, 124, 0.45); }
+.jc-papers h3 {
+  margin: 0 0 1cqw;
+  color: var(--jc-gold);
+  font-family: var(--tex);
+  font-size: max(10px, 1.64cqw);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.jc-papers ol { list-style: none; margin: 0 0 1.4cqw; padding: 0; }
+.jc-papers ol:last-child { margin-bottom: 0; }
+.jc-papers li {
+  display: grid;
+  grid-template-columns: max(98px, 16.5cqw) minmax(0, 1fr);
+  gap: 1.5cqw;
+  align-items: baseline;
+  padding: 0.55cqw 0;
+  font-size: max(12.5px, 2.05cqw);
+  line-height: 1.3;
+}
+.jc-papers a { color: var(--jc-paper); }
+.jc-papers a:hover { color: var(--jc-gold); }
+.jc-venue {
+  justify-self: start;
+  padding: 0 0.45em;
+  border: 1px solid var(--jc-gold);
+  border-radius: 2px;
+  color: var(--jc-gold);
+  font-size: 0.78em;
+  line-height: 1.5;
+  white-space: nowrap;
+}
 .jc-open {
   position: absolute;
-  right: 6cqw;
-  bottom: 5cqw;
-  padding: 0.55em 1.2em;
+  z-index: 1;
+  top: max(84px, 19cqw);
+  left: 7cqw;
+  padding: 0.5em 1.1em;
   border: 0;
   border-radius: 4px;
   background: #f0b429;
@@ -1323,8 +1434,9 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   .has-masthead .close-toggle { margin-left: 0.85rem; }
   .has-masthead .spread-toggle, .has-masthead .theme-toggle { margin-left: 0.6rem; }
 }
-@media screen and (min-width: 1000px) {
-  .jc-page { transform: perspective(3000px) rotateY(-2.5deg); transform-origin: left center; }
+/* laptops and up: the whole cover fits in the window, flat so its text stays upright */
+@media screen and (min-width: 641px) {
+  .jc-book { width: min(760px, calc(100vw - 58px), max(520px, calc((100vh - 48px) * 0.7727))); }
 }
 @media print {
   .journal-cover { display: none !important; }
@@ -1335,9 +1447,8 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   .site-nav.has-masthead { column-gap: 0.5rem; }
   .site-nav.has-masthead .masthead-name { font-size: 0.8rem; }
   .site-nav.has-masthead .masthead-issue { font-size: 0.74rem; }
-  .jc-page { margin-top: 0.75rem; aspect-ratio: auto; }
-  .jc-text { padding-bottom: 4cqw; }
-  .jc-open { position: static; display: block; margin: 2cqw 7cqw 7cqw auto; }
+  .jc-page { aspect-ratio: auto; }
+  .jc-text { padding-bottom: 6cqw; }
 }
 
 /* print: one sheet per printed page, light colours, no screen chrome */
