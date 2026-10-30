@@ -991,6 +991,14 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   text-align: center;
 }
 
+/* never hyphenate a link (an email split as "utoron-to.ca" looks broken) */
+.intro p a { hyphens: none; -webkit-hyphens: none; }
+.intro p a[href^="mailto:"] { white-space: nowrap; }
+/* Publications follows the introduction closely, as the next section of a paper */
+.intro + .pub-section > h2 { margin-top: 1.4rem; }
+/* ragged-right so the long email address doesn't stretch the line before it */
+.intro-text p:last-child { margin-bottom: 0; text-align: left; }
+
 /* print: one sheet per printed page, light colours, no screen chrome */
 @page { size: letter; margin: 0.55in 0.6in; }
 @media print {
