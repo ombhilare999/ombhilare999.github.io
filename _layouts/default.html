@@ -109,7 +109,7 @@
       var root = document.documentElement;
       var main = document.querySelector("main");
       function fit() {
-        var spreadWidth = 2 * 900 + 44 + 14; // two sheets, the cover's padding and the page edges
+        var spreadWidth = 2 * 900 + 58 + 14; // two sheets, the cover's padding and the page edges
         main.style.setProperty("--spread-zoom", Math.min(1, (window.innerWidth - 48) / spreadWidth));
       }
       function apply(on) {

@@ -146,15 +146,6 @@ body {
   .spread-toggle { display: block; }
   /* the spread reads as an open hardbound monograph: ivory pages on a
      dark cloth binding, shaded toward the spine, page edges at the sides */
-  :root[data-view="spread"]:has(main.paged) {
-    --bg: #fbf8f1;
-    --code-bg: #f2ede2;
-    --rule: #e3dccd;
-    --cover: #1f2a3c;
-    --spine-shade: rgba(60, 45, 20, 0.16);
-    --edge-1: #ebe5d8;
-    --edge-2: #d9d1c0;
-  }
   :root[data-view="spread"] main.paged {
     display: grid;
     grid-template-columns: 900px 900px;
@@ -163,7 +154,7 @@ body {
     gap: 0;
     width: max-content;
     margin: 2.5rem auto 3rem;
-    padding: 18px 22px;
+    padding: 18px 29px;
     border-radius: 6px;
     background: linear-gradient(160deg, color-mix(in srgb, var(--cover) 88%, #fff) 0%, var(--cover) 60%);
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
@@ -188,10 +179,42 @@ body {
     box-shadow: 3px 0 0 var(--edge-1), 5px 0 0 var(--edge-2), 7px 0 0 var(--edge-1);
     border-radius: 0 3px 3px 0;
   }
-  :root[data-view="spread"] .arxiv-stamp { display: none; }
+  :root[data-view="spread"]:has(main.paged) .arxiv-stamp { display: none; }
 }
-@media screen and (min-width: 1100px) and (prefers-color-scheme: dark) {
-  :root[data-view="spread"]:has(main.paged):not([data-theme="light"]) {
+
+/* desktop: every page is ivory paper bound in dark cloth. A lone sheet is a
+   right-hand page (spine shade at its left, page edges at its right); the
+   two-page view below turns a pair of sheets into an open book. */
+@media screen and (min-width: 1000px) {
+  :root {
+    --bg: #fbf8f1;
+    --code-bg: #f2ede2;
+    --rule: #e3dccd;
+    --cover: #1f2a3c;
+    --spine-shade: rgba(60, 45, 20, 0.16);
+    --edge-1: #ebe5d8;
+    --edge-2: #d9d1c0;
+  }
+  main {
+    width: calc(900px + 44px + 7px);
+    margin: 2.5rem auto 3rem;
+    padding: 18px 29px 18px 22px;
+    border-radius: 6px;
+    background: linear-gradient(160deg, color-mix(in srgb, var(--cover) 88%, #fff) 0%, var(--cover) 60%);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+  .sheet {
+    width: 900px;
+    max-width: none;
+    margin: 0;
+    border-radius: 0 3px 3px 0;
+    background-image: linear-gradient(to right, var(--spine-shade), transparent 5%);
+    box-shadow: 3px 0 0 var(--edge-1), 5px 0 0 var(--edge-2), 7px 0 0 var(--edge-1);
+  }
+  .sheet + .sheet { margin-top: 14px; }
+}
+@media screen and (min-width: 1000px) and (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
     --bg: #1d1c19;
     --code-bg: #26241f;
     --rule: #34312a;
@@ -201,8 +224,8 @@ body {
     --edge-2: #171613;
   }
 }
-@media screen and (min-width: 1100px) {
-  :root[data-view="spread"][data-theme="dark"]:has(main.paged) {
+@media screen and (min-width: 1000px) {
+  :root[data-theme="dark"] {
     --bg: #1d1c19;
     --code-bg: #26241f;
     --rule: #34312a;
@@ -219,7 +242,7 @@ body {
   .arxiv-stamp {
     display: block;
     position: fixed;
-    left: calc(50% - 450px - 2.75rem);
+    left: calc(50% - 475px - 3rem);
     top: 50%;
     transform: translate(-50%, -50%) rotate(-90deg);
     font-family: var(--tex);
