@@ -44,8 +44,15 @@
   {% for sheet in sheets %}
   <div class="sheet">
     {% if forloop.first %}
-    <nav class="site-nav">
+    <nav class="site-nav{% if page.url == '/' %} has-masthead{% endif %}">
+      {% if page.url == "/" %}
+      <a class="site-name masthead-name" href="{{ '/' | relative_url }}">
+        <span>Proceedings of {{ site.author.name }}</span>
+        <span class="masthead-issue">Vol. {{ vol }}, No. {{ issue }} &middot; {{ site.time | date: "%B %Y" }}</span>
+      </a>
+      {% else %}
       <a class="site-name" href="{{ '/' | relative_url }}">{{ site.author.name }}</a>
+      {% endif %}
       <span class="nav-links">
         <a href="{{ '/#publications' | relative_url }}">Publications</a>
         <a href="{{ '/blog/' | relative_url }}">Blog</a>
