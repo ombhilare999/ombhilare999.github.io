@@ -433,7 +433,7 @@ footer {
   align-items: center;
   border-bottom: 3px double var(--rule);
 }
-.masthead-name { display: flex; flex-direction: column; line-height: 1.3; }
+.masthead-name { display: flex; flex-direction: column; line-height: 1.3; white-space: nowrap; }
 .masthead-name:hover { text-decoration: none; }
 .masthead-issue { font-size: 0.82rem; color: var(--muted); }
 
@@ -1212,6 +1212,120 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
 .course { display: block; font-size: 0.92rem; }
 .course strong { font-weight: 600; }
 .teaching-list .item-meta { display: block; font-size: 0.78rem; color: var(--muted); }
+
+/* close button in the nav */
+.close-toggle {
+  margin-left: 1.1rem;
+  padding: 0.05rem 0.6rem;
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  cursor: pointer;
+}
+.close-toggle:hover { background: var(--accent); color: var(--on-accent); }
+
+/* front cover: a closed journal issue with the summary on it */
+.journal-cover { display: none; }
+:root[data-closed] .journal-cover { display: block; }
+:root[data-closed] main,
+:root[data-closed] .arxiv-stamp { display: none !important; }
+.jc-page {
+  --jc-ink: #142033;
+  --jc-navy: #1f4e8c;
+  position: relative;
+  overflow: hidden;
+  container-type: inline-size;
+  width: min(760px, calc(100vw - 32px));
+  aspect-ratio: 8.5 / 11;
+  margin: 1.5rem auto 3rem;
+  border-radius: 1px 3px 3px 1px;
+  background: #cfdce6;
+  color: var(--jc-ink);
+  box-shadow:
+    inset 5px 0 7px -3px rgba(0, 0, 0, 0.3),
+    1px 1px 0 #e6dcc6, 2px 2px 0 #c6b591, 3px 3px 0 #e6dcc6, 4px 4px 0 #c6b591,
+    5px 5px 0 #161b26,
+    16px 26px 44px rgba(0, 0, 0, 0.34);
+}
+.jc-shape { position: absolute; top: 0; left: 0; width: 100%; height: 129.4cqw; } /* letter proportions, however tall the text makes the page */
+.jc-pale { background: #f4f6f8; clip-path: polygon(0 0, 100% 0, 100% 58%, 36% 30%, 0 34%); }
+.jc-photo { object-fit: cover; object-position: 60% 50%; clip-path: polygon(36% 30%, 68% 5%, 100% 5%, 100% 58%); }
+.jc-navy { background: var(--jc-navy); clip-path: polygon(42% 0, 94% 0, 68% 20%); }
+.jc-accent { background: #16304f; clip-path: polygon(94% 0, 100% 0, 100% 5%, 87.6% 5%); }
+.jc-mark {
+  position: absolute;
+  top: 5%;
+  left: 7%;
+  display: flex;
+  align-items: center;
+  gap: 2.2cqw;
+  font-family: var(--caps);
+  font-size: max(11px, 2.1cqw);
+  line-height: 1.25;
+}
+.jc-mark img { width: max(34px, 7.5cqw); height: auto; }
+.jc-date {
+  position: absolute;
+  top: 1.6%;
+  left: 54%;
+  margin: 0;
+  width: 30%;
+  color: #fff;
+  font-size: max(9.5px, 1.75cqw);
+  line-height: 1.35;
+  text-align: center;
+}
+.jc-text { position: relative; padding: 62cqw 7cqw 13cqw; }
+.jc-text h2 {
+  margin: 0;
+  color: var(--jc-ink);
+  font-family: var(--tex);
+  font-size: max(32px, 8.4cqw);
+  letter-spacing: 0;
+  text-align: left;
+  line-height: 1.05;
+}
+.jc-sub { margin: 0.5cqw 0 2.6cqw; font-family: var(--tex); font-size: max(14px, 2.9cqw); line-height: 1.2; }
+.jc-text dl { margin: 0; font-size: max(12.5px, 1.95cqw); line-height: 1.35; }
+.jc-text dt { font-weight: 600; margin-top: 1.05cqw; }
+.jc-text dd { margin: 0; }
+.jc-open {
+  position: absolute;
+  right: 5cqw;
+  bottom: 4cqw;
+  padding: 0.45em 1em;
+  border: 1px solid var(--jc-navy);
+  border-radius: 3px;
+  background: var(--jc-navy);
+  color: #fff;
+  font: inherit;
+  font-size: max(13px, 1.9cqw);
+  cursor: pointer;
+}
+.jc-open:hover { background: #16304f; }
+@media screen and (min-width: 641px) {
+  .has-masthead .nav-links a { margin-left: 0.85rem; }
+  .has-masthead .close-toggle { margin-left: 0.85rem; }
+  .has-masthead .spread-toggle, .has-masthead .theme-toggle { margin-left: 0.6rem; }
+}
+@media screen and (min-width: 1000px) {
+  .jc-page { transform: perspective(3000px) rotateY(-2.5deg); transform-origin: left center; }
+}
+@media print {
+  .journal-cover { display: none !important; }
+  :root[data-closed] main { display: block !important; }
+}
+@media screen and (max-width: 640px) {
+  .site-nav .close-toggle { order: 1; margin-left: 0; font-size: 0.8rem; padding: 0 0.45rem; }
+  .site-nav.has-masthead { column-gap: 0.5rem; }
+  .site-nav.has-masthead .masthead-name { font-size: 0.8rem; }
+  .site-nav.has-masthead .masthead-issue { font-size: 0.74rem; }
+  .jc-page { margin-top: 0.75rem; aspect-ratio: auto; }
+  .jc-text { padding-bottom: 4cqw; }
+  .jc-open { position: static; display: block; margin: 0 7cqw 7cqw auto; }
+}
 
 /* print: one sheet per printed page, light colours, no screen chrome */
 @page { size: letter; margin: 0.55in 0.6in; }

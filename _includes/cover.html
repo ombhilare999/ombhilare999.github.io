@@ -1,0 +1,31 @@
+{% comment %} Front cover and summary, shown when the journal is closed. {% endcomment %}
+{% assign awards = site.data.publications | where_exp: "p", "p.award" %}
+<section class="journal-cover" aria-label="Summary">
+  <div class="jc-page">
+    <div class="jc-shape jc-pale" aria-hidden="true"></div>
+    <img class="jc-shape jc-photo" src="{{ '/assets/img/photography/rockies-highway.jpg' | relative_url }}" alt="" loading="lazy">
+    <div class="jc-shape jc-navy" aria-hidden="true"></div>
+    <div class="jc-shape jc-accent" aria-hidden="true"></div>
+
+    <div class="jc-mark">
+      <img src="{{ '/assets/favicon.svg' | relative_url }}" alt="">
+      <span>Proceedings of<br>{{ site.author.name }}</span>
+    </div>
+    <p class="jc-date">Vol. {{ vol }}, No. {{ issue }}<br>{{ site.time | date: "%B %Y" }}<br>Toronto, Canada</p>
+
+    <div class="jc-text">
+      <h2>{{ site.author.name }}</h2>
+      <p class="jc-sub">Ph.D. Candidate in Computer Architecture and Reconfigurable Computing</p>
+      <dl>
+        <dt>Affiliation</dt><dd>{{ site.author.affiliation }}, Dept. of ECE</dd>
+        <dt>Advisor</dt><dd>Prof. Jason Anderson</dd>
+        <dt>Research</dt><dd>CGRA architecture, reconfigurable computing, CAD algorithms</dd>
+        <dt>Publications</dt><dd>{{ site.data.publications.size }} papers{% for p in awards %}, including the {{ p.award }} at {{ p.badge }}{% endfor %}</dd>
+        <dt>Invited talks</dt><dd>{% for t in site.data.talks %}{{ t.title }} ({{ t.short }}){% unless forloop.last %}; {% endunless %}{% endfor %}</dd>
+        <dt>Experience</dt><dd>RIKEN R-CCS, AMD, EPFL, IIT Madras, Google Summer of Code</dd>
+        <dt>Teaching</dt><dd>{{ site.data.teaching.size }} courses at the {{ site.author.affiliation }}</dd>
+      </dl>
+    </div>
+    <button type="button" class="jc-open">Open the journal &rarr;</button>
+  </div>
+</section>
