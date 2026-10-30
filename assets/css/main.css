@@ -947,8 +947,40 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
 
 /* tighter rhythm and a slimmer photo strip on the dense second page */
 .sheet + .sheet h2 { margin: 1.6rem 0 0.7rem; }
+.section-trio { margin-top: 0.5rem; }
 .sheet + .sheet .page-body > section:first-child > h2 { margin-top: 1rem; }
 .sheet .peek-strip img { aspect-ratio: 2.4 / 1; }
+
+/* talks, news and writing as three narrow columns, each item a date line
+   over a title, like a journal's front-matter sidebar */
+.compact-list { list-style: none; padding: 0; margin: 0; }
+.compact-list li { padding: 0.25rem 0 0.45rem; line-height: 1.35; font-size: 0.9rem; }
+.compact-list .date { display: block; font-size: 0.75rem; }
+.compact-list .item-meta { display: block; font-size: 0.78rem; color: var(--muted); }
+.section-trio .more { margin-top: 0.3rem; font-size: 0.85rem; }
+@media screen and (min-width: 900px), print {
+  .section-trio {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 2rem;
+  }
+  .section-trio > section + section { position: relative; }
+  .section-trio > section + section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -1rem;
+    border-left: 1px solid var(--rule);
+  }
+  .section-trio h2 { font-size: 1.1rem; }
+}
+
+/* every sheet as tall as the tallest, so the pages read as one set */
+@media screen and (min-width: 900px) {
+  :root:not([data-view="spread"]) main { display: grid; grid-auto-rows: 1fr; }
+  .page-body { display: flex; flex-direction: column; }
+}
 
 /* print: one sheet per printed page, light colours, no screen chrome */
 @page { size: letter; margin: 0.55in 0.6in; }

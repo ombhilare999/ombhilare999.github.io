@@ -32,8 +32,8 @@ links:
   - name: ORCID
     url: https://orcid.org/0009-0009-9957-3338
 
-# number of news items shown on the home page before "show all"
-news_limit: 5
+# number of news items and posts shown on the home page before "all"
+news_limit: 3
 
 permalink: /blog/:title/
 markdown: kramdown
