@@ -103,7 +103,6 @@ body {
   .page-foot { padding: 1rem 0 0.6rem; font-size: 0.72rem; }
   .running-head { font-size: 0.75rem; padding-top: 0.8rem; }
   .running-head span:last-child { display: none; }
-  .masthead { flex-direction: column; align-items: center; gap: 0; text-align: center; }
 
   /* short, wide figure crops so a paper entry is mostly its reference */
   /* .sheet prefix: these must beat the base rules defined further down */
@@ -144,40 +143,103 @@ body {
 :root[data-view="spread"] .spread-toggle .icon-single { display: block; }
 @media screen and (min-width: 1100px) {
   .spread-toggle { display: block; }
-  /* the spread reads as an open hardbound monograph: ivory pages on a
-     dark cloth binding, shaded toward the spine, page edges at the sides */
+  /* the spread is an open hardbound volume seen from above: flat leaves
+     meeting at a dark stitched fold, a thick stack of paper edges at each
+     side, and a thin dark cover */
   :root[data-view="spread"] main.paged {
+    position: relative;
+    left: 0;
+    isolation: isolate;
     display: grid;
     grid-template-columns: 900px 900px;
     justify-content: center;
     align-items: stretch; /* facing pages share one height */
     gap: 0;
     width: max-content;
-    margin: 2.5rem auto 3rem;
-    padding: 18px 29px;
-    border-radius: 6px;
-    background: linear-gradient(160deg, color-mix(in srgb, var(--cover) 88%, #fff) 0%, var(--cover) 60%);
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    margin: 3rem auto 4.5rem;
+    padding: 24px 60px 28px;
     zoom: var(--spread-zoom, 1);
+  }
+  /* cover */
+  :root[data-view="spread"] main.paged::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    border-radius: 3px;
+    background: var(--cover);
+    /* board thickness, then the shadow it throws on the desk */
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 2px 0 #0a0d13, 0 4px 0 #0a0d13, 0 6px 0 #05070b, 0 8px 0 #05070b,
+      0 34px 54px 6px rgba(0, 0, 0, 0.38);
+  }
+  /* binding thread showing in the fold */
+  :root[data-view="spread"] main.paged::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 24px;
+    bottom: 28px;
+    left: 50%;
+    width: 2px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background: repeating-linear-gradient(to bottom, transparent 0 190px, var(--thread) 190px 240px);
   }
   :root[data-view="spread"] main.paged .sheet {
     margin: 0;
     width: 900px;
-    box-shadow: none;
-    border-radius: 0;
   }
   :root[data-view="spread"] main.paged .sheet + .sheet { margin-top: 0; }
-  /* left page: shading toward the spine on its right, page edges on its left */
   :root[data-view="spread"] main.paged .sheet:nth-child(odd) {
-    background-image: linear-gradient(to left, var(--spine-shade), transparent 7%);
-    box-shadow: -3px 0 0 var(--edge-1), -5px 0 0 var(--edge-2), -7px 0 0 var(--edge-1);
-    border-radius: 3px 0 0 3px;
+    background-image:
+      var(--grain),
+      linear-gradient(to left, var(--gutter-1), var(--gutter-2) 1%, var(--gutter-3) 2.6%, var(--page-glow) 4.5%, transparent 8%);
+    transform-origin: right center;
+    transform: perspective(3000px) rotateY(3deg);
+    box-shadow:
+      -2px 0 0 var(--edge-1),
+      -4px 0 0 var(--edge-2),
+      -6px 0 0 var(--edge-1),
+      -8px 0 0 var(--edge-2),
+      -10px 0 0 var(--edge-1),
+      -12px 0 0 var(--edge-2),
+      -14px 0 0 var(--edge-1),
+      -16px 0 0 var(--edge-2),
+      -18px 0 0 var(--edge-1),
+      -20px 0 0 var(--edge-2),
+      -22px 0 0 var(--edge-1),
+      -24px 0 0 var(--edge-2),
+      -26px 0 0 var(--edge-1),
+      -28px 0 0 var(--edge-2),
+      -30px 0 0 var(--edge-1),
+      -32px 0 0 var(--edge-2);
+    border-radius: 1px 0 0 1px;
   }
-  /* right page: mirrored */
+  /* each raised page throws a shadow on the cover below it */
+  :root[data-view="spread"] main.paged .sheet { filter: drop-shadow(0 12px 12px rgba(0, 0, 0, 0.4)); }
   :root[data-view="spread"] main.paged .sheet:nth-child(even) {
-    background-image: linear-gradient(to right, var(--spine-shade), transparent 7%);
-    box-shadow: 3px 0 0 var(--edge-1), 5px 0 0 var(--edge-2), 7px 0 0 var(--edge-1);
-    border-radius: 0 3px 3px 0;
+    transform-origin: left center;
+    transform: perspective(3000px) rotateY(-3deg);
+    box-shadow:
+      2px 0 0 var(--edge-1),
+      4px 0 0 var(--edge-2),
+      6px 0 0 var(--edge-1),
+      8px 0 0 var(--edge-2),
+      10px 0 0 var(--edge-1),
+      12px 0 0 var(--edge-2),
+      14px 0 0 var(--edge-1),
+      16px 0 0 var(--edge-2),
+      18px 0 0 var(--edge-1),
+      20px 0 0 var(--edge-2),
+      22px 0 0 var(--edge-1),
+      24px 0 0 var(--edge-2),
+      26px 0 0 var(--edge-1),
+      28px 0 0 var(--edge-2),
+      30px 0 0 var(--edge-1),
+      32px 0 0 var(--edge-2);
+    border-radius: 0 1px 1px 0;
   }
   :root[data-view="spread"]:has(main.paged) .arxiv-stamp { display: none; }
 }
@@ -190,24 +252,55 @@ body {
     --bg: #fbf8f1;
     --code-bg: #f2ede2;
     --rule: #e3dccd;
-    --cover: #1f2a3c;
+    --cover: #161b26;
     --spine-shade: rgba(60, 45, 20, 0.16);
-    --edge-1: #ebe5d8;
-    --edge-2: #d9d1c0;
+    --edge-1: #e6dcc6;
+    --edge-2: #c6b591;
+    --thread: rgba(235, 225, 200, 0.75);
+    --gutter-1: rgba(50, 36, 14, 0.55);
+    --gutter-2: rgba(50, 36, 14, 0.18);
+    --gutter-3: rgba(50, 36, 14, 0.035);
+    --page-glow: rgba(255, 255, 255, 0.5);
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .25 0 0 0 0 .2 0 0 0 0 .12 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
-  /* each sheet carries its own binding (a 20px cloth ring drawn by
-     box-shadow), so stacked pages are separated by the desk */
-  main { width: 900px; margin: 3.5rem auto 4rem; }
+  /* each sheet is a printed journal page: a stack of leaves beneath it and
+     a thin cover around them, drawn by box-shadow, with the desk between
+     stacked pages */
+  /* the paper edges sit on the right, so nudge the page to stay centered */
+  main { position: relative; left: -16px; width: 900px; margin: 3rem auto 4rem; }
   .sheet {
     width: 900px;
     max-width: none;
     margin: 0;
-    border-radius: 0 3px 3px 0;
-    background-image: linear-gradient(to right, var(--spine-shade), transparent 5%);
+    border-radius: 1px;
+    background-image:
+      var(--grain),
+      linear-gradient(to right, var(--gutter-1), var(--gutter-2) 1%, var(--gutter-3) 2.6%, var(--page-glow) 4.5%, transparent 8%);
     box-shadow:
-      3px 0 0 var(--edge-1), 5px 0 0 var(--edge-2), 7px 0 0 var(--edge-1),
-      0 0 0 20px var(--cover),
-      0 18px 50px 20px rgba(0, 0, 0, 0.25);
+      2px 0 0 var(--edge-1),
+      4px 0 0 var(--edge-2),
+      6px 0 0 var(--edge-1),
+      8px 0 0 var(--edge-2),
+      10px 0 0 var(--edge-1),
+      12px 0 0 var(--edge-2),
+      14px 0 0 var(--edge-1),
+      16px 0 0 var(--edge-2),
+      18px 0 0 var(--edge-1),
+      20px 0 0 var(--edge-2),
+      22px 0 0 var(--edge-1),
+      24px 0 0 var(--edge-2),
+      26px 0 0 var(--edge-1),
+      28px 0 0 var(--edge-2),
+      30px 0 0 var(--edge-1),
+      32px 0 0 var(--edge-2),
+      0 0 0 7px var(--cover),
+      32px 0 0 7px var(--cover),
+      32px 2px 0 7px #0a0d13,
+      32px 4px 0 7px #0a0d13,
+      32px 6px 0 7px #05070b,
+      22px 30px 44px 12px rgba(0, 0, 0, 0.34);
+    transform-origin: left center;
+    transform: perspective(3000px) rotateY(-2.5deg);
   }
   .sheet + .sheet { margin-top: 5rem; }
 }
@@ -218,8 +311,13 @@ body {
     --rule: #34312a;
     --cover: #0f1520;
     --spine-shade: rgba(0, 0, 0, 0.35);
-    --edge-1: #2a2823;
-    --edge-2: #171613;
+    --edge-1: #3a372f;
+    --edge-2: #24221d;
+    --thread: rgba(200, 190, 165, 0.4);
+    --gutter-1: rgba(0, 0, 0, 0.6);
+    --gutter-2: rgba(0, 0, 0, 0.26);
+    --gutter-3: rgba(0, 0, 0, 0.08);
+    --page-glow: rgba(255, 255, 255, 0.015);
   }
 }
 @media screen and (min-width: 1000px) {
@@ -229,8 +327,13 @@ body {
     --rule: #34312a;
     --cover: #0f1520;
     --spine-shade: rgba(0, 0, 0, 0.35);
-    --edge-1: #2a2823;
-    --edge-2: #171613;
+    --edge-1: #3a372f;
+    --edge-2: #24221d;
+    --thread: rgba(200, 190, 165, 0.4);
+    --gutter-1: rgba(0, 0, 0, 0.6);
+    --gutter-2: rgba(0, 0, 0, 0.26);
+    --gutter-3: rgba(0, 0, 0, 0.08);
+    --page-glow: rgba(255, 255, 255, 0.015);
   }
 }
 
@@ -325,19 +428,15 @@ footer {
 .title-block { text-align: center; margin: 2.25rem 0 1.5rem; }
 .title-block h1 { font-size: 2.5rem; margin-bottom: 0.6rem; }
 .title-block p { margin: 0; font-family: var(--tex); }
-/* journal masthead on the first page */
-.masthead {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-top: 0.75rem;
-  padding: 0.35rem 0;
-  border-top: 3px double var(--rule);
-  border-bottom: 1px solid var(--rule);
-  font-family: var(--caps);
-  font-size: 0.85rem;
-  color: var(--muted);
+/* journal masthead: on the first page the nav bar carries the journal line */
+.site-nav.has-masthead {
+  align-items: center;
+  border-bottom: 3px double var(--rule);
 }
+.masthead-name { display: flex; flex-direction: column; line-height: 1.3; }
+.masthead-name:hover { text-decoration: none; }
+.masthead-issue { font-size: 0.82rem; color: var(--muted); }
+
 .fn-mark { font-family: var(--tex); font-size: 0.45em; margin-left: 0.1em; }
 .orcid { display: inline-block; margin-left: 0.3rem; vertical-align: 0.12em; line-height: 0; }
 .orcid:hover { filter: brightness(1.08); }
@@ -943,8 +1042,7 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   .site-nav .theme-toggle { order: 1; margin-left: 0; }
   .site-nav::after { content: ""; order: 2; flex-basis: 100%; height: 0; }
   .nav-links a { order: 3; margin-left: 0; }
-  /* on the title page the masthead's double rule replaces the nav rule */
-  .site-nav:has(~ .page-body .masthead) { border-bottom: 0; margin-bottom: 0; padding-bottom: 0.3rem; }
+  .site-nav.has-masthead .site-name { font-size: 0.92rem; }
   .project-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
   .lightbox figure { max-width: 100vw; }
   .lb-prev, .lb-next { top: auto; bottom: 0.5rem; transform: none; }
@@ -1108,6 +1206,13 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   .project-grid.three-col .project-title { margin-top: 0; }
 }
 
+/* teaching: course and terms, in two columns on wide screens */
+.teaching-list { list-style: none; padding: 0; margin: 0; }
+.teaching-list li { padding: 0 0 0.6rem; line-height: 1.35; }
+.course { display: block; font-size: 0.92rem; }
+.course strong { font-weight: 600; }
+.teaching-list .item-meta { display: block; font-size: 0.78rem; color: var(--muted); }
+
 /* print: one sheet per printed page, light colours, no screen chrome */
 @page { size: letter; margin: 0.55in 0.6in; }
 @media print {
@@ -1145,7 +1250,7 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   .section-pair h2 { margin-top: 0.4rem; }
   footer { margin-top: 0.6rem; padding-top: 0.4rem; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .site-nav, .arxiv-stamp,
+  .site-nav:not(.has-masthead), .nav-links, .arxiv-stamp,
   .lightbox, .filters, .pill-bibtex, .bib-dialog, .more, .peek { display: none !important; }
   .sheet {
     max-width: none;
