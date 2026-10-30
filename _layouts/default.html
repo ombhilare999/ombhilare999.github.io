@@ -136,6 +136,7 @@
         window.scrollTo(0, 0);
         openBtn.focus({ preventScroll: true });
       });
+      document.querySelector(".jc-bookmark").addEventListener("click", function () { openBtn.click(); });
       openBtn.addEventListener("click", function () {
         delete root.dataset.closed;
         remember(true);
