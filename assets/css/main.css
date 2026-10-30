@@ -1234,6 +1234,9 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
 .jc-page {
   --jc-ink: #142033;
   --jc-navy: #1f4e8c;
+  --jc-panel: #14233a;
+  --jc-paper: #f5f1e6;
+  --jc-gold: #e8c47c;
   position: relative;
   overflow: hidden;
   container-type: inline-size;
@@ -1241,8 +1244,8 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   aspect-ratio: 8.5 / 11;
   margin: 1.5rem auto 3rem;
   border-radius: 1px 3px 3px 1px;
-  background: #cfdce6;
-  color: var(--jc-ink);
+  background: var(--jc-panel);
+  color: var(--jc-paper);
   box-shadow:
     inset 5px 0 7px -3px rgba(0, 0, 0, 0.3),
     1px 1px 0 #e6dcc6, 2px 2px 0 #c6b591, 3px 3px 0 #e6dcc6, 4px 4px 0 #c6b591,
@@ -1250,7 +1253,7 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
     16px 26px 44px rgba(0, 0, 0, 0.34);
 }
 .jc-shape { position: absolute; top: 0; left: 0; width: 100%; height: 129.4cqw; } /* letter proportions, however tall the text makes the page */
-.jc-pale { background: #f4f6f8; clip-path: polygon(0 0, 100% 0, 100% 58%, 36% 30%, 0 34%); }
+.jc-pale { background: var(--jc-paper); clip-path: polygon(0 0, 100% 0, 100% 58%, 36% 30%, 0 34%); }
 .jc-photo { object-fit: cover; object-position: 60% 50%; clip-path: polygon(36% 30%, 68% 5%, 100% 5%, 100% 58%); }
 .jc-navy { background: var(--jc-navy); clip-path: polygon(42% 0, 94% 0, 68% 20%); }
 .jc-accent { background: #16304f; clip-path: polygon(94% 0, 100% 0, 100% 5%, 87.6% 5%); }
@@ -1261,6 +1264,7 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   display: flex;
   align-items: center;
   gap: 2.2cqw;
+  color: var(--jc-ink);
   font-family: var(--caps);
   font-size: max(11px, 2.1cqw);
   line-height: 1.25;
@@ -1281,7 +1285,7 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
 .jc-text { position: relative; padding: 66cqw 7cqw 3cqw; font-family: var(--tex); }
 .jc-text h2 {
   margin: 0;
-  color: var(--jc-ink);
+  color: var(--jc-paper);
   font-family: var(--tex);
   font-size: max(32px, 8.4cqw);
   letter-spacing: 0;
@@ -1295,19 +1299,19 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   gap: 1.1cqw 2cqw;
   margin: 0;
   padding-top: 1.8cqw;
-  border-top: 1px solid rgba(20, 32, 51, 0.3);
+  border-top: 1px solid rgba(232, 196, 124, 0.45);
   font-size: max(12.5px, 2.05cqw);
   line-height: 1.35;
 }
 .jc-text dt {
   padding-top: 0.15em;
-  color: var(--jc-navy);
+  color: var(--jc-gold);
   font-size: 0.8em;
   font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
-.jc-text dd { margin: 0; padding-left: 2cqw; border-left: 2px solid var(--jc-navy); }
+.jc-text dd { margin: 0; padding-left: 2cqw; border-left: 1px solid rgba(232, 196, 124, 0.45); }
 .jc-pubs { list-style: none; margin: 0; padding: 0; }
 .jc-open {
   position: absolute;
