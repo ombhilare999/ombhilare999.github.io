@@ -5,6 +5,8 @@ redirect_from:
   - /projects/
   - /repositories/
 running_head: Research Portfolio
+# publications shown on page 1; the rest continue on page 2
+pub_split: 2
 footnote: >-
   <sup>1</sup> Ph.D. candidate, Department of Electrical and Computer Engineering,
   University of Toronto, Toronto, Canada. Research intern, Processor Research Team,
@@ -79,10 +81,24 @@ footnote: >-
   </aside>
 </section>
 
+<section id="publications" class="pub-section">
+  <h2 class="numbered">Publications</h2>
+  <div class="pub-columns two-col">
+  {% for pub in site.data.publications limit: page.pub_split %}{% include publication.html pub=pub %}{% endfor %}
+  </div>
+</section>
+
+<!--pagebreak-->
+<section id="publications-cont" class="pub-section">
+  <p class="continued">II. Publications (continued)</p>
+  <div class="pub-columns two-col">
+  {% for pub in site.data.publications offset: page.pub_split %}{% include publication.html pub=pub %}{% endfor %}
+  </div>
+</section>
 
 <div class="section-trio">
 <section id="talks">
-  <h2>Invited Talks</h2>
+  <h2 class="numbered">Invited Talks</h2>
   <ul class="compact-list">
     {% for t in site.data.talks %}
     <li>
@@ -95,7 +111,7 @@ footnote: >-
 </section>
 
 <section id="news">
-  <h2>News</h2>
+  <h2 class="numbered">News</h2>
   {% assign news = site.news | sort: "date" | reverse %}
   <ul class="compact-list">
     {% for item in news limit: site.news_limit %}
@@ -109,7 +125,7 @@ footnote: >-
 </section>
 
 <section id="writing">
-  <h2>Writing</h2>
+  <h2 class="numbered">Writing</h2>
   {% assign news_posts = site.news | where: "blog", true %}
   {% assign entries = site.posts | concat: news_posts | sort: "date" | reverse %}
   <ul class="compact-list">
@@ -123,14 +139,6 @@ footnote: >-
   <p class="more"><a href="{{ '/blog/' | relative_url }}">All posts &rarr;</a></p>
 </section>
 </div>
-
-<!--pagebreak-->
-<section id="publications">
-  <h2 class="numbered">Publications</h2>
-  <div class="pub-columns two-col">
-  {% for pub in site.data.publications %}{% include publication.html pub=pub %}{% endfor %}
-  </div>
-</section>
 <section id="projects">
   <h2 class="numbered">Projects</h2>
   <p class="section-note">Hardware and FPGA projects, mostly from my undergraduate years.</p>

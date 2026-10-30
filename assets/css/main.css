@@ -118,7 +118,7 @@ body {
   .sheet .row-image img { aspect-ratio: 2.4 / 1; object-fit: cover; }
   .sheet .no-image { aspect-ratio: 2.4 / 1; }
   .sheet .talk-slide { aspect-ratio: auto; padding: 0.8rem 1rem; }
-  .sheet #publications .row + .row, .sheet #talks .row + .row { border-top: 1px dashed var(--rule); }
+  .sheet .pub-section .row + .row, .sheet #talks .row + .row { border-top: 1px dashed var(--rule); }
   .sheet .row { padding: 1rem 0; }
   .sheet .acknowledgment p { text-align: left; }
 }
@@ -199,7 +199,7 @@ h2 {
   text-align: center;
   margin: 2.75rem 0 1.1rem;
 }
-main { counter-reset: section fig; }
+main { counter-reset: section fig ref; }
 h2.numbered::before {
   counter-increment: section;
   content: counter(section, upper-roman) ".\2002";
@@ -317,7 +317,7 @@ footer {
   pointer-events: none;
 }
 /* briefly highlight a reference reached from a citation */
-#publications .row:target { animation: ref-flash 2.2s ease-out; }
+.pub-section .row:target { animation: ref-flash 2.2s ease-out; }
 @keyframes ref-flash { 0%, 40% { background: var(--award-bg); } 100% { background: transparent; } }
 
 /* unnumbered acknowledgment section, set slightly smaller as in IEEE papers */
@@ -639,8 +639,7 @@ ul.posts li { padding: 0.3rem 0; }
 }
 .row-text { flex: 1; min-width: 0; }
 /* publications read as an IEEE reference list: [1] A. Author, "Title," in Venue, year. */
-#publications { counter-reset: ref; }
-#publications .row { counter-increment: ref; }
+.pub-section .row { counter-increment: ref; }
 .ref { margin: 0; font-size: 0.92rem; line-height: 1.5; }
 .ref-num::before { content: "[" counter(ref) "]"; font-weight: 600; margin-right: 0.15rem; }
 .ref strong { font-weight: 600; }
@@ -874,36 +873,36 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
 /* compact entries: an ultra-small thumbnail floats left and the reference
    wraps around it, as small inline figures do in a dense paper page.
    .sheet prefix outranks the column and phone rules above. */
-.sheet #publications .row,
+.sheet .pub-section .row,
 .sheet #talks .row {
   display: block;
   padding: 0.7rem 0 0.9rem;
 }
-.sheet #publications .row::after,
+.sheet .pub-section .row::after,
 .sheet #talks .row::after { content: ""; display: block; clear: both; }
-.sheet #publications .row-image,
+.sheet .pub-section .row-image,
 .sheet #talks .row-image {
   float: left;
   width: 112px;
   margin: 0.3rem 0.8rem 0.2rem 0;
 }
-.sheet #publications .row-image img,
-.sheet #publications .no-image {
+.sheet .pub-section .row-image img,
+.sheet .pub-section .no-image {
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
-.sheet #publications .no-image { padding: 0.3rem; font-size: 0.6rem; }
-.sheet #publications .badge {
+.sheet .pub-section .no-image { padding: 0.3rem; font-size: 0.6rem; }
+.sheet .pub-section .badge {
   top: -0.45rem;
   left: -0.35rem;
   padding: 0 0.3rem;
   font-size: 0.6rem;
 }
 /* inline-block so the label flows beside the floated thumbnail */
-.sheet #publications .award { display: inline-block; font-size: 0.72rem; margin: 0 0 0.2rem; }
-.sheet #publications .links,
+.sheet .pub-section .award { display: inline-block; font-size: 0.72rem; margin: 0 0 0.2rem; }
+.sheet .pub-section .links,
 .sheet #talks .links { clear: none; margin-top: 0.35rem; }
-.sheet #publications .pill,
+.sheet .pub-section .pill,
 .sheet #talks .pill { font-size: 0.74rem; padding: 0.05rem 0.45rem; }
 
 /* the talk becomes a miniature title slide */
@@ -980,6 +979,16 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
 @media screen and (min-width: 900px) {
   :root:not([data-view="spread"]) main { display: grid; grid-auto-rows: 1fr; }
   .page-body { display: flex; flex-direction: column; }
+}
+
+/* a section carried over from the previous page, as journals mark it */
+.continued {
+  margin: 1rem 0 0.4rem;
+  font-family: var(--caps);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--muted);
+  text-align: center;
 }
 
 /* print: one sheet per printed page, light colours, no screen chrome */
