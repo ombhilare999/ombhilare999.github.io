@@ -144,62 +144,99 @@ body {
 :root[data-view="spread"] .spread-toggle .icon-single { display: block; }
 @media screen and (min-width: 1100px) {
   .spread-toggle { display: block; }
-  /* the spread is an open saddle-stitched journal: leaves curving into the
-     center fold, two staples, a page stack at each side, a thin cover behind */
+  /* the spread is an open hardbound journal volume: arched leaves meeting at
+     a fold, a thick page block at the sides and foot, navy boards with fine
+     gold rules, and a soft shadow on the desk. Box-shadows follow the arched
+     border-radius, which is what draws the curved page layers. */
   :root[data-view="spread"] main.paged {
     position: relative;
+    isolation: isolate;
     display: grid;
     grid-template-columns: 900px 900px;
     justify-content: center;
     align-items: stretch; /* facing pages share one height */
     gap: 0;
     width: max-content;
-    margin: 2.5rem auto 3rem;
-    padding: 9px 15px 15px;
-    border-radius: 4px;
-    background: linear-gradient(to right, var(--cover) 49.6%, #000 50%, var(--cover) 50.4%);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18), 0 28px 56px rgba(0, 0, 0, 0.3);
+    margin: 2.5rem auto 5rem;
+    padding: 4px 44px 40px;
     zoom: var(--spread-zoom, 1);
   }
+  /* boards */
+  :root[data-view="spread"] main.paged::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 26px 0 0;
+    border-radius: 4px;
+    background: var(--grain), linear-gradient(to right, var(--cover), color-mix(in srgb, var(--cover) 86%, #fff) 2%, var(--cover) 5%, var(--cover) 95%, color-mix(in srgb, var(--cover) 86%, #fff) 98%, var(--cover));
+    box-shadow:
+      inset 0 0 0 5px var(--cover),
+      inset 0 0 0 6px var(--cover-rule),
+      inset 0 0 0 9px var(--cover),
+      inset 0 0 0 10px var(--cover-rule),
+      0 2px 3px rgba(0, 0, 0, 0.35);
+  }
+  /* shadow on the desk */
   :root[data-view="spread"] main.paged::before {
     content: "";
     position: absolute;
-    z-index: 2;
-    top: 9px;
-    bottom: 15px;
-    left: 50%;
-    width: 5px;
-    transform: translateX(-50%);
-    pointer-events: none;
-    background:
-      linear-gradient(to right, #6f7277, #e4e6e8 45%, #85888d) center 24% / 3px 58px no-repeat,
-      linear-gradient(to right, #6f7277, #e4e6e8 45%, #85888d) center 76% / 3px 58px no-repeat;
-    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.45));
+    z-index: -2;
+    left: 2%;
+    right: 2%;
+    bottom: -30px;
+    height: 70px;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.14) 65%, transparent);
   }
   :root[data-view="spread"] main.paged .sheet {
     margin: 0;
     width: 900px;
-    box-shadow: none;
-    border-radius: 0;
   }
   :root[data-view="spread"] main.paged .sheet + .sheet { margin-top: 0; }
-  /* left leaf: curves into the fold on its right, stack on its left */
+  /* left leaf: rises gently from the outer edge, drops quickly into the fold */
   :root[data-view="spread"] main.paged .sheet:nth-child(odd) {
     background-image:
       var(--grain),
-      linear-gradient(to left, var(--gutter-1), var(--gutter-2) 1%, var(--gutter-3) 2.6%, var(--page-glow) 4.5%, transparent 8%);
+      linear-gradient(to left, var(--gutter-1), var(--gutter-2) 1%, var(--gutter-3) 2.6%, var(--page-glow) 4.5%, transparent 8%),
+      linear-gradient(to right, var(--gutter-3), transparent 3%);
     box-shadow:
-      -1px 1px 0 var(--edge-1), -2px 2px 0 var(--edge-2), -3px 3px 0 var(--edge-1),
-      -4px 4px 0 var(--edge-2), -5px 5px 0 var(--edge-1), -6px 6px 0 var(--edge-2);
-    border-radius: 2px 0 0 2px;
+      -2px 2px 0 var(--edge-1),
+      -4px 4px 0 var(--edge-2),
+      -6px 6px 0 var(--edge-1),
+      -8px 8px 0 var(--edge-2),
+      -10px 10px 0 var(--edge-1),
+      -12px 12px 0 var(--edge-2),
+      -14px 14px 0 var(--edge-1),
+      -16px 16px 0 var(--edge-2),
+      -18px 18px 0 var(--edge-1),
+      -20px 20px 0 var(--edge-2),
+      -22px 22px 0 var(--edge-1),
+      -24px 24px 0 var(--edge-2);
+    border-radius: 70% 30% 30% 70% / 18px 18px 14px 14px;
   }
   /* right leaf: mirrored */
   :root[data-view="spread"] main.paged .sheet:nth-child(even) {
+    background-image:
+      var(--grain),
+      linear-gradient(to right, var(--gutter-1), var(--gutter-2) 1%, var(--gutter-3) 2.6%, var(--page-glow) 4.5%, transparent 8%),
+      linear-gradient(to left, var(--gutter-3), transparent 3%);
     box-shadow:
-      1px 1px 0 var(--edge-1), 2px 2px 0 var(--edge-2), 3px 3px 0 var(--edge-1),
-      4px 4px 0 var(--edge-2), 5px 5px 0 var(--edge-1), 6px 6px 0 var(--edge-2);
-    border-radius: 0 2px 2px 0;
+      2px 2px 0 var(--edge-1),
+      4px 4px 0 var(--edge-2),
+      6px 6px 0 var(--edge-1),
+      8px 8px 0 var(--edge-2),
+      10px 10px 0 var(--edge-1),
+      12px 12px 0 var(--edge-2),
+      14px 14px 0 var(--edge-1),
+      16px 16px 0 var(--edge-2),
+      18px 18px 0 var(--edge-1),
+      20px 20px 0 var(--edge-2),
+      22px 22px 0 var(--edge-1),
+      24px 24px 0 var(--edge-2);
+    border-radius: 30% 70% 70% 30% / 18px 18px 14px 14px;
   }
+  :root[data-view="spread"] main.paged .sheet .site-nav,
+  :root[data-view="spread"] main.paged .sheet .running-head { margin-top: 0.5rem; }
   :root[data-view="spread"]:has(main.paged) .arxiv-stamp { display: none; }
 }
 
@@ -215,6 +252,7 @@ body {
     --spine-shade: rgba(60, 45, 20, 0.16);
     --edge-1: #ebe5d8;
     --edge-2: #d9d1c0;
+    --cover-rule: #b39a63;
     --gutter-1: rgba(50, 36, 14, 0.34);
     --gutter-2: rgba(50, 36, 14, 0.12);
     --gutter-3: rgba(50, 36, 14, 0.035);
@@ -251,6 +289,7 @@ body {
     --spine-shade: rgba(0, 0, 0, 0.35);
     --edge-1: #2a2823;
     --edge-2: #171613;
+    --cover-rule: #6d5e3d;
     --gutter-1: rgba(0, 0, 0, 0.6);
     --gutter-2: rgba(0, 0, 0, 0.26);
     --gutter-3: rgba(0, 0, 0, 0.08);
@@ -266,6 +305,7 @@ body {
     --spine-shade: rgba(0, 0, 0, 0.35);
     --edge-1: #2a2823;
     --edge-2: #171613;
+    --cover-rule: #6d5e3d;
     --gutter-1: rgba(0, 0, 0, 0.6);
     --gutter-2: rgba(0, 0, 0, 0.26);
     --gutter-3: rgba(0, 0, 0, 0.08);
