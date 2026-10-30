@@ -144,9 +144,10 @@ body {
 :root[data-view="spread"] .spread-toggle .icon-single { display: block; }
 @media screen and (min-width: 1100px) {
   .spread-toggle { display: block; }
-  /* the spread reads as an open hardbound monograph: ivory pages on a
-     dark cloth binding, shaded toward the spine, page edges at the sides */
+  /* the spread is an open saddle-stitched journal: leaves curving into the
+     center fold, two staples, a page stack at each side, a thin cover behind */
   :root[data-view="spread"] main.paged {
+    position: relative;
     display: grid;
     grid-template-columns: 900px 900px;
     justify-content: center;
@@ -154,11 +155,26 @@ body {
     gap: 0;
     width: max-content;
     margin: 2.5rem auto 3rem;
-    padding: 18px 29px;
-    border-radius: 6px;
-    background: linear-gradient(160deg, color-mix(in srgb, var(--cover) 88%, #fff) 0%, var(--cover) 60%);
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    padding: 9px 15px 15px;
+    border-radius: 4px;
+    background: linear-gradient(to right, var(--cover) 49.6%, #000 50%, var(--cover) 50.4%);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18), 0 28px 56px rgba(0, 0, 0, 0.3);
     zoom: var(--spread-zoom, 1);
+  }
+  :root[data-view="spread"] main.paged::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 9px;
+    bottom: 15px;
+    left: 50%;
+    width: 5px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background:
+      linear-gradient(to right, #6f7277, #e4e6e8 45%, #85888d) center 24% / 3px 58px no-repeat,
+      linear-gradient(to right, #6f7277, #e4e6e8 45%, #85888d) center 76% / 3px 58px no-repeat;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.45));
   }
   :root[data-view="spread"] main.paged .sheet {
     margin: 0;
@@ -167,17 +183,22 @@ body {
     border-radius: 0;
   }
   :root[data-view="spread"] main.paged .sheet + .sheet { margin-top: 0; }
-  /* left page: shading toward the spine on its right, page edges on its left */
+  /* left leaf: curves into the fold on its right, stack on its left */
   :root[data-view="spread"] main.paged .sheet:nth-child(odd) {
-    background-image: linear-gradient(to left, var(--spine-shade), transparent 7%);
-    box-shadow: -3px 0 0 var(--edge-1), -5px 0 0 var(--edge-2), -7px 0 0 var(--edge-1);
-    border-radius: 3px 0 0 3px;
+    background-image:
+      var(--grain),
+      linear-gradient(to left, var(--gutter-1), var(--gutter-2) 1%, var(--gutter-3) 2.6%, var(--page-glow) 4.5%, transparent 8%);
+    box-shadow:
+      -1px 1px 0 var(--edge-1), -2px 2px 0 var(--edge-2), -3px 3px 0 var(--edge-1),
+      -4px 4px 0 var(--edge-2), -5px 5px 0 var(--edge-1), -6px 6px 0 var(--edge-2);
+    border-radius: 2px 0 0 2px;
   }
-  /* right page: mirrored */
+  /* right leaf: mirrored */
   :root[data-view="spread"] main.paged .sheet:nth-child(even) {
-    background-image: linear-gradient(to right, var(--spine-shade), transparent 7%);
-    box-shadow: 3px 0 0 var(--edge-1), 5px 0 0 var(--edge-2), 7px 0 0 var(--edge-1);
-    border-radius: 0 3px 3px 0;
+    box-shadow:
+      1px 1px 0 var(--edge-1), 2px 2px 0 var(--edge-2), 3px 3px 0 var(--edge-1),
+      4px 4px 0 var(--edge-2), 5px 5px 0 var(--edge-1), 6px 6px 0 var(--edge-2);
+    border-radius: 0 2px 2px 0;
   }
   :root[data-view="spread"]:has(main.paged) .arxiv-stamp { display: none; }
 }
@@ -194,20 +215,30 @@ body {
     --spine-shade: rgba(60, 45, 20, 0.16);
     --edge-1: #ebe5d8;
     --edge-2: #d9d1c0;
+    --gutter-1: rgba(50, 36, 14, 0.34);
+    --gutter-2: rgba(50, 36, 14, 0.12);
+    --gutter-3: rgba(50, 36, 14, 0.035);
+    --page-glow: rgba(255, 255, 255, 0.5);
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .25 0 0 0 0 .2 0 0 0 0 .12 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
-  /* each sheet carries its own binding (a 20px cloth ring drawn by
-     box-shadow), so stacked pages are separated by the desk */
+  /* each sheet is a printed journal page: a stack of leaves beneath it and
+     a thin cover around them, drawn by box-shadow, with the desk between
+     stacked pages */
   main { width: 900px; margin: 3.5rem auto 4rem; }
   .sheet {
     width: 900px;
     max-width: none;
     margin: 0;
     border-radius: 0 3px 3px 0;
-    background-image: linear-gradient(to right, var(--spine-shade), transparent 5%);
+    background-image:
+      var(--grain),
+      linear-gradient(to right, var(--gutter-1), var(--gutter-2) 1%, var(--gutter-3) 2.6%, var(--page-glow) 4.5%, transparent 8%);
     box-shadow:
-      3px 0 0 var(--edge-1), 5px 0 0 var(--edge-2), 7px 0 0 var(--edge-1),
-      0 0 0 20px var(--cover),
-      0 18px 50px 20px rgba(0, 0, 0, 0.25);
+      1px 1px 0 var(--edge-1), 2px 2px 0 var(--edge-2), 3px 3px 0 var(--edge-1),
+      4px 4px 0 var(--edge-2), 5px 5px 0 var(--edge-1), 6px 6px 0 var(--edge-2),
+      0 0 0 10px var(--cover),
+      0 3px 6px 10px rgba(0, 0, 0, 0.16),
+      0 26px 50px 8px rgba(0, 0, 0, 0.26);
   }
   .sheet + .sheet { margin-top: 5rem; }
 }
@@ -220,6 +251,10 @@ body {
     --spine-shade: rgba(0, 0, 0, 0.35);
     --edge-1: #2a2823;
     --edge-2: #171613;
+    --gutter-1: rgba(0, 0, 0, 0.6);
+    --gutter-2: rgba(0, 0, 0, 0.26);
+    --gutter-3: rgba(0, 0, 0, 0.08);
+    --page-glow: rgba(255, 255, 255, 0.015);
   }
 }
 @media screen and (min-width: 1000px) {
@@ -231,6 +266,10 @@ body {
     --spine-shade: rgba(0, 0, 0, 0.35);
     --edge-1: #2a2823;
     --edge-2: #171613;
+    --gutter-1: rgba(0, 0, 0, 0.6);
+    --gutter-2: rgba(0, 0, 0, 0.26);
+    --gutter-3: rgba(0, 0, 0, 0.08);
+    --page-glow: rgba(255, 255, 255, 0.015);
   }
 }
 
