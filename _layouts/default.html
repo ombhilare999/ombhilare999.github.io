@@ -21,7 +21,12 @@
     try {
       var saved = localStorage.getItem("theme");
       if (saved) document.documentElement.dataset.theme = saved;
-      if (localStorage.getItem("view") === "spread") document.documentElement.dataset.view = "spread";
+      // Two-page view by default when the window is wide enough to read it
+      // comfortably; a choice made with the toggle always wins.
+      var view = localStorage.getItem("view");
+      if (view === "spread" || (!view && matchMedia("(min-width: 1400px)").matches)) {
+        document.documentElement.dataset.view = "spread";
+      }
     } catch (e) {}
   </script>
 </head>
@@ -34,7 +39,7 @@
   {% endcomment %}
   {% include issue.html %}
   {% assign sheets = content | split: "<!--pagebreak-->" %}
-  <main>
+  <main{% if sheets.size > 1 %} class="paged"{% endif %}>
   {% for sheet in sheets %}
   <div class="sheet">
     {% if forloop.first %}

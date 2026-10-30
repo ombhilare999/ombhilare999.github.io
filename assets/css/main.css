@@ -146,7 +146,7 @@ body {
   .spread-toggle { display: block; }
   /* the spread reads as an open hardbound monograph: ivory pages on a
      dark cloth binding, shaded toward the spine, page edges at the sides */
-  :root[data-view="spread"] {
+  :root[data-view="spread"]:has(main.paged) {
     --bg: #fbf8f1;
     --code-bg: #f2ede2;
     --rule: #e3dccd;
@@ -155,7 +155,7 @@ body {
     --edge-1: #ebe5d8;
     --edge-2: #d9d1c0;
   }
-  :root[data-view="spread"] main {
+  :root[data-view="spread"] main.paged {
     display: grid;
     grid-template-columns: 900px 900px;
     justify-content: center;
@@ -169,21 +169,21 @@ body {
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
     zoom: var(--spread-zoom, 1);
   }
-  :root[data-view="spread"] .sheet {
+  :root[data-view="spread"] main.paged .sheet {
     margin: 0;
     width: 900px;
     box-shadow: none;
     border-radius: 0;
   }
-  :root[data-view="spread"] .sheet + .sheet { margin-top: 0; }
+  :root[data-view="spread"] main.paged .sheet + .sheet { margin-top: 0; }
   /* left page: shading toward the spine on its right, page edges on its left */
-  :root[data-view="spread"] .sheet:nth-child(odd) {
+  :root[data-view="spread"] main.paged .sheet:nth-child(odd) {
     background-image: linear-gradient(to left, var(--spine-shade), transparent 7%);
     box-shadow: -3px 0 0 var(--edge-1), -5px 0 0 var(--edge-2), -7px 0 0 var(--edge-1);
     border-radius: 3px 0 0 3px;
   }
   /* right page: mirrored */
-  :root[data-view="spread"] .sheet:nth-child(even) {
+  :root[data-view="spread"] main.paged .sheet:nth-child(even) {
     background-image: linear-gradient(to right, var(--spine-shade), transparent 7%);
     box-shadow: 3px 0 0 var(--edge-1), 5px 0 0 var(--edge-2), 7px 0 0 var(--edge-1);
     border-radius: 0 3px 3px 0;
@@ -191,7 +191,7 @@ body {
   :root[data-view="spread"] .arxiv-stamp { display: none; }
 }
 @media screen and (min-width: 1100px) and (prefers-color-scheme: dark) {
-  :root[data-view="spread"]:not([data-theme="light"]) {
+  :root[data-view="spread"]:has(main.paged):not([data-theme="light"]) {
     --bg: #1d1c19;
     --code-bg: #26241f;
     --rule: #34312a;
@@ -202,7 +202,7 @@ body {
   }
 }
 @media screen and (min-width: 1100px) {
-  :root[data-view="spread"][data-theme="dark"] {
+  :root[data-view="spread"][data-theme="dark"]:has(main.paged) {
     --bg: #1d1c19;
     --code-bg: #26241f;
     --rule: #34312a;
