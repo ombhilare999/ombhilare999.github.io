@@ -36,21 +36,28 @@
   <link rel="preload" href="/assets/fonts/lmroman10-italic.woff" as="font" type="font/woff" crossorigin>
   <link rel="preload" href="/assets/fonts/lmromancaps10-regular.woff" as="font" type="font/woff" crossorigin>
   
-  <link rel="stylesheet" href="/assets/css/main.css?v=1793310410">
+  <link rel="stylesheet" href="/assets/css/main.css?v=1793327086">
   <script>
     // Apply a saved light/dark choice before first paint; otherwise follow the OS.
     try {
       var saved = localStorage.getItem("theme");
       if (saved) document.documentElement.dataset.theme = saved;
-      if (localStorage.getItem("view") === "spread") document.documentElement.dataset.view = "spread";
+      // Two-page view by default when the window is wide enough to read it
+      // comfortably; a choice made with the toggle always wins.
+      var view = localStorage.getItem("view");
+      if (view === "spread" || (!view && matchMedia("(min-width: 1400px)").matches)) {
+        document.documentElement.dataset.view = "spread";
+      }
     } catch (e) {}
   </script>
 </head>
 <body>
-  <div class="arxiv-stamp" aria-hidden="true">omkarbhilare.com&ensp;[cs.AR]&ensp;29 Oct 2026</div>
+  <div class="arxiv-stamp" aria-hidden="true">omkarbhilare.com&ensp;[cs.AR]&ensp;30 Oct 2026</div>
   
   
-  <main>
+
+  
+  <main class="paged">
   
   <div class="sheet">
     
@@ -76,10 +83,6 @@
     <div class="page-body">
       
 
-
-
-
-
 <div class="masthead">
   <span>Proceedings of Omkar Bhilare</span>
   <span>Vol. 4, No. 2 &middot; October 2026</span>
@@ -97,7 +100,7 @@
   </h1>
   <p class="affil">Department of Electrical and Computer Engineering<br>University of Toronto, Toronto, Canada</p>
   <p class="email"><a href="mailto:omkar.bhilare@mail.utoronto.ca">omkar.bhilare@mail.utoronto.ca</a></p>
-  <p class="dateline">Received September 2023; Ph.D. in progress; last revised October 29, 2026.</p>
+  <p class="dateline">Received September 2023; Ph.D. in progress; last revised October 30, 2026.</p>
   <p class="profile-links">
     <a href="/Omkar_Bhilare_CV.pdf">CV</a> <span class="sep">&middot;</span> <a href="/Omkar_Bhilare_RESUME.pdf">Resume</a> <span class="sep">&middot;</span> <a href="https://scholar.google.com/citations?user=pbEdS-kAAAAJ&hl=en">Scholar</a> <span class="sep">&middot;</span> <a href="https://github.com/ombhilare999">GitHub</a> <span class="sep">&middot;</span> <a href="https://www.linkedin.com/in/omkar-bhilare-985aa2180">LinkedIn</a> <span class="sep">&middot;</span> <a href="https://orcid.org/0009-0009-9957-3338">ORCID</a>
   </p>
@@ -110,6 +113,7 @@
       efficiency without giving up programmability.</p>
     <p class="index-terms"><span class="runin">Index Terms</span>&mdash;CGRA architecture, reconfigurable computing,
       CAD algorithms, computer architecture, RTL design and verification, HLS.</p>
+
 
     <h2 class="numbered">Introduction</h2>
     <p class="dropcap">
@@ -236,26 +240,7 @@
   </aside>
 </section>
 
-
-
-    </div>
-    
-    <div class="footnotes"><sup>1</sup> Ph.D. candidate, Department of Electrical and Computer Engineering, University of Toronto, Toronto, Canada. Research intern, Processor Research Team, RIKEN Center for Computational Science, Kobe, Japan (January&ndash;March 2026).</div>
-    
-    
-    <div class="page-num" aria-hidden="true">1</div>
-  </div>
-  
-  <div class="sheet">
-    
-    <div class="running-head" aria-hidden="true">
-      <span>Omkar Bhilare: Research Portfolio</span>
-      <span>October 2026</span>
-    </div>
-    
-    <div class="page-body">
-      
-<section id="publications">
+<section id="publications" class="pub-section">
   <h2 class="numbered">Publications</h2>
   <div class="pub-columns two-col">
   
@@ -319,6 +304,41 @@
   </div>
 </div>
 
+  </div>
+</section>
+
+
+    </div>
+    
+    <div class="footnotes">
+      <sup>1</sup> Ph.D. candidate, Department of Electrical and Computer Engineering, University of Toronto, Toronto, Canada. Research intern, Processor Research Team, RIKEN Center for Computational Science, Kobe, Japan (January&ndash;March 2026).
+      
+      <p class="cite-as"><span>Cite as:</span> O. Bhilare, &ldquo;Research Portfolio,&rdquo; <em>Proc. of Omkar Bhilare</em>, vol. 4, no. 2, pp. 1&ndash;2, Oct. 2026.</p>
+      
+    </div>
+    
+    
+    
+    
+    <div class="page-foot" aria-hidden="true">
+      <span class="pf-num">1</span>
+      <span class="pf-journal">Proceedings of Omkar Bhilare &middot; Vol. 4, No. 2</span>
+    </div>
+  </div>
+  
+  <div class="sheet">
+    
+    <div class="running-head" aria-hidden="true">
+      <span>Omkar Bhilare: Research Portfolio</span>
+      <span>October 2026</span>
+    </div>
+    
+    <div class="page-body">
+      
+<section id="publications-cont" class="pub-section">
+  <p class="continued">II. Publications (continued)</p>
+  <div class="pub-columns two-col">
+  
 <div class="row" id="wei2024noc">
   
   <div class="row-image has-hover">
@@ -384,110 +404,74 @@
   </div>
 </section>
 
+<div class="section-trio">
 <section id="talks">
   <h2 class="numbered">Invited Talks</h2>
-  
-<div class="row">
-  <div class="row-image">
-    <a class="talk-slide" href="https://sites.google.com/view/abc-hw-2026/" aria-hidden="true" tabindex="-1">
-      <span class="talk-slide-kicker">Invited Talk</span>
-      <span class="talk-slide-title">Adaptive Data Compression on CGRAs</span>
-      <span class="talk-slide-event">ABC-HW '26</span>
-    </a>
-  </div>
-  <div class="row-text">
-    <a class="row-title" href="https://sites.google.com/view/abc-hw-2026/">&ldquo;Adaptive Data Compression on CGRAs&rdquo;</a>
-    <div class="talk-venue"><em>2nd Research Meeting on Adaptive Bandwidth Compression Hardware (ABC-HW '26)</em></div>
-    <div class="talk-venue">Tohoku University, Sendai, Japan (remote), March 2026</div>
-    <div class="links"><a class="pill pill-event" href="https://sites.google.com/view/abc-hw-2026/"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Event</a></div>
-  </div>
-</div>
-
+  <ul class="compact-list">
+    
+    <li>
+      <span class="date">March 2026</span>
+      <a href="https://sites.google.com/view/abc-hw-2026/">&ldquo;Adaptive Data Compression on CGRAs&rdquo;</a>
+      <span class="item-meta">ABC-HW '26, Tohoku University (remote)</span>
+    </li>
+    
+  </ul>
 </section>
 
-
-    </div>
-    
-    
-    <div class="page-num" aria-hidden="true">2</div>
-  </div>
-  
-  <div class="sheet">
-    
-    <div class="running-head" aria-hidden="true">
-      <span>Omkar Bhilare: Research Portfolio</span>
-      <span>October 2026</span>
-    </div>
-    
-    <div class="page-body">
-      
-<div class="section-pair">
 <section id="news">
   <h2 class="numbered">News</h2>
   
-  <ul class="news">
+  <ul class="compact-list">
     
-<li>
-  <span class="date">Feb 2026</span>
-  <span><a href="/news/cgra4hpca/">Predication in Elastic CGRAs</a></span>
-</li>
-
-<li>
-  <span class="date">Jun 2024</span>
-  <span><a href="/news/heart-2024/">Paper accepted at HEART 2024</a></span>
-</li>
-
-<li>
-  <span class="date">Dec 2023</span>
-  <span><a href="/pdf/2023_fall.pdf"> 2023 Fall Work Presentation</a></span>
-</li>
-
-<li>
-  <span class="date">Apr 2022</span>
-  <span><a href="/news/arty-a7-pipelinec/">Received a sample Arty A7-35T for PipelineC Project</a></span>
-</li>
-
-<li>
-  <span class="date">Jan 2022</span>
-  <span><a href="/news/epfl-summer/">Got Accepted in the Summer EPFL Program @ LAP Lab</a></span>
-</li>
-
+    <li>
+      <span class="date">Feb 2026</span>
+      <a href="/news/cgra4hpca/">Predication in Elastic CGRAs</a>
+    </li>
+    
+    <li>
+      <span class="date">Jun 2024</span>
+      <a href="/news/heart-2024/">Paper accepted at HEART 2024</a>
+    </li>
+    
+    <li>
+      <span class="date">Dec 2023</span>
+      <a href="/pdf/2023_fall.pdf"> 2023 Fall Work Presentation</a>
+    </li>
+    
   </ul>
-  
   <p class="more"><a href="/news/">All news &rarr;</a></p>
-  
 </section>
 
 <section id="writing">
   <h2 class="numbered">Writing</h2>
   
   
-  <ul class="posts">
+  <ul class="compact-list">
     
-    <li><a href="/blog/kobo-koreader-custom-sleep-screen/">Turning a Kobo Nia into something better with KOReader</a> <span class="date">Sep 2026</span></li>
+    <li>
+      <span class="date">Sep 2026</span>
+      <a href="/blog/kobo-koreader-custom-sleep-screen/">Turning a Kobo Nia into something better with KOReader</a>
+    </li>
     
-    <li><a href="/news/cgra4hpca/">Predication in Elastic CGRAs</a> <span class="date">Feb 2026</span></li>
+    <li>
+      <span class="date">Feb 2026</span>
+      <a href="/news/cgra4hpca/">Predication in Elastic CGRAs</a>
+    </li>
     
-    <li><a href="/blog/epfl/">Summer EPFL Offer from LAP LAB</a> <span class="date">Jan 2022</span></li>
+    <li>
+      <span class="date">Jan 2022</span>
+      <a href="/blog/epfl/">Summer EPFL Offer from LAP LAB</a>
+    </li>
     
   </ul>
   <p class="more"><a href="/blog/">All posts &rarr;</a></p>
 </section>
 </div>
-
 <section id="projects">
   <h2 class="numbered">Projects</h2>
   <p class="section-note">Hardware and FPGA projects, mostly from my undergraduate years.</p>
-  <div class="project-grid two-col">
+  <div class="project-grid three-col">
     
-    
-    <a class="project" href="https://github.com/ombhilare999/riscv-core">
-      <img src="/assets/img/projects/rv.jpg" alt="" loading="lazy">
-      <span class="project-text">
-        <span class="project-title">RISC-V Core</span>
-        <span class="project-desc">Designed and Verified a RV32I  core.</span>
-      </span>
-    </a>
     
     <a class="project" href="https://github.com/ombhilare999/vga-interface-with-TANG-PRIMER-FPGA">
       <img src="/assets/img/projects/vga.jpg" alt="" loading="lazy">
@@ -510,14 +494,6 @@
       <span class="project-text">
         <span class="project-title">ESP32 Dev Board</span>
         <span class="project-desc">ESP32 Dev Board for Embedded and Robotics Application</span>
-      </span>
-    </a>
-    
-    <a class="project" href="https://github.com/ombhilare999/Seven-Segment-with-Tang-Primer-FPGA">
-      <img src="/assets/img/projects/Fibonacci_Output.jpg" alt="" loading="lazy">
-      <span class="project-text">
-        <span class="project-title">7-segment driver</span>
-        <span class="project-desc">Made a Seven Segment Driver for Tang primer FPGA</span>
       </span>
     </a>
     
@@ -573,7 +549,7 @@
       
       <img src="/assets/img/photography/thumbs/rockies-highway.jpg" alt="Into the Rockies" loading="lazy"><img src="/assets/img/photography/thumbs/ine-funaya.jpg" alt="Funaya boathouses" loading="lazy"><img src="/assets/img/photography/thumbs/kinkakuji.jpg" alt="Kinkaku-ji, the Golden Pavilion" loading="lazy" style="object-position: 50% 25%"><img src="/assets/img/photography/thumbs/rokko-udon.jpg" alt="Udon at the top of Mount Rokkō" loading="lazy">
     </a>
-    <figcaption><span class="peek-label">Fig.&nbsp;9.</span> A few frames from my travels. <a href="/photography/">See all photographs&nbsp;&rarr;</a></figcaption>
+    <figcaption><span class="peek-label"></span> A few frames from my travels. <a href="/photography/">See all photographs&nbsp;&rarr;</a></figcaption>
   </figure>
 </section>
 
@@ -637,9 +613,14 @@
     </div>
     
     
-    <footer>Manuscript last compiled October 29, 2026.</footer>
+    <footer>Manuscript last compiled October 30, 2026.</footer>
     
-    <div class="page-num" aria-hidden="true">3</div>
+    
+    
+    <div class="page-foot even" aria-hidden="true">
+      <span class="pf-num">2</span>
+      <span class="pf-journal">Proceedings of Omkar Bhilare &middot; Vol. 4, No. 2</span>
+    </div>
   </div>
   
   </main>
@@ -662,7 +643,7 @@
       var root = document.documentElement;
       var main = document.querySelector("main");
       function fit() {
-        var spreadWidth = 2 * 900 + 40; // two sheets plus the gap between them
+        var spreadWidth = 2 * 900 + 58 + 14; // two sheets, the cover's padding and the page edges
         main.style.setProperty("--spread-zoom", Math.min(1, (window.innerWidth - 48) / spreadWidth));
       }
       function apply(on) {

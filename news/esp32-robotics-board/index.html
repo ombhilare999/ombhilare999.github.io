@@ -38,19 +38,26 @@
   <link rel="preload" href="/assets/fonts/lmroman10-italic.woff" as="font" type="font/woff" crossorigin>
   <link rel="preload" href="/assets/fonts/lmromancaps10-regular.woff" as="font" type="font/woff" crossorigin>
   
-  <link rel="stylesheet" href="/assets/css/main.css?v=1793310410">
+  <link rel="stylesheet" href="/assets/css/main.css?v=1793327086">
   <script>
     // Apply a saved light/dark choice before first paint; otherwise follow the OS.
     try {
       var saved = localStorage.getItem("theme");
       if (saved) document.documentElement.dataset.theme = saved;
-      if (localStorage.getItem("view") === "spread") document.documentElement.dataset.view = "spread";
+      // Two-page view by default when the window is wide enough to read it
+      // comfortably; a choice made with the toggle always wins.
+      var view = localStorage.getItem("view");
+      if (view === "spread" || (!view && matchMedia("(min-width: 1400px)").matches)) {
+        document.documentElement.dataset.view = "spread";
+      }
     } catch (e) {}
   </script>
 </head>
 <body>
-  <div class="arxiv-stamp" aria-hidden="true">omkarbhilare.com&ensp;[cs.AR]&ensp;29 Oct 2026</div>
+  <div class="arxiv-stamp" aria-hidden="true">omkarbhilare.com&ensp;[cs.AR]&ensp;30 Oct 2026</div>
   
+  
+
   
   <main>
   
@@ -93,9 +100,14 @@
     </div>
     
     
-    <footer>Manuscript last compiled October 29, 2026.</footer>
+    <footer>Manuscript last compiled October 30, 2026.</footer>
     
-    <div class="page-num" aria-hidden="true">1</div>
+    
+    
+    <div class="page-foot" aria-hidden="true">
+      <span class="pf-num">1</span>
+      <span class="pf-journal">Proceedings of Omkar Bhilare &middot; Vol. 4, No. 2</span>
+    </div>
   </div>
   
   </main>
@@ -118,7 +130,7 @@
       var root = document.documentElement;
       var main = document.querySelector("main");
       function fit() {
-        var spreadWidth = 2 * 900 + 40; // two sheets plus the gap between them
+        var spreadWidth = 2 * 900 + 58 + 14; // two sheets, the cover's padding and the page edges
         main.style.setProperty("--spread-zoom", Math.min(1, (window.innerWidth - 48) / spreadWidth));
       }
       function apply(on) {
