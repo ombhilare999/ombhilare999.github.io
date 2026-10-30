@@ -1277,7 +1277,7 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   line-height: 1.35;
   text-align: center;
 }
-.jc-text { position: relative; padding: 62cqw 7cqw 13cqw; }
+.jc-text { position: relative; padding: 56cqw 7cqw 2cqw; }
 .jc-text h2 {
   margin: 0;
   color: var(--jc-ink);
@@ -1287,10 +1287,11 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   text-align: left;
   line-height: 1.05;
 }
-.jc-sub { margin: 0.5cqw 0 2.6cqw; font-family: var(--tex); font-size: max(14px, 2.9cqw); line-height: 1.2; }
+.jc-sub { max-width: 76cqw; margin: 0.5cqw 0 2.6cqw; font-family: var(--tex); font-size: max(14px, 2.9cqw); line-height: 1.2; }
 .jc-text dl { margin: 0; font-size: max(12.5px, 1.95cqw); line-height: 1.35; }
 .jc-text dt { font-weight: 600; margin-top: 1.05cqw; }
 .jc-text dd { margin: 0; }
+.jc-pubs { list-style: none; margin: 0; padding: 0; }
 .jc-open {
   position: absolute;
   right: 5cqw;
