@@ -12,12 +12,7 @@ footnote: >-
   University of Toronto, Toronto, Canada. Research intern, Processor Research Team,
   RIKEN Center for Computational Science, Kobe, Japan (January&ndash;March 2026).
 ---
-{% comment %} Volume = year of the PhD, issue = month within that year. {% endcomment %}
-{% assign y = site.time | date: "%Y" | plus: 0 %}
-{% assign m = site.time | date: "%-m" | plus: 0 %}
-{% assign vol = y | minus: site.author.phd_start_year %}
-{% assign issue = m | minus: site.author.phd_start_month | plus: 1 %}
-{% if m >= site.author.phd_start_month %}{% assign vol = vol | plus: 1 %}{% else %}{% assign issue = issue | plus: 12 %}{% endif %}
+{% include issue.html %}
 <div class="masthead">
   <span>Proceedings of {{ site.author.name }}</span>
   <span>Vol. {{ vol }}, No. {{ issue }} &middot; {{ site.time | date: "%B %Y" }}</span>
@@ -48,6 +43,17 @@ footnote: >-
       efficiency without giving up programmability.</p>
     <p class="index-terms"><span class="runin">Index Terms</span>&mdash;CGRA architecture, reconfigurable computing,
       CAD algorithms, computer architecture, RTL design and verification, HLS.</p>
+
+    {% assign awards = site.data.publications | where_exp: "p", "p.award" %}
+    <aside class="highlights" aria-label="Highlights">
+      <span class="highlights-title">Highlights</span>
+      <ul>
+        {% for p in awards %}<li>{{ p.award }}, {{ p.badge }}</li>{% endfor %}
+        <li>{{ site.data.publications.size }} peer-reviewed publications on CGRAs and FPGA acceleration</li>
+        <li>Research internship at RIKEN R-CCS, Kobe (2026)</li>
+        <li>Silicon design and verification at AMD (2021&ndash;2023)</li>
+      </ul>
+    </aside>
 
     <h2 class="numbered">Introduction</h2>
     <p class="dropcap">

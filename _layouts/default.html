@@ -32,6 +32,7 @@
     carries the nav; later sheets get a journal-style running head; every
     sheet ends with its page number.
   {% endcomment %}
+  {% include issue.html %}
   {% assign sheets = content | split: "<!--pagebreak-->" %}
   <main>
   {% for sheet in sheets %}
@@ -65,12 +66,22 @@
       {{ sheet }}
     </div>
     {% if forloop.first and page.footnote %}
-    <div class="footnotes">{{ page.footnote }}</div>
+    <div class="footnotes">
+      {{ page.footnote }}
+      {% if sheets.size > 1 %}
+      <p class="cite-as"><span>Cite as:</span> O. Bhilare, &ldquo;{{ page.running_head | default: "Research Portfolio" }},&rdquo; <em>Proc. of {{ site.author.name }}</em>, vol. {{ vol }}, no. {{ issue }}, pp. 1&ndash;{{ sheets.size }}, {{ site.time | date: "%b. %Y" }}.</p>
+      {% endif %}
+    </div>
     {% endif %}
     {% if forloop.last %}
     <footer>Manuscript last compiled {{ site.time | date: "%B %-d, %Y" }}.</footer>
     {% endif %}
-    <div class="page-num" aria-hidden="true">{{ forloop.index }}</div>
+    {% comment %} journal footer: page number on the outer edge {% endcomment %}
+    {% assign parity = forloop.index | modulo: 2 %}
+    <div class="page-foot{% if parity == 0 %} even{% endif %}" aria-hidden="true">
+      <span class="pf-num">{{ forloop.index }}</span>
+      <span class="pf-journal">Proceedings of {{ site.author.name }} &middot; Vol. {{ vol }}, No. {{ issue }}</span>
+    </div>
   </div>
   {% endfor %}
   </main>

@@ -1,0 +1,4 @@
+{% comment %}
+  Sets `vol` and `issue` for the journal styling: volume = year of the PhD,
+  issue = month within that year (from phd_start_* in _config.yml).
+{% endcomment %}{% assign y = site.time | date: "%Y" | plus: 0 %}{% assign m = site.time | date: "%-m" | plus: 0 %}{% assign vol = y | minus: site.author.phd_start_year %}{% assign issue = m | minus: site.author.phd_start_month | plus: 1 %}{% if m >= site.author.phd_start_month %}{% assign vol = vol | plus: 1 %}{% else %}{% assign issue = issue | plus: 12 %}{% endif %}
