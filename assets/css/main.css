@@ -991,23 +991,6 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
 /* ragged-right so the long email address doesn't stretch the line before it */
 .intro-text p:last-child { margin-bottom: 0; text-align: left; }
 
-/* highlights box, as on an Elsevier-style first page */
-.highlights {
-  margin: 0.4rem 0 0.2rem;
-  padding: 0.55rem 0.9rem 0.6rem;
-  border-top: 2px solid var(--text);
-  border-bottom: 1px solid var(--rule);
-  background: var(--code-bg);
-}
-.highlights-title {
-  display: block;
-  margin-bottom: 0.2rem;
-  font-family: var(--caps);
-  font-size: 0.9rem;
-}
-.highlights ul { margin: 0; padding-left: 1.1rem; font-size: 0.86rem; line-height: 1.45; }
-.highlights li::marker { color: var(--accent); }
-
 /* IEEE opening: after the drop cap the first line runs in small caps */
 .dropcap::first-line { font-variant: small-caps; letter-spacing: 0.02em; }
 

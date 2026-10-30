@@ -44,16 +44,6 @@ footnote: >-
     <p class="index-terms"><span class="runin">Index Terms</span>&mdash;CGRA architecture, reconfigurable computing,
       CAD algorithms, computer architecture, RTL design and verification, HLS.</p>
 
-    {% assign awards = site.data.publications | where_exp: "p", "p.award" %}
-    <aside class="highlights" aria-label="Highlights">
-      <span class="highlights-title">Highlights</span>
-      <ul>
-        {% for p in awards %}<li>{{ p.award }}, {{ p.badge }}</li>{% endfor %}
-        <li>{{ site.data.publications.size }} peer-reviewed publications on CGRAs and FPGA acceleration</li>
-        <li>Research internship at RIKEN R-CCS, Kobe (2026)</li>
-        <li>Silicon design and verification at AMD (2021&ndash;2023)</li>
-      </ul>
-    </aside>
 
     <h2 class="numbered">Introduction</h2>
     <p class="dropcap">
