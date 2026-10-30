@@ -19,7 +19,7 @@
         <dt>Affiliation</dt><dd>{{ site.author.affiliation }}, Dept. of ECE</dd>
         <dt>Advisor</dt><dd>Prof. Jason Anderson</dd>
         <dt>Research</dt><dd>CGRA architecture, reconfigurable computing, CAD algorithms</dd>
-        <dt>Publications</dt><dd><ul class="jc-pubs">{% for p in site.data.publications %}<li>{{ p.title }} ({{ p.badge }})</li>{% endfor %}</ul></dd>
+        <dt>Publications</dt><dd><ul class="jc-pubs">{% for p in site.data.publications %}<li>{{ p.title }} <span class="nowrap">({{ p.badge }})</span></li>{% endfor %}</ul></dd>
         <dt>Invited talks</dt><dd>{% for t in site.data.talks %}{{ t.title }} ({{ t.short }}){% unless forloop.last %}; {% endunless %}{% endfor %}</dd>
         <dt>Experience</dt><dd>RIKEN R-CCS, AMD, EPFL, IIT Madras, Google Summer of Code</dd>
       </dl>

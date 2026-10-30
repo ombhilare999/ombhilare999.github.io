@@ -1273,11 +1273,12 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   margin: 0;
   width: 30%;
   color: #fff;
+  font-family: var(--tex);
   font-size: max(9.5px, 1.75cqw);
   line-height: 1.35;
   text-align: center;
 }
-.jc-text { position: relative; padding: 56cqw 7cqw 2cqw; }
+.jc-text { position: relative; padding: 66cqw 7cqw 3cqw; font-family: var(--tex); }
 .jc-text h2 {
   margin: 0;
   color: var(--jc-ink);
@@ -1288,15 +1289,25 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   line-height: 1.05;
 }
 .jc-sub { max-width: 76cqw; margin: 0.5cqw 0 2.6cqw; font-family: var(--tex); font-size: max(14px, 2.9cqw); line-height: 1.2; }
-.jc-text dl { margin: 0; font-size: max(12.5px, 1.95cqw); line-height: 1.35; }
-.jc-text dt { font-weight: 600; margin-top: 1.05cqw; }
+.jc-text dl {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.1cqw 2.5cqw;
+  margin: 0;
+  padding-top: 1.8cqw;
+  border-top: 1px solid rgba(20, 32, 51, 0.3);
+  font-size: max(12.5px, 2.05cqw);
+  line-height: 1.35;
+}
+.jc-text dt { font-family: var(--caps); font-weight: 400; }
 .jc-text dd { margin: 0; }
 .jc-pubs { list-style: none; margin: 0; padding: 0; }
 .jc-open {
   position: absolute;
-  right: 6cqw;
-  bottom: 5cqw;
-  padding: 0.55em 1.2em;
+  z-index: 1;
+  top: max(84px, 19cqw);
+  left: 7cqw;
+  padding: 0.5em 1.1em;
   border: 0;
   border-radius: 4px;
   background: #f0b429;
@@ -1323,8 +1334,12 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   .has-masthead .close-toggle { margin-left: 0.85rem; }
   .has-masthead .spread-toggle, .has-masthead .theme-toggle { margin-left: 0.6rem; }
 }
-@media screen and (min-width: 1000px) {
-  .jc-page { transform: perspective(3000px) rotateY(-2.5deg); transform-origin: left center; }
+/* laptops and up: the whole cover fits in the window, flat so its text stays upright */
+@media screen and (min-width: 641px) {
+  .jc-page {
+    width: min(760px, calc(100vw - 32px), max(520px, calc((100vh - 48px) * 0.7727)));
+    margin: 20px auto 28px;
+  }
 }
 @media print {
   .journal-cover { display: none !important; }
@@ -1336,8 +1351,7 @@ th, td { border: 1px solid var(--rule); padding: 0.35rem 0.7rem; text-align: lef
   .site-nav.has-masthead .masthead-name { font-size: 0.8rem; }
   .site-nav.has-masthead .masthead-issue { font-size: 0.74rem; }
   .jc-page { margin-top: 0.75rem; aspect-ratio: auto; }
-  .jc-text { padding-bottom: 4cqw; }
-  .jc-open { position: static; display: block; margin: 2cqw 7cqw 7cqw auto; }
+  .jc-text { padding-bottom: 6cqw; }
 }
 
 /* print: one sheet per printed page, light colours, no screen chrome */
