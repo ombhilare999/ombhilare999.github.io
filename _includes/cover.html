@@ -1,22 +1,14 @@
-{% comment %} Front cover and summary, shown when the journal is closed. {% endcomment %}
+{% comment %} Front cover and summary, shown when the book is closed. {% endcomment %}
 <section class="journal-cover" aria-label="Summary">
   <div class="jc-book">
   <button type="button" class="jc-bookmark">Look inside<small>for details</small></button>
   <div class="jc-page">
-    <div class="jc-shape jc-pale" aria-hidden="true"></div>
-    <img class="jc-shape jc-photo" src="{{ '/assets/img/photography/rockies-highway.jpg' | relative_url }}" alt="" loading="lazy">
-    <div class="jc-shape jc-navy" aria-hidden="true"></div>
-    <div class="jc-shape jc-accent" aria-hidden="true"></div>
-
-    <div class="jc-mark">
-      <img src="{{ '/assets/favicon.svg' | relative_url }}" alt="">
-      <span>Proceedings of<br>{{ site.author.name }}</span>
-    </div>
-    <p class="jc-date">Vol. {{ vol }}, No. {{ issue }}<br>{{ site.time | date: "%B %Y" }}<br>Toronto, Canada</p>
-
     <div class="jc-text">
+      <p class="jc-mark">Proceedings of</p>
       <h2>{{ site.author.name }}</h2>
       <p class="jc-sub">Ph.D. Candidate in Computer Engineering</p>
+      <p class="jc-orn" aria-hidden="true"><span>&#10086;</span></p>
+      <button type="button" class="jc-open">Open the Book <span class="jc-arrow" aria-hidden="true">&rarr;</span></button>
       <dl>
         <dt>Affiliation</dt><dd>{{ site.author.affiliation }}, Dept. of ECE</dd>
         <dt>Advisor</dt><dd>Prof. Jason Anderson</dd>
@@ -37,8 +29,8 @@
           {% endfor %}
         </ol>
       </div>
+      <p class="jc-date">Vol. {{ vol }}, No. {{ issue }} &middot; {{ site.time | date: "%B %Y" }} &middot; Toronto, Canada</p>
     </div>
-    <button type="button" class="jc-open">Open Journal <span class="jc-arrow" aria-hidden="true">&rarr;</span></button>
   </div>
   </div>
 </section>
